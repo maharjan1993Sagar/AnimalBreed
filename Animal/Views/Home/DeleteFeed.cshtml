@@ -1,0 +1,11 @@
+﻿@model feedFooder
+@using Animal.Models
+
+    <form asp-action="DeleteFeed">
+        <input asp-for="id" value="@Model.id" />
+        <div class="modal-body form-horizontal">
+            Are you want to delete @Model.fooderNameEng?
+        </div>
+        <input type="submit" value="Delete" />
+        </form>
+        

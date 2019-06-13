@@ -10,9 +10,9 @@ namespace Animal.Controllers
 {
     public class FeedFooderController : Controller
     {
-        private readonly IRepository<feedFooder> _repo;
+        private readonly IRepository<FeedFooder> _repo;
 
-        public FeedFooderController(IRepository<feedFooder> repo)
+        public FeedFooderController(IRepository<FeedFooder> repo)
         {
             _repo = repo;
         }
@@ -20,17 +20,17 @@ namespace Animal.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<feedFooder> all = _repo.GetModel();
+            IEnumerable<FeedFooder> all = _repo.GetModel();
             return View(all);
         }
 
         [HttpGet]
         public IActionResult AddEditFeed(int? id)
         {
-            feedFooder model = new feedFooder();
+            FeedFooder model = new FeedFooder();
             if (id.HasValue)
             {
-                feedFooder feed = _repo.GetById(id.Value);
+                FeedFooder feed = _repo.GetById(id.Value);
                 if (feed != null)
                 {
                     model = feed;
@@ -39,14 +39,14 @@ namespace Animal.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult AddEditFeed(int? id, feedFooder model)
+        public ActionResult AddEditFeed(int? id, FeedFooder model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
                     bool isNew = !id.HasValue;
-                    feedFooder feed = isNew ? new feedFooder { } : _repo.GetById(id.Value);
+                    FeedFooder feed = isNew ? new FeedFooder { } : _repo.GetById(id.Value);
                     feed = model;
                     if (isNew)
                     {
@@ -69,7 +69,7 @@ namespace Animal.Controllers
         [HttpGet]
         public IActionResult DeleteFeed(int id)
         {
-            feedFooder feed = _repo.GetById(id);
+            FeedFooder feed = _repo.GetById(id);
             _repo.Delete(id);
 
             return RedirectToAction("Index");

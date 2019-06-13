@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Animal.Models
 {
-    [Table("dbug_feedFooder")]
-    public class feedFooder
+    [Table("dbug_FeedFooder")]
+    public class FeedFooder
     {
         public int id { get; set; }
         public string fooderNameNep { get; set; }

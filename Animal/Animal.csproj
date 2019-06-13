@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DatabaseFirst\**" />
+    <Content Remove="DatabaseFirst\**" />
+    <EmbeddedResource Remove="DatabaseFirst\**" />
+    <None Remove="DatabaseFirst\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Repository\IVaccinationRepository.cs" />
     <Compile Remove="Repository\VaccinationRepository.cs" />
   </ItemGroup>

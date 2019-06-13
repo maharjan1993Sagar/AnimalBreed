@@ -16,6 +16,9 @@ namespace WebApplication1
             dbug_ownerKeeper = new HashSet<dbug_ownerKeeper>();
         }
 
+
+
+
         public int id { get; set; }
 
         public string earTagNo { get; set; }

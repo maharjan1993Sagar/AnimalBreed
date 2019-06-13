@@ -11,6 +11,7 @@ namespace Animal.Models
     {
         public int id { get; set; }
         public string  SubTypeName { get; set; }
+        public int  VaccinationTypeId { get; set; }
 
         public virtual VaccinationType VaccinationType { get; set; }
     }

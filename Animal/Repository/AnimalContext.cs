@@ -13,8 +13,18 @@ namespace Animal.Repository
         : base(options)
         {
         }
-
-        public DbSet<feedFooder> feedFooder{ get; set; }
+        public DbSet<AnimalRegistration> animalRegistration { get; set; }
+        public DbSet<Breed> Breeds { get; set; }
+        public DbSet<Diseases> Diseases{ get; set; }
+        public DbSet<Farm> Farms { get; set; }
+        public DbSet<FeedFooder> FeedFooder { get; set; }
+        public DbSet<GrowthMonitoring> GrowthMonitorings { get; set; }
+        public DbSet<HealthCheckUp> HealthCheckUps { get; set; }
+        public DbSet<MIlkBaseNutrition> MilkBaseNutritions { get; set; }
+        public DbSet<MilkRecord> MilkRecords { get; set; }
+        public DbSet<OwnerKeeper> OwnerKeeper { get; set; }
+        public DbSet<PregnancyBaseNutrition> PregnancyBaseNutritions { get; set; }
+       
         public DbSet<Vaccination> vaccinations { get; set; }
         public DbSet<VaccinationType> vaccinationTypes { get; set; }
 
@@ -33,6 +43,23 @@ namespace Animal.Repository
         public DbSet<AnimalSelection> animalSelections { get; set; }
         public DbSet<ResponsibleCollectorRegister> responsibleCollectorRegisters { get; set; }
 
+
+
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<AnimalOwner>()
+                .HasKey(bc => new { bc.AnimalId, bc.OwnerId });
+            modelBuilder.Entity<AnimalOwner>()
+                .HasOne(bc => bc.Owner)
+                .WithMany(b => b.AnimalOwners)
+                .HasForeignKey(bc => bc.OwnerId);
+            modelBuilder.Entity<AnimalOwner>()
+                .HasOne(bc => bc.AnimalRegistration)
+                .WithMany(c => c.AnimalOwners)
+                .HasForeignKey(bc => bc.AnimalId);
+        }
 
 
 

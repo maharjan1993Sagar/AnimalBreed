@@ -31,6 +31,17 @@ namespace Animal.Repository
         public DbSet<VaccinationSubType> vaccinationSubType { get; set; }
         public DbSet<Diseases> diseases{ get; set; }
         public DbSet<VaccinationAnimal> vaccinationAnimals{ get; set; }
+        public DbSet<Ai> ais { get; set; }
+        public DbSet<RegisterServiceProvider> registerServiceProviders { get; set; }
+        public DbSet<PregnancyDiagnosis> pregnancyDiagnoses { get; set; }
+        public DbSet<Calving> calvings { get; set; }
+        public DbSet<InstitutionRegForService> institutionRegForServices { get; set; }
+        public DbSet<PregnancyTermination> pregnancyTerminations { get; set; }
+        public DbSet<CalfReg> calfRegs { get; set; }
+        public DbSet<SemenCollection> semenCollections { get; set; }
+        public DbSet<SemenCollectionCenter> semenCollectionCenters { get; set; }
+        public DbSet<AnimalSelection> animalSelections { get; set; }
+        public DbSet<ResponsibleCollectorRegister> responsibleCollectorRegisters { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

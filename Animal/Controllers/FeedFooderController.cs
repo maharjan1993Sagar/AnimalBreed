@@ -46,15 +46,17 @@ namespace Animal.Controllers
                 if (ModelState.IsValid)
                 {
                     bool isNew = !id.HasValue;
-                    FeedFooder feed = isNew ? new FeedFooder { } : _repo.GetById(id.Value);
-                    feed = model;
+                    //FeedFooder feed = isNew ? new FeedFooder { } : _repo.GetById(id.Value);
+                   // feed = model;
                     if (isNew)
                     {
-                        _repo.Insert(feed);
+                        _repo.Insert(model);
                         _repo.Save();
                     }
                     else
                     {
+                         //To Avoid tracking error
+                       // DbContextInMemory.Entry(entity).State = EntityState.Detached;
                         _repo.Update(model);
                     }
                 }

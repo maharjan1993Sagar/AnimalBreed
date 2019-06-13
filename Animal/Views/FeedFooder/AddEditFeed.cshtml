@@ -3,6 +3,8 @@
 
 
 <div class="row">
+    @Html.HiddenFor(m=>m.id)
+
     <div class="col-md-4">
         <form asp-action="AddEditFeed">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>

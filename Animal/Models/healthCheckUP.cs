@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Animal.Models
 {
+    [Table("dbug_healthCheckUp")]
     public class HealthCheckUp
     {
         public int id { get; set; }
@@ -18,5 +20,6 @@ namespace Animal.Models
         public string receiptNo { get; set; }
         public string anlyzeReport { get; set; }
         public DateTime reportExpDate { get; set; }
+        public virtual AnimalRegistration animalRegistration { get; set; }
     }
 }

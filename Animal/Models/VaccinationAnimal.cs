@@ -27,6 +27,11 @@ namespace Animal.Models
         public string charge { get; set; }
         public string receiptNo { get; set; }
 
+        public int animalId { get; set; }
+
+       public AnimalRegistration animalRegistration { get; set; }
+
+
 
 
 

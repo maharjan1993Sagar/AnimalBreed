@@ -19,7 +19,6 @@ namespace Animal.Models
         public virtual VaccinationType vaccinationType { get; set; }
         public virtual VaccinationSubType vaccinationSubType { get; set; }
 
-
         public ICollection<VaccinationAnimal> vaccinationAnimals { get; set; }
     }
 }

@@ -15,6 +15,6 @@ namespace Animal.Models
         public string symptom { get; set; }
         public string shortNote { get; set; }
 
-        public ICollection<VaccinationAnimal> vaccinationAnimals { get; set; }
+       
     }
 }

@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Animal.Models.MIlkBaseNutrition>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="AddEditMilk">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.animalSpecies)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fatPercentage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.snf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tdn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ndf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.c)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.p)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.animalSpecies)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fatPercentage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.snf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tdn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ndf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.c)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.p)
+            </td>
+            <td>
+                @Html.ActionLink("AddEditMilk", "Edit", new {  id=item.id }) |
+                
+                @Html.ActionLink("DeleteMilk", "Delete", new {  id=item.id  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

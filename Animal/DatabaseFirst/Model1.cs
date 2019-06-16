@@ -4,6 +4,7 @@ namespace WebApplication1
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using Microsoft.EntityFrameworkCore;
 
     public partial class Model1 : DbContext
     {
@@ -17,7 +18,7 @@ namespace WebApplication1
         public virtual DbSet<dbug_breed> dbug_breed { get; set; }
         public virtual DbSet<dbug_diseases> dbug_diseases { get; set; }
         public virtual DbSet<dbug_farm> dbug_farm { get; set; }
-        public virtual DbSet<dbug_FeedFooder> dbug_FeedFooder { get; set; }
+        public virtual DbSet<dbug_feedFooder> dbug_feedFooder { get; set; }
         public virtual DbSet<dbug_growtthMonitoring> dbug_growtthMonitoring { get; set; }
         public virtual DbSet<dbug_milkBaseNutrition> dbug_milkBaseNutrition { get; set; }
         public virtual DbSet<dbug_milkRecord> dbug_milkRecord { get; set; }
@@ -27,6 +28,7 @@ namespace WebApplication1
         public virtual DbSet<dbug_vaccinationAnimal> dbug_vaccinationAnimal { get; set; }
         public virtual DbSet<dbug_vaccinationSubType> dbug_vaccinationSubType { get; set; }
         public virtual DbSet<dbug_vaccinationType> dbug_vaccinationType { get; set; }
+       
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

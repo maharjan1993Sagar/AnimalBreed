@@ -1,0 +1,123 @@
+﻿@model Animal.Models.Farm
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+
+<div>
+    <h4>Farm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.orgtanizationName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.orgtanizationName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.shortDetail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.shortDetail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.dateOfRegistration)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.dateOfRegistration)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.regCertification)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.regCertification)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.mobile1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.mobile1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.mobile)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.mobile)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.url)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.url)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.municipility)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.municipility)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ward)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ward)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.longitude)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.longitude)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.latitude)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.latitude)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.farmType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.farmType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.land)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.land)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.area)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.area)
+        </dd>
+    </dl>
+</div>
+
+
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -8,7 +8,7 @@ namespace Animal.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private AnimalContext db;
+        protected AnimalContext db;
         private DbSet<T> dbEntity;
         public Repository(AnimalContext Context)
         {

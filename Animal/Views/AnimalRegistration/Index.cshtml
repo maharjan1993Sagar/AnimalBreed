@@ -1,0 +1,160 @@
+﻿@model IEnumerable<Animal.Models.AnimalRegistration>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.earTagNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.species)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.breedId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dob)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sireId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.damId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.noOfCalving)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lastCalvingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pregnencyStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pregnencyDuration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.milkingStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.createdAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.updatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ownerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.keeperId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.farmId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.declaredBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.declaredDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.earTagNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.species)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.breedId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sireId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.damId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.noOfCalving)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastCalvingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pregnencyStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pregnencyDuration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.milkingStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.createdAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.updatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ownerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.keeperId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.farmId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.declaredBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.declaredDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "AddEditAnimal", new {  id=item.id  }) |
+                @Html.ActionLink("Delete", "DeleteAnimal", new {  id=item.id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

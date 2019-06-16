@@ -1,0 +1,115 @@
+﻿@model Animal.Models.OwnerKeeper
+
+@{
+    ViewData["Title"] = "AddEditOwnerKeeper";
+}
+
+<h2>AddEditOwnerKeeper</h2>
+
+<h4>OwnerKeeper</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddEditOwnerKeeper">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="id" class="control-label"></label>
+                <input asp-for="id" class="form-control" />
+                <span asp-validation-for="id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="category" class="control-label"></label>
+                <input asp-for="category" class="form-control" />
+                <span asp-validation-for="category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fullName" class="control-label"></label>
+                <input asp-for="fullName" class="form-control" />
+                <span asp-validation-for="fullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="occupation" class="control-label"></label>
+                <input asp-for="occupation" class="form-control" />
+                <span asp-validation-for="occupation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="address" class="control-label"></label>
+                <input asp-for="address" class="form-control" />
+                <span asp-validation-for="address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="municipililty" class="control-label"></label>
+                <input asp-for="municipililty" class="form-control" />
+                <span asp-validation-for="municipililty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="wardNo" class="control-label"></label>
+                <input asp-for="wardNo" class="form-control" />
+                <span asp-validation-for="wardNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="state" class="control-label"></label>
+                <input asp-for="state" class="form-control" />
+                <span asp-validation-for="state" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="latitude" class="control-label"></label>
+                <input asp-for="latitude" class="form-control" />
+                <span asp-validation-for="latitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="logitude" class="control-label"></label>
+                <input asp-for="logitude" class="form-control" />
+                <span asp-validation-for="logitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dob" class="control-label"></label>
+                <input asp-for="dob" class="form-control" />
+                <span asp-validation-for="dob" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="academicQualification" class="control-label"></label>
+                <input asp-for="academicQualification" class="form-control" />
+                <span asp-validation-for="academicQualification" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="finantanceStatus" class="control-label"></label>
+                <input asp-for="finantanceStatus" class="form-control" />
+                <span asp-validation-for="finantanceStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="mobileNumber" class="control-label"></label>
+                <input asp-for="mobileNumber" class="form-control" />
+                <span asp-validation-for="mobileNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="otherNumber" class="control-label"></label>
+                <input asp-for="otherNumber" class="form-control" />
+                <span asp-validation-for="otherNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="url" class="control-label"></label>
+                <input asp-for="url" class="form-control" />
+                <span asp-validation-for="url" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="farmid" class="control-label"></label>
+                <input asp-for="farmid" class="form-control" />
+                <span asp-validation-for="farmid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -13,8 +13,8 @@ namespace Animal.Repository
         : base(options)
         {
         }
-        public DbSet<AnimalRegistration> animalRegistration { get; set; }
-        public DbSet<Breed> Breeds { get; set; }
+        public DbSet<AnimalRepository> animalRegistration { get; set; }
+        public DbSet<BreedRepository> Breeds { get; set; }
         public DbSet<Diseases> Diseases{ get; set; }
         public DbSet<Farm> Farms { get; set; }
         public DbSet<FeedFooder> FeedFooder { get; set; }

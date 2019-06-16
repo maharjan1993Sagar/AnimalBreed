@@ -34,8 +34,8 @@ namespace Animal
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.AddScoped(typeof(IRepository<>) ,typeof(Repository.Repository<>));
-
+           services.AddScoped(typeof(IRepository<>) ,typeof(Repository.Repository<>));
+            services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<AnimalContext>(options =>

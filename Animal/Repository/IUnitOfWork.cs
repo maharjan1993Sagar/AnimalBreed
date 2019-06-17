@@ -8,11 +8,11 @@ namespace Animal.Repository
 {
     public class IUnitOfWork
     {
-       public IAnimalRepository AnimalRegistration { get; }
+        public IAnimalRepository AnimalRegistration { get; }
         public IBreedRepository Breed { get; }
         public IOwnerRepository OwnerKeeper { get; }
         public IFarmRepository Farm { get; }
-        public IRepository<FeedFooder> FeedFooder { get; }
+        public IFeedRepository FeedFooder { get; }
         public void Save() { }
     }
 }

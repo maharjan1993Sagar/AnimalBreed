@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Animal.Repository
 {
-    public class OwnerRepository:  Repository<OwnerKeeper>, IOwnerRepository
+    public class FeedRepository:Repository<FeedFooder>, IFeedRepository
     {
-
-        public OwnerRepository(AnimalContext Context):base(Context)
+        public FeedRepository(AnimalContext Context):base(Context)
         {
 
         }
@@ -18,5 +17,6 @@ namespace Animal.Repository
             get { return db as AnimalContext; }
 
         }
+
     }
 }

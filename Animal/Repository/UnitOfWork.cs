@@ -8,84 +8,85 @@ namespace Animal.Repository
 {
     public class UnitOfWork:IUnitOfWork
     {
-        protected AnimalContext _repoContext;
-        public IAnimalRepository _animal;
-        public IBreedRepository _breed;
-        public IOwnerRepository _owner;
-        public IFarmRepository _farm;
-        public IRepository<FeedFooder> _feed;
+        private AnimalContext _repoContext;
+
+
+        //public IAnimalRepository _animal;
+        //public IBreedRepository _breed;
+        //public IOwnerRepository _owner;
+        //public IFarmRepository _farm;
+        //public IFeedRepository _feed;
 
         public UnitOfWork(AnimalContext repositoryContext)
         {
             _repoContext = repositoryContext;
+            AnimalRegistration = new AnimalRepository(_repoContext);
+            Breed = new BreedRepository(_repoContext);
+            OwnerKeeper = new OwnerRepository(_repoContext);
         }
 
-        public IAnimalRepository AnimalRegistration
+        public new IAnimalRepository AnimalRegistration
         {
-            get
-            {
-                if (_animal == null)
-                {
-                    _animal = new AnimalRepository(_repoContext);
-                }
-
-                return _animal;
-            }
+           
+            get; private set;
         }
-        public IRepository<FeedFooder> FeedFoooder
+       
+        public new IBreedRepository Breed
         {
-            get
-            {
-                if (_feed == null)
-                {
-                    _feed = new Repository<FeedFooder>(_repoContext);
-                }
-
-                return _feed;
-            }
+            get;private set;
         }
 
-        public IBreedRepository Breed
+        public new IOwnerRepository OwnerKeeper
         {
-            get
-            {
-                if (_breed == null)
-                {
-                    _breed = new BreedRepository(_repoContext);
-                }
-
-                return _breed;
-            }
-        }
-
-        public IOwnerRepository OwnerKeeper
-        {
-            get
-            {
-                if (_owner == null)
-                {
-                    _owner = new OwnerRepository(_repoContext);
-                }
-
-                return _owner;
-            }
+            get;private set;
         }
         public new IFarmRepository Farm
         {
-            get
-            {
-                if (_farm == null)
-                {
-                    _farm = new FarmRepository(_repoContext);
-                }
-
-                return _farm;
-            }
+            get;private set;
         }
+        public new IFeedRepository FeedFooder
+        {
+            get; private set;
+        }
+
+
+
+
+
+
+
+        //public new IAnimalRepository AnimalRegistration
+        //{
+        //    get; private set;
+        //}
+
+        //public new IBreedRepository Breed
+        //{
+        //    get; private set;
+        //}
+
+        //public new IOwnerRepository OwnerKeeper
+        //{
+        //    get; private set;
+        //}
+        //public new IFarmRepository Farm
+        //{
+        //    get; private set;
+        //}
+        //public new IFeedRepository FeedFooder
+        //{
+        //    get; private set;
+        //}
+
 
         public void Save()
         {
             _repoContext.SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            _repoContext.Dispose();
         }
 
     }

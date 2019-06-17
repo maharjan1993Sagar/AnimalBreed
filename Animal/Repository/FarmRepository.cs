@@ -12,6 +12,11 @@ namespace Animal.Repository
         {
 
         }
+        public AnimalContext AnimalContext
+        {
+            get { return db as AnimalContext; }
+
+        }
 
     }
 }

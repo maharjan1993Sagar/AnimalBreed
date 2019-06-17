@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Animal.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using AutoMapper;
+using System.Dynamic;
 
 namespace Animal.Controllers
 {
@@ -21,8 +22,10 @@ namespace Animal.Controllers
         }
         public IActionResult Index()
         {
-            IEnumerable<AnimalRegistration> all = _repo.AnimalRegistration.GetModel();
-            return View(all);
+            dynamic model = new ExpandoObject();
+            model.animals= _repo.AnimalRegistration.GetModel();
+            //IEnumerable<AnimalRegistration> all = _repo.AnimalRegistration.GetModel();
+            return View(model.animals);
         }
 
         [HttpGet]

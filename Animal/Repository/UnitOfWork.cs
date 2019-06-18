@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Animal.Repository
 {
-    public class UnitOfWork:IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private AnimalContext _repoContext;
 
@@ -23,30 +23,36 @@ namespace Animal.Repository
             AnimalRegistration = new AnimalRepository(_repoContext);
             Breed = new BreedRepository(_repoContext);
             OwnerKeeper = new OwnerRepository(_repoContext);
+            FeedFooder = new FeedRepository(_repoContext);
+
         }
 
-        public new IAnimalRepository AnimalRegistration
+        public IAnimalRepository AnimalRegistration
         {
-           
+
             get; private set;
-        }
-       
-        public new IBreedRepository Breed
-        {
-            get;private set;
         }
 
-        public new IOwnerRepository OwnerKeeper
-        {
-            get;private set;
-        }
-        public new IFarmRepository Farm
-        {
-            get;private set;
-        }
-        public new IFeedRepository FeedFooder
+        public IBreedRepository Breed
         {
             get; private set;
+        }
+
+        public  IOwnerRepository OwnerKeeper
+        {
+            get; private set;
+        }
+        public  IFarmRepository Farm
+        {
+            get; private set;
+        } 
+        public IFeedRepository FeedFooder
+        {
+            get; private set;
+        }
+        public void Save()
+        {
+            _repoContext.SaveChanges();
         }
 
 
@@ -77,12 +83,7 @@ namespace Animal.Repository
         //{
         //    get; private set;
         //}
-
-
-        public void Save()
-        {
-            _repoContext.SaveChanges();
-        }
+      
 
         public void Dispose()
         {

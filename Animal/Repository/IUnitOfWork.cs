@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Animal.Repository
 {
-    public class IUnitOfWork
+    public interface IUnitOfWork :IDisposable
     {
-        public IAnimalRepository AnimalRegistration { get; }
-        public IBreedRepository Breed { get; }
-        public IOwnerRepository OwnerKeeper { get; }
-        public IFarmRepository Farm { get; }
-        public IFeedRepository FeedFooder { get; }
-        public void Save() { }
+         IAnimalRepository AnimalRegistration { get; }
+         IBreedRepository Breed { get; }
+         IOwnerRepository OwnerKeeper { get; }
+         IFarmRepository Farm { get; }
+         IFeedRepository FeedFooder { get; }
+        void Save();
     }
 }

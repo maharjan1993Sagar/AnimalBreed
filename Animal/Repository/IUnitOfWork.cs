@@ -13,6 +13,7 @@ namespace Animal.Repository
          IOwnerRepository OwnerKeeper { get; }
          IFarmRepository Farm { get; }
          IFeedRepository FeedFooder { get; }
+      
         void Save();
     }
 }

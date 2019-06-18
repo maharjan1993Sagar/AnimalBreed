@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Animal.Models.Breed>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.breedNameShort)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.breedNamelong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.shortDetail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.originFrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.registeredBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.updatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.registeredDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.breedNameShort)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.breedNamelong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shortDetail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.originFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.registeredBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.updatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.registeredDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "AddEditBreed", new {  id=item.id }) |
+                @Html.ActionLink("Delete", "DeleteBreed", new {  id=item.id  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

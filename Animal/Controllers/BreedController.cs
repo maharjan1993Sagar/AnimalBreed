@@ -8,32 +8,27 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Animal.Controllers
 {
-    public class FeedFooderController : Controller
+    public class BreedController : Controller
     {
-       // private readonly IRepository<FeedFooder> _repo;
-        private readonly IUnitOfWork _repoU;
+        private readonly IRepository<Breed> _repo;
 
-        public FeedFooderController( IUnitOfWork repoU)
+        public BreedController(IRepository<Breed> repo)
         {
-         //   _repo = repo;
-            _repoU = repoU;
+            _repo = repo;
         }
-
-
         public IActionResult Index()
         {
-            IEnumerable<FeedFooder> all = _repoU.FeedFooder.GetModel();
-            //IEnumerable<FeedFooder> all = _repo.GetModel();
+            IEnumerable<Breed> all = _repo.GetModel();
             return View(all);
         }
 
         [HttpGet]
-        public IActionResult AddEditFeed(int? id)
+        public IActionResult AddEditBreed(int? id)
         {
-            FeedFooder model = new FeedFooder();
+            Breed model = new Breed();
             if (id.HasValue)
             {
-                FeedFooder feed = _repoU.FeedFooder.GetById(id.Value);
+                Breed feed = _repo.GetById(id.Value);
                 if (feed != null)
                 {
                     model = feed;
@@ -42,7 +37,7 @@ namespace Animal.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult AddEditFeed(int? id, FeedFooder model)
+        public ActionResult AddEditBreed(int? id, Breed model)
         {
             try
             {
@@ -50,17 +45,17 @@ namespace Animal.Controllers
                 {
                     bool isNew = !id.HasValue;
                     //FeedFooder feed = isNew ? new FeedFooder { } : _repo.GetById(id.Value);
-                   // feed = model;
+                    // feed = model;
                     if (isNew)
                     {
-                        _repoU.FeedFooder.Insert(model);
-                        _repoU.FeedFooder.Save();
+                        _repo.Insert(model);
+                        _repo.Save();
                     }
                     else
                     {
-                         //To Avoid tracking error
-                       // DbContextInMemory.Entry(entity).State = EntityState.Detached;
-                        _repoU.FeedFooder.Update(model);
+                        //To Avoid tracking error
+                        // DbContextInMemory.Entry(entity).State = EntityState.Detached;
+                        _repo.Update(model);
                     }
                 }
             }
@@ -72,15 +67,13 @@ namespace Animal.Controllers
         }
 
         [HttpGet]
-        public IActionResult DeleteFeed(int id)
+        public IActionResult DeleteBreed(int id)
         {
-            FeedFooder feed = _repoU.FeedFooder.GetById(id);
-            _repoU.FeedFooder.Delete(id);
+            Breed feed = _repo.GetById(id);
+            _repo.Delete(id);
 
             return RedirectToAction("Index");
 
         }
-
-       
     }
 }

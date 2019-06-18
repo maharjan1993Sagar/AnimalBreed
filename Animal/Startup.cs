@@ -34,14 +34,15 @@ namespace Animal
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.AddScoped(typeof(IRepository<>) ,typeof(Repository.Repository<>));
-
+           
+           
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<AnimalContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
-         
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

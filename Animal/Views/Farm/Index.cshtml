@@ -1,15 +1,26 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿@model IEnumerable<Animal.Models.Farm>
 =======
 ﻿@model IEnumerable<Animal.Models.OwnerKeeper>
 >>>>>>> unitofwork
+=======
+﻿@model IEnumerable<Animal.Models.Farm>
+>>>>>>> 4b062b7b3c57f7032eec013650768332c8de6a0e
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<style>
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
 
+<<<<<<< HEAD
 <p>
     <a asp-action="AddEditFarm">Create New</a>
 </p>
@@ -241,3 +252,163 @@
 }
     </tbody>
 </table>
+=======
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+
+    #myTable th, #myTable td {
+        text-align: left;
+        padding: 12px;
+    }
+
+    #myTable tr {
+        border-bottom: 1px solid #ddd;
+    }
+
+        #myTable tr.header, #myTable tr:hover {
+            background-color: #f1f1f1;
+        }
+
+    .dataTables_filter input {
+        font-family: Preeti;
+        font-size: 20px;
+    }
+</style>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1 class="panel-title"><center><h4>Farm</h4></center></h1>
+    </div>
+
+    <div class="panel-body">
+
+        <p>
+            <a asp-action="AddEditFarm">Create New</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.orgtanizationName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.shortDetail)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.dateOfRegistration)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.regCertification)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.mobile1)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.mobile)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.url)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.address)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.municipility)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ward)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.longitude)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.latitude)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.farmType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.land)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.area)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.orgtanizationName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.shortDetail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dateOfRegistration)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.regCertification)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.mobile1)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.mobile)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.url)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.municipility)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ward)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.longitude)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.latitude)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.farmType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.land)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.area)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "AddEditFarm", new { id = item.id }) |
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "DeleteFarm", new { id = item.id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+>>>>>>> 4b062b7b3c57f7032eec013650768332c8de6a0e

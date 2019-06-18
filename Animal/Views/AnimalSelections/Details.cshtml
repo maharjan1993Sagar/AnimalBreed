@@ -1,0 +1,48 @@
+﻿@model Animal.Models.AnimalSelection
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AnimalSelection</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.animalId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.animalId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ownerId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ownerId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.farmId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.farmId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.selectionDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.selectionDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.shortNotes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.shortNotes)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

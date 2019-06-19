@@ -44,6 +44,7 @@ namespace Animal.Repository
         public DbSet<ResponsibleCollectorRegister> responsibleCollectorRegisters { get; set; }
 
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AnimalOwner>()

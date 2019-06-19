@@ -35,6 +35,7 @@ namespace Animal
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.AddScoped(typeof(IRepository<>) ,typeof(Repository.Repository<>));
+            services.AddScoped<IFarmRepository, FarmRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

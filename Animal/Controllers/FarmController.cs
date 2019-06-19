@@ -10,27 +10,34 @@ namespace Animal.Controllers
 {
     public class FarmController : Controller
     {
-        private readonly IRepository<Farm> _repo;
+        
+        private readonly IFarmRepository _repoFarm;
 
-        public FarmController(IRepository<Farm> repo)
+        public FarmController(IRepository<Farm> repo, IFarmRepository repoFarm)
         {
-            _repo = repo;
+           
+          _repoFarm = repoFarm;
         }
 
 
         public IActionResult Index()
         {
-            IEnumerable<Farm> all = _repo.GetModel();
+            IEnumerable<Farm> all = _repoFarm.GetModel();
             return View(all);
         }
-
+        [HttpGet]
+        public IActionResult Details(int? id)
+        {
+            Farm all =/* _repo.FindByCondition(x => x.OwnerKeepers.SelectMany());*/_repoFarm.GetById(id.Value);
+            return View(all);
+        }
         [HttpGet]
         public IActionResult AddEditFarm(int? id)
         {
-           Farm model = new Farm();
+            Farm model = new Farm();
             if (id.HasValue)
             {
-                Farm feed = _repo.GetById(id.Value);
+                Farm feed = _repoFarm.GetById(id.Value);
                 if (feed != null)
                 {
                     model = feed;
@@ -46,16 +53,14 @@ namespace Animal.Controllers
                 if (ModelState.IsValid)
                 {
                     bool isNew = !id.HasValue;
-                   
                     if (isNew)
                     {
-                        _repo.Insert(model);
+                        _repoFarm.Insert(model);
                         _repo.Save();
                     }
                     else
                     {
-                        
-                        _repo.Update(model);
+                        _repoFarm.Update(model);
                     }
                 }
             }
@@ -69,8 +74,8 @@ namespace Animal.Controllers
         [HttpGet]
         public IActionResult DeleteFarm(int id)
         {
-            Farm feed = _repo.GetById(id);
-            _repo.Delete(id);
+            Farm feed = _repoFarm.GetById(id);
+            _repoFarm.Delete(id);
 
             return RedirectToAction("Index");
 

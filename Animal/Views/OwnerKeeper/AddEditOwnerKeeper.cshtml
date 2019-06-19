@@ -1,4 +1,4 @@
-﻿@model Animal.Models.OwnerKeeper
+﻿@model Animal.Models.ViewModel.OwnerKeeperVM
 
 @{
     ViewData["Title"] = "AddEditOwnerKeeper";
@@ -6,7 +6,7 @@
 
 <h2>AddEditOwnerKeeper</h2>
 
-<h4>OwnerKeeper</h4>
+<h4>OwnerKeeperVM</h4>
 <hr />
 <div class="row">
     @Html.HiddenFor(m=>m.id)
@@ -100,7 +100,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="farmid" class="control-label"></label>
-                <input asp-for="farmid" class="form-control" />
+                @*<input asp-for="farmid" class="form-control" />*@
+                @Html.DropDownList("farmid", Model.farms, "Choose Farm", htmlAttributes: new { @class = "form-control" })
+
                 <span asp-validation-for="farmid" class="text-danger"></span>
             </div>
             <div class="form-group">

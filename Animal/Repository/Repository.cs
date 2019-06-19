@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
-
+using System.Linq.Expressions;
+using System;
 
 namespace Animal.Repository
 {
@@ -49,6 +50,10 @@ namespace Animal.Repository
         {
             db.Entry(Model).State = EntityState.Modified;
             Save();
+        }
+        public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression)
+        {
+            return this.db.Set<T>().Where(expression).AsNoTracking();
         }
     }
 }

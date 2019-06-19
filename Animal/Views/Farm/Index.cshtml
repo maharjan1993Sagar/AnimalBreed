@@ -4,14 +4,9 @@
     ViewData["Title"] = "Index";
 }
 
-<style>
-    table {
-        border-collapse: collapse;
-        border-spacing: 0;
-        width: 100%;
-        border: 1px solid #ddd;
-    }
+<h2>Index</h2>
 
+<<<<<<< HEAD
     th, td {
         text-align: left;
         padding: 8px;
@@ -174,6 +169,10 @@
 
 <p>
     <a asp-action="AddEditFarm">Create New</a>
+=======
+<p>
+    <a asp-action="Create">Create New</a>
+>>>>>>> eab69796949eb7bb537bd59de1ba6f1246a33b7b
 </p>
 <table class="table">
     <thead>
@@ -287,9 +286,15 @@
                 @Html.DisplayFor(modelItem => item.area)
             </td>
             <td>
+<<<<<<< HEAD
                 @Html.ActionLink("Edit", "AddEditFarm", new { id=item.id }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "DeleteFarm", new { id=item.id  })
+=======
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+>>>>>>> eab69796949eb7bb537bd59de1ba6f1246a33b7b
             </td>
         </tr>
 }

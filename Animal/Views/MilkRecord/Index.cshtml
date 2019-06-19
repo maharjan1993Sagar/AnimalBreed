@@ -1,0 +1,161 @@
+﻿@model IEnumerable<Animal.Models.MilkRecord>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.earTagNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.milkingStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.recordingPeriod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.recordingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.milkVolume)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.milkSampleBoxNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.labId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.testingCharge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.receiptNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.genericProblem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vacination)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.shortNote)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.animalRegistrationid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fatPercentage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.snf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tdn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ndf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.c)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.p)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.earTagNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.milkingStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.recordingPeriod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.recordingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.milkVolume)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.milkSampleBoxNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.labId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.testingCharge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.receiptNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.genericProblem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vacination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shortNote)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.animalRegistrationid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fatPercentage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.snf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tdn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ndf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.c)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.p)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

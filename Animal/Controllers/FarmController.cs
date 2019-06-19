@@ -10,9 +10,9 @@ namespace Animal.Controllers
 {
     public class FarmController : Controller
     {
-        private readonly IRepository<Farm> _repo;
+        private readonly IUnitOfWork _repo;
 
-        public FarmController(IRepository<Farm> repo)
+        public FarmController(IUnitOfWork repo)
         {
             _repo = repo;
         }
@@ -20,7 +20,7 @@ namespace Animal.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Farm> all = _repo.GetModel();
+            IEnumerable<Farm> all = _repo.Farm.GetModel();
             return View(all);
         }
 
@@ -30,7 +30,7 @@ namespace Animal.Controllers
            Farm model = new Farm();
             if (id.HasValue)
             {
-                Farm feed = _repo.GetById(id.Value);
+                Farm feed = _repo.Farm.GetById(id.Value);
                 if (feed != null)
                 {
                     model = feed;
@@ -49,13 +49,13 @@ namespace Animal.Controllers
                    
                     if (isNew)
                     {
-                        _repo.Insert(model);
+                        _repo.Farm.Insert(model);
                         _repo.Save();
                     }
                     else
                     {
                         
-                        _repo.Update(model);
+                        _repo.Farm.Update(model);
                     }
                 }
             }
@@ -69,8 +69,8 @@ namespace Animal.Controllers
         [HttpGet]
         public IActionResult DeleteFarm(int id)
         {
-            Farm feed = _repo.GetById(id);
-            _repo.Delete(id);
+            Farm feed = _repo.Farm.GetById(id);
+            _repo.Farm.Delete(id);
 
             return RedirectToAction("Index");
 

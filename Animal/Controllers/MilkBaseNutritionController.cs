@@ -10,9 +10,9 @@ namespace Animal.Controllers
 {
     public class MilkBaseNutritionController : Controller
     {
-        private readonly IRepository<MIlkBaseNutrition> _repo;
+        private readonly IUnitOfWork _repo;
 
-        public MilkBaseNutritionController(IRepository<MIlkBaseNutrition> repo)
+        public MilkBaseNutritionController(IUnitOfWork repo)
         {
             _repo = repo;
         }
@@ -20,7 +20,7 @@ namespace Animal.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<MIlkBaseNutrition> all = _repo.GetModel();
+            IEnumerable<MIlkBaseNutrition> all = _repo.MilkBase.GetModel();
             return View(all);
         }
 
@@ -30,7 +30,7 @@ namespace Animal.Controllers
             MIlkBaseNutrition model = new MIlkBaseNutrition();
             if (id.HasValue)
             {
-                MIlkBaseNutrition feed = _repo.GetById(id.Value);
+                MIlkBaseNutrition feed = _repo.MilkBase.GetById(id.Value);
                 if (feed != null)
                 {
                     model = feed;
@@ -50,14 +50,14 @@ namespace Animal.Controllers
                    // feed = model;
                     if (isNew)
                     {
-                        _repo.Insert(model);
+                        _repo.MilkBase.Insert(model);
                         _repo.Save();
                     }
                     else
                     {
                          //To Avoid tracking error
                        // DbContextInMemory.Entry(entity).State = EntityState.Detached;
-                        _repo.Update(model);
+                        _repo.MilkBase.Update(model);
                     }
                 }
             }
@@ -71,8 +71,8 @@ namespace Animal.Controllers
         [HttpGet]
         public IActionResult DeleteMilk(int id)
         {
-            MIlkBaseNutrition feed = _repo.GetById(id);
-            _repo.Delete(id);
+            MIlkBaseNutrition feed = _repo.MilkBase.GetById(id);
+            _repo.MilkBase.Delete(id);
 
             return RedirectToAction("Index");
 

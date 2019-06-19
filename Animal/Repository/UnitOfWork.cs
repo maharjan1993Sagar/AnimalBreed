@@ -24,9 +24,18 @@ namespace Animal.Repository
             Breed = new BreedRepository(_repoContext);
             OwnerKeeper = new OwnerRepository(_repoContext);
             FeedFooder = new FeedRepository(_repoContext);
-
+            Farm = new FarmRepository(_repoContext);
+            MilkBase = new MilkBaseNutritionRepository(_repoContext);
+            MilkRecord = new MilkRecordRepository(_repoContext);
         }
-
+        public IMilkRecordRepository MilkRecord
+        {
+            get; private set;
+        }
+        public IMilkBaseNutritionRepository MilkBase
+        {
+            get; private set;
+        }
         public IAnimalRepository AnimalRegistration
         {
 

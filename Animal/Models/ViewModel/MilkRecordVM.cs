@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -6,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Animal.Models
 {
-    [Table("dbug_milkRecord")]
-    public class MilkRecord
+    
+    public class MilkRecordVM
     {
         public int id { get; set; }
 
@@ -16,7 +17,7 @@ namespace Animal.Models
         public bool milkingStatus { get; set; }
 
         public string recordingPeriod { get; set; }
-     
+
         public DateTime recordingDate { get; set; }
 
         public string milkVolume { get; set; }
@@ -38,6 +39,8 @@ namespace Animal.Models
         public int? animalRegistrationid { get; set; }
 
         public virtual AnimalRegistration animalRegistration { get; set; }
+
+        public SelectList animals { get; set; }
 
         public string fatPercentage { get; set; }
 

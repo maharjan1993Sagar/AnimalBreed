@@ -58,6 +58,7 @@ namespace Animal.Models.ViewModel
         public SelectList farms { get; set; }
 
         public SelectList owners { get; set; }
+        public SelectList speciess { get; set; }
       
     }
 }

@@ -24,7 +24,7 @@ namespace Animal.Controllers
         {
             dynamic model = new ExpandoObject();
             model.animals= _repo.AnimalRegistration.GetModel();
-            //IEnumerable<AnimalRegistration> all = _repo.AnimalRegistration.GetModel();
+            
             return View(model.animals);
         }
 
@@ -33,8 +33,12 @@ namespace Animal.Controllers
         {
             //AnimalRegistration model = new AnimalRegistration();
             AnimalVM model = new AnimalVM();
+            model.breeds = new SelectList(_repo.Breed.GetModel(), "id", "breedNameShort");
             model.farms = new SelectList(_repo.Farm.GetModel(), "id", "orgtanizationName");
             model.owners = new SelectList(_repo.Farm.GetModel(), "id", "fullName");
+           List<SelectListItem> species =new List<SelectListItem>{ new SelectListItem { Text = "Cow", Value = "Cow" } , new SelectListItem { Text="Buffallo",Value="Buffallo"} } ;
+            model.speciess = new SelectList(species,"Value","Text");
+
             if (id.HasValue)
             {
                 AnimalRegistration feed = _repo.AnimalRegistration.GetById(id.Value);

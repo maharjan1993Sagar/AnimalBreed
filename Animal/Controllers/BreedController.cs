@@ -10,15 +10,15 @@ namespace Animal.Controllers
 {
     public class BreedController : Controller
     {
-        private readonly IRepository<Breed> _repo;
+        private readonly IUnitOfWork _repo;
 
-        public BreedController(IRepository<Breed> repo)
+        public BreedController(IUnitOfWork repo)
         {
             _repo = repo;
         }
         public IActionResult Index()
         {
-            IEnumerable<Breed> all = _repo.GetModel();
+            IEnumerable<Breed> all = _repo.Breed.GetModel();
             return View(all);
         }
 
@@ -28,7 +28,7 @@ namespace Animal.Controllers
             Breed model = new Breed();
             if (id.HasValue)
             {
-                Breed feed = _repo.GetById(id.Value);
+                Breed feed = _repo.Breed.GetById(id.Value);
                 if (feed != null)
                 {
                     model = feed;
@@ -48,14 +48,14 @@ namespace Animal.Controllers
                     // feed = model;
                     if (isNew)
                     {
-                        _repo.Insert(model);
+                        _repo.Breed.Insert(model);
                         _repo.Save();
                     }
                     else
                     {
                         //To Avoid tracking error
                         // DbContextInMemory.Entry(entity).State = EntityState.Detached;
-                        _repo.Update(model);
+                        _repo.Breed.Update(model);
                     }
                 }
             }
@@ -69,8 +69,8 @@ namespace Animal.Controllers
         [HttpGet]
         public IActionResult DeleteBreed(int id)
         {
-            Breed feed = _repo.GetById(id);
-            _repo.Delete(id);
+            Breed feed = _repo.Breed.GetById(id);
+            _repo.Breed.Delete(id);
 
             return RedirectToAction("Index");
 

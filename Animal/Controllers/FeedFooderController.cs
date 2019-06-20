@@ -10,17 +10,20 @@ namespace Animal.Controllers
 {
     public class FeedFooderController : Controller
     {
-        private readonly IRepository<FeedFooder> _repo;
+       // private readonly IRepository<FeedFooder> _repo;
+        private readonly IUnitOfWork _repoU;
 
-        public FeedFooderController(IRepository<FeedFooder> repo)
+        public FeedFooderController( IUnitOfWork repoU)
         {
-            _repo = repo;
+         //   _repo = repo;
+            _repoU = repoU;
         }
 
 
         public IActionResult Index()
         {
-            IEnumerable<FeedFooder> all = _repo.GetModel();
+            IEnumerable<FeedFooder> all = _repoU.FeedFooder.GetModel();
+            //IEnumerable<FeedFooder> all = _repo.GetModel();
             return View(all);
         }
 
@@ -30,7 +33,7 @@ namespace Animal.Controllers
             FeedFooder model = new FeedFooder();
             if (id.HasValue)
             {
-                FeedFooder feed = _repo.GetById(id.Value);
+                FeedFooder feed = _repoU.FeedFooder.GetById(id.Value);
                 if (feed != null)
                 {
                     model = feed;
@@ -50,14 +53,14 @@ namespace Animal.Controllers
                    // feed = model;
                     if (isNew)
                     {
-                        _repo.Insert(model);
-                        _repo.Save();
+                        _repoU.FeedFooder.Insert(model);
+                        _repoU.FeedFooder.Save();
                     }
                     else
                     {
                          //To Avoid tracking error
                        // DbContextInMemory.Entry(entity).State = EntityState.Detached;
-                        _repo.Update(model);
+                        _repoU.FeedFooder.Update(model);
                     }
                 }
             }
@@ -71,8 +74,8 @@ namespace Animal.Controllers
         [HttpGet]
         public IActionResult DeleteFeed(int id)
         {
-            FeedFooder feed = _repo.GetById(id);
-            _repo.Delete(id);
+            FeedFooder feed = _repoU.FeedFooder.GetById(id);
+            _repoU.FeedFooder.Delete(id);
 
             return RedirectToAction("Index");
 

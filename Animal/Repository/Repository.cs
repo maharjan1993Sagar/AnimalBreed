@@ -9,35 +9,35 @@ namespace Animal.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private AnimalContext db;
-        private DbSet<T> dbEntity;
+        protected AnimalContext db;
+       // private DbSet<T> dbEntity;
         public Repository(AnimalContext Context)
         {
             db = Context;
-            dbEntity = db.Set<T>();
+            //dbEntity = db.Set<T>();
         }
         public void Delete(int id)
         {
-           T model= dbEntity.Find(id);
-            dbEntity.Remove(model);
+           T model= db.Set<T>().Find(id);
+            db.Set<T>().Remove(model);
             Save();
         }
 
         public T GetById(int id)
         {
-            return dbEntity.Find(id);
+            return db.Set<T>().Find(id);
             
         }
 
         public IEnumerable<T> GetModel()
         {
-            return dbEntity.ToList();
+            return db.Set<T>().ToList();
 
         }
 
         public void Insert(T Model)
         {
-            dbEntity.Add(Model);
+            db.Set<T>().Add(Model);
             Save();
         }
 

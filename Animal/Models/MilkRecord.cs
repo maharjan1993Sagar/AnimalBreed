@@ -38,5 +38,21 @@ namespace Animal.Models
         public int? animalRegistrationid { get; set; }
 
         public virtual AnimalRegistration animalRegistration { get; set; }
+
+        public string fatPercentage { get; set; }
+
+        public string snf { get; set; }
+
+        public string dp { get; set; }
+
+        public string cp { get; set; }
+
+        public string tdn { get; set; }
+
+        public string ndf { get; set; }
+
+        public string c { get; set; }
+
+        public string p { get; set; }
     }
 }

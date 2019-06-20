@@ -461,7 +461,15 @@ namespace Animal.Migrations
 
                     b.Property<int?>("animalRegistrationid");
 
+                    b.Property<string>("c");
+
+                    b.Property<string>("cp");
+
+                    b.Property<string>("dp");
+
                     b.Property<string>("earTagNumber");
+
+                    b.Property<string>("fatPercentage");
 
                     b.Property<string>("genericProblem");
 
@@ -473,6 +481,10 @@ namespace Animal.Migrations
 
                     b.Property<bool>("milkingStatus");
 
+                    b.Property<string>("ndf");
+
+                    b.Property<string>("p");
+
                     b.Property<string>("receiptNo");
 
                     b.Property<DateTime>("recordingDate");
@@ -480,6 +492,10 @@ namespace Animal.Migrations
                     b.Property<string>("recordingPeriod");
 
                     b.Property<string>("shortNote");
+
+                    b.Property<string>("snf");
+
+                    b.Property<string>("tdn");
 
                     b.Property<string>("testingCharge");
 

@@ -1,0 +1,146 @@
+﻿@model Animal.Models.ViewModel.AnimalVM
+
+@{
+    ViewData["Title"] = "AddEditAnimal";
+}
+
+<h2>AddEditAnimal</h2>
+
+<h4>AnimalVM</h4>
+<hr />
+<div class="row">
+    @Html.HiddenFor(m => m.id)
+
+    <div class="col-md-4">
+        <form asp-action="AddEditAnimal">
+            @*<input asp-for="id" type="hidden" />*@
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="earTagNo" class="control-label"></label>
+                <input asp-for="earTagNo" class="form-control" />
+                <span asp-validation-for="earTagNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="weight" class="control-label"></label>
+                <input asp-for="weight" class="form-control" />
+                <span asp-validation-for="weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="species" class="control-label"></label>
+                @Html.DropDownList("species",Model.speciess, "Select", new {@class="form-control" })
+                <span asp-validation-for="species" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="breedId" class="control-label"></label>
+                @Html.DropDownList("breedId", Model.breeds,"Select", new { @class = "form-control" })
+
+                <span asp-validation-for="breedId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="age" class="control-label"></label>
+                <input asp-for="age" class="form-control" />
+                <span asp-validation-for="age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dob" class="control-label"></label>
+                <input asp-for="dob" class="form-control" />
+                <span asp-validation-for="dob" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sireId" class="control-label"></label>
+                <input asp-for="sireId" class="form-control" />
+                <span asp-validation-for="sireId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="damId" class="control-label"></label>
+                <input asp-for="damId" class="form-control" />
+                <span asp-validation-for="damId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="noOfCalving" class="control-label"></label>
+                <input asp-for="noOfCalving" class="form-control" />
+                <span asp-validation-for="noOfCalving" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="lastCalvingDate" class="control-label"></label>
+                <input asp-for="lastCalvingDate" class="form-control" />
+                <span asp-validation-for="lastCalvingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="pregnencyStatus" />
+                        @Html.DisplayNameFor(model => model.pregnencyStatus)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="pregnencyDuration" class="control-label"></label>
+                <input asp-for="pregnencyDuration" class="form-control" />
+                <span asp-validation-for="pregnencyDuration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="milkingStatus" />
+                        @Html.DisplayNameFor(model => model.milkingStatus)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="createdAt" class="control-label"></label>
+                <input asp-for="createdAt" class="form-control" />
+                <span asp-validation-for="createdAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="updatedBy" class="control-label"></label>
+                <input asp-for="updatedBy" class="form-control" />
+                <span asp-validation-for="updatedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ownerId" class="control-label"></label>
+                @*@Html.DropDownList("ownerId",Model.owners,"Select", htmlAttributes: new { @class = "form-control" })*@
+
+                <input asp-for="ownerId" class="form-control" />
+                <span asp-validation-for="ownerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="keeperId" class="control-label"></label>
+                @*  @Html.DropDownList("keeperId", Model.owners, "Select", htmlAttributes: new { @class = "form-control" })*@
+
+                <input asp-for="keeperId" class="form-control" />
+                <span asp-validation-for="keeperId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="farmId" class="control-label"></label>
+                @*@Html.DropDownList("farmId", Model.farms, "Select", htmlAttributes: new { @class = "form-control" })*@
+                <input asp-for="farmId" class="form-control" />
+                <span asp-validation-for="farmId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="gender" class="control-label"></label>
+                <input asp-for="gender" class="form-control" />
+                <span asp-validation-for="gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="declaredBy" class="control-label"></label>
+                <input asp-for="declaredBy" class="form-control" />
+                <span asp-validation-for="declaredBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="declaredDate" class="control-label"></label>
+                <input asp-for="declaredDate" class="form-control" />
+                <span asp-validation-for="declaredDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

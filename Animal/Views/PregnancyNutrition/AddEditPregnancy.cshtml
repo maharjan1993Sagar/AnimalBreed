@@ -1,26 +1,49 @@
-﻿@model Animal.Models.MIlkBaseNutrition
+﻿@model Animal.Models.PregnancyBaseNutrition
 
 @{
     ViewData["Title"] = "AddEditPregnancy";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>AddEditMilk</h2>
+<h2>AddEditPregnancy</h2>
 
-<h4>MIlkBaseNutrition</h4>
+<h4>PregnancyBaseNutrition</h4>
 <hr />
 <div class="row">
+    @Html.HiddenFor(m=>m.id)
     <div class="col-md-4">
-        <form asp-action="AddEditMilk">
+        <form asp-action="AddEditPregnancy">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="id" class="control-label"></label>
-                <input asp-for="id" class="form-control" />
-                <span asp-validation-for="id" class="text-danger"></span>
-            </div>
+          
             <div class="form-group">
                 <label asp-for="animalSpecies" class="control-label"></label>
                 <input asp-for="animalSpecies" class="form-control" />
                 <span asp-validation-for="animalSpecies" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="breed" class="control-label"></label>
+                <input asp-for="breed" class="form-control" />
+                <span asp-validation-for="breed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="earlyPreg" class="control-label"></label>
+                <input asp-for="earlyPreg" class="form-control" />
+                <span asp-validation-for="earlyPreg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="midPreg" class="control-label"></label>
+                <input asp-for="midPreg" class="form-control" />
+                <span asp-validation-for="midPreg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="latePreg" class="control-label"></label>
+                <input asp-for="latePreg" class="form-control" />
+                <span asp-validation-for="latePreg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ageOfAnimal" class="control-label"></label>
+                <input asp-for="ageOfAnimal" class="form-control" />
+                <span asp-validation-for="ageOfAnimal" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="fatPercentage" class="control-label"></label>

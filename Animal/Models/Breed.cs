@@ -26,7 +26,11 @@ namespace Animal.Models
        
         public DateTime registeredDate { get; set; }
 
-       
+        public int? speciesId { get; set; }
+
+
+        public virtual Species species { get; set; }
+
         public virtual ICollection<AnimalRegistration> AnimalRegistrations { get; set; }
     }
 }

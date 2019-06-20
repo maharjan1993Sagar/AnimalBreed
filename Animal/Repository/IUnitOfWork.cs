@@ -15,6 +15,8 @@ namespace Animal.Repository
          IFeedRepository FeedFooder { get; }
         IMilkBaseNutritionRepository MilkBase { get; }
         IMilkRecordRepository MilkRecord { get; }
+        IPregnencyNutritionRepository PregnancyBaseNutrition { get; }
+        ISpeciesRepository Species { get; }
         void Save();
     }
 }

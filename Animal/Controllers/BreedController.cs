@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Animal.Models;
 using Animal.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Animal.Controllers
 {
@@ -22,12 +23,21 @@ namespace Animal.Controllers
             return View(all);
         }
 
+        public IActionResult Details(int id)
+        {
+            Breed feed = _repo.Breed.GetById(id);
+            return View(feed);
+
+        }
+
         [HttpGet]
         public IActionResult AddEditBreed(int? id)
         {
             Breed model = new Breed();
+            ViewBag.Species = new SelectList(_repo.Species.GetModel(), "id", "speciesName");
             if (id.HasValue)
             {
+                
                 Breed feed = _repo.Breed.GetById(id.Value);
                 if (feed != null)
                 {
@@ -43,11 +53,16 @@ namespace Animal.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    bool isNew = !id.HasValue;
+                    bool isNew = false;
                     //FeedFooder feed = isNew ? new FeedFooder { } : _repo.GetById(id.Value);
                     // feed = model;
+                    if(!id.HasValue)
+                    {
+                        isNew =true;
+                    }
                     if (isNew)
                     {
+                        model.id = 0;
                         _repo.Breed.Insert(model);
                         _repo.Save();
                     }

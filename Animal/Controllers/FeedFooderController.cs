@@ -27,6 +27,12 @@ namespace Animal.Controllers
             return View(all);
         }
 
+        public IActionResult Details(int id)
+        {
+            FeedFooder feed = _repoU.FeedFooder.GetById(id);
+            return View(feed);
+        }
+
         [HttpGet]
         public IActionResult AddEditFeed(int? id)
         {

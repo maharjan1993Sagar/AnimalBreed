@@ -13,50 +13,38 @@ namespace Animal.Controllers
 {
     public class OwnerKeeperController : Controller
     {
-        private readonly IRepository<OwnerKeeper> _repo;
 
-        public OwnerKeeperController(IRepository<OwnerKeeper> repo)
+
+        private readonly IUnitOfWork _repo;
+
+        public OwnerKeeperController(IUnitOfWork repo)
         {
             _repo = repo;
         }
-        private readonly IRepository<Farm> _repoFarm;
-
-        public OwnerKeeperController(IRepository<OwnerKeeper> repo, IRepository<Farm> repofarm)
-        {
-            _repo = repo;
-            _repoFarm = repofarm;
-
-        }
+       
 
 
         public IActionResult Index()
         {
-            IEnumerable<OwnerKeeper> all = _repo.GetModel();
+            IEnumerable<OwnerKeeper> all = _repo.OwnerKeeper.GetModel();
             return View(all);
         }
 
-        [HttpGet]
-        public IActionResult AddEditOwnerKeeper(int? id)
+        public IActionResult Details(int id)
         {
-            OwnerKeeper model = new OwnerKeeper();
-            if (id.HasValue)
-            {
-                OwnerKeeper feed = _repo.GetById(id.Value);
-                if (feed != null)
-                {
-                    model = feed;
-                }
-            }
-            return View(model);
+            OwnerKeeper owner = _repo.OwnerKeeper.GetById(id);
+            return View(owner);
         }
-        [HttpPost]
+
+      
+        [HttpGet]
         public ActionResult AddEditOwnerKeeper(int? id, OwnerKeeper model)
         {
             OwnerKeeperVM keeperVm = new OwnerKeeperVM();
-            keeperVm.farms = new SelectList(_repoFarm.GetModel().ToList(), "id", "orgtanizationName");
+            keeperVm.farms = new SelectList(_repo.Farm.GetModel().ToList(), "id", "orgtanizationName");
             if (id.HasValue)
             {
-                OwnerKeeper ownerkeeper = _repo.GetById(id.Value);
+                OwnerKeeper ownerkeeper = _repo.OwnerKeeper.GetById(id.Value);
 
                 if (ownerkeeper != null)
                 {
@@ -70,7 +58,7 @@ namespace Animal.Controllers
                     IMapper mapper = config.CreateMapper();
 
                     keeperVm = mapper.Map<OwnerKeeper, OwnerKeeperVM>(ownerkeeper);
-                    keeperVm.farms = new SelectList(_repoFarm.GetModel().ToList(), "id", "orgtanizationName", ownerkeeper.farmid);
+                    keeperVm.farms = new SelectList(_repo.Farm.GetModel().ToList(), "id", "orgtanizationName", ownerkeeper.farmid);
 
 
                     keeperVm.id = ownerkeeper.id;
@@ -103,7 +91,7 @@ namespace Animal.Controllers
                         OwnerKeeper owner = mapper.Map<OwnerKeeperVM, OwnerKeeper>(model);
 
 
-                        _repo.Insert(owner);
+                        _repo.OwnerKeeper.Insert(owner);
                         _repo.Save();
                     }
                     else
@@ -120,7 +108,7 @@ namespace Animal.Controllers
 
                         //To Avoid tracking error
                         // DbContextInMemory.Entry(entity).State = EntityState.Detached;
-                        _repo.Update(owner);
+                        _repo.OwnerKeeper.Update(owner);
                     }
                 }
             }
@@ -135,8 +123,8 @@ namespace Animal.Controllers
         [HttpGet]
         public IActionResult DeleteOwnerKeeper(int id)
         {
-            OwnerKeeper feed = _repo.GetById(id);
-            _repo.Delete(id);
+            OwnerKeeper feed = _repo.OwnerKeeper.GetById(id);
+            _repo.OwnerKeeper.Delete(id);
 
             return RedirectToAction("Index");
 

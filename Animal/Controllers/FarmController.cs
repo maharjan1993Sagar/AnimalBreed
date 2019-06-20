@@ -24,6 +24,12 @@ namespace Animal.Controllers
             return View(all);
         }
 
+
+        public IActionResult Details(int id)
+        {
+            Farm farm = _repo.Farm.GetById(id);
+            return View(farm);
+        }
         [HttpGet]
         public IActionResult AddEditFarm(int? id)
         {

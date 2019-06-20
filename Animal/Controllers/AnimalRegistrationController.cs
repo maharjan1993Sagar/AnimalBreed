@@ -28,6 +28,12 @@ namespace Animal.Controllers
             return View(model.animals);
         }
 
+        public IActionResult Details(int id)
+        {
+            AnimalRegistration feed = _repo.AnimalRegistration.GetById(id);
+            return View(feed);
+        }
+
         [HttpGet]
         public IActionResult AddEditAnimal(int? id)
         {

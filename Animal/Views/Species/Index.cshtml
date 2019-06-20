@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Animal.Models.Species>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="AddEditSpecies">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.speciesName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.originFrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.shortNotes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.speciesName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.originFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shortNotes)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "AddEditSpecies", new {  id=item.id  }) |
+                @Html.ActionLink("Details", "Details", new { id=item.id  }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.id  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

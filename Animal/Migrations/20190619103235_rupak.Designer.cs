@@ -4,14 +4,16 @@ using Animal.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Animal.Migrations
 {
     [DbContext(typeof(AnimalContext))]
-    partial class AnimalContextModelSnapshot : ModelSnapshot
+    [Migration("20190619103235_rupak")]
+    partial class rupak
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -157,13 +159,13 @@ namespace Animal.Migrations
 
                     b.Property<string>("shortDetail");
 
-                    b.Property<int?>("speciesId");
+                    b.Property<int?>("speciesid");
 
                     b.Property<string>("updatedBy");
 
                     b.HasKey("id");
 
-                    b.HasIndex("speciesId");
+                    b.HasIndex("speciesid");
 
                     b.ToTable("dbug_breedAnimal");
                 });
@@ -932,7 +934,7 @@ namespace Animal.Migrations
                 {
                     b.HasOne("Animal.Models.Species", "species")
                         .WithMany("Breeds")
-                        .HasForeignKey("speciesId");
+                        .HasForeignKey("speciesid");
                 });
 
             modelBuilder.Entity("Animal.Models.Diseases", b =>

@@ -1,0 +1,46 @@
+﻿@model Animal.Models.Species
+
+@{
+    ViewData["Title"] = "AddEditSpecies";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>AddEditSpecies</h2>
+
+<h4>Species</h4>
+<hr />
+<div class="row">
+    @Html.HiddenFor(m=>m.id)    
+    <div class="col-md-4">
+        <form asp-action="AddEditSpecies">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+            <div class="form-group">
+                <label asp-for="speciesName" class="control-label"></label>
+                <input asp-for="speciesName" class="form-control" />
+                <span asp-validation-for="speciesName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="originFrom" class="control-label"></label>
+                <input asp-for="originFrom" class="form-control" />
+                <span asp-validation-for="originFrom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="shortNotes" class="control-label"></label>
+                <input asp-for="shortNotes" class="form-control" />
+                <span asp-validation-for="shortNotes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

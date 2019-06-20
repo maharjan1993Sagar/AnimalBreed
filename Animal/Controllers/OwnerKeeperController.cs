@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Animal.Models;
 using Animal.Models.ViewModel;
 using Animal.Repository;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 

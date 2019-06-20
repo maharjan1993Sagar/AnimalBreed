@@ -42,8 +42,9 @@ namespace Animal.Controllers
             model.breeds = new SelectList(_repo.Breed.GetModel(), "id", "breedNameShort");
             model.farms = new SelectList(_repo.Farm.GetModel(), "id", "orgtanizationName");
             model.owners = new SelectList(_repo.Farm.GetModel(), "id", "fullName");
-           List<SelectListItem> species =new List<SelectListItem>{ new SelectListItem { Text = "Cow", Value = "Cow" } , new SelectListItem { Text="Buffallo",Value="Buffallo"} } ;
-            model.speciess = new SelectList(species,"Value","Text");
+            
+           //List<SelectListItem> species =new List<SelectListItem>{ new SelectListItem { Text = "Cow", Value = "Cow" } , new SelectListItem { Text="Buffallo",Value="Buffallo"} } ;
+            model.speciess = new SelectList(_repo.Species.GetModel(),"id", "speciesName");
 
             if (id.HasValue)
             {

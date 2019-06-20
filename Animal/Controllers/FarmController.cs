@@ -15,21 +15,20 @@ namespace Animal.Controllers
         public FarmController(IUnitOfWork repo)
         {
             _repo = repo;
-
         }
 
 
         public IActionResult Index()
         {
-
             IEnumerable<Farm> all = _repo.Farm.GetModel();
             return View(all);
         }
-        [HttpGet]
-        public IActionResult Details(int? id)
+
+
+        public IActionResult Details(int id)
         {
-            Farm all = _repoFarm.GetById(id.Value);
-            return View(all);
+            Farm farm = _repo.Farm.GetById(id);
+            return View(farm);
         }
         [HttpGet]
         public IActionResult AddEditFarm(int? id)
@@ -37,20 +36,7 @@ namespace Animal.Controllers
             Farm model = new Farm();
             if (id.HasValue)
             {
-                Farm feed = _repo.GetById(id.Value);
-=======
-            IEnumerable<Farm> all = _repo.Farm.GetModel();
-            return View(all);
-        }
-
-        [HttpGet]
-        public IActionResult AddEditFarm(int? id)
-        {
-           Farm model = new Farm();
-            if (id.HasValue)
-            {
                 Farm feed = _repo.Farm.GetById(id.Value);
->>>>>>> eab69796949eb7bb537bd59de1ba6f1246a33b7b
                 if (feed != null)
                 {
                     model = feed;
@@ -66,30 +52,16 @@ namespace Animal.Controllers
                 if (ModelState.IsValid)
                 {
                     bool isNew = !id.HasValue;
-<<<<<<< HEAD
-                    //FeedFooder feed = isNew ? new FeedFooder { } : _repo.GetById(id.Value);
-                    // feed = model;
-                    if (isNew)
-                    {
-                        _repo.Insert(model);
-=======
-                   
+
                     if (isNew)
                     {
                         _repo.Farm.Insert(model);
->>>>>>> eab69796949eb7bb537bd59de1ba6f1246a33b7b
                         _repo.Save();
                     }
                     else
                     {
-<<<<<<< HEAD
-                        //To Avoid tracking error
-                        // DbContextInMemory.Entry(entity).State = EntityState.Detached;
-                        _repo.Update(model);
-=======
-                        
+
                         _repo.Farm.Update(model);
->>>>>>> eab69796949eb7bb537bd59de1ba6f1246a33b7b
                     }
                 }
             }
@@ -103,13 +75,8 @@ namespace Animal.Controllers
         [HttpGet]
         public IActionResult DeleteFarm(int id)
         {
-<<<<<<< HEAD
-            Farm feed = _repo.GetById(id);
-            _repo.Delete(id);
-=======
             Farm feed = _repo.Farm.GetById(id);
             _repo.Farm.Delete(id);
->>>>>>> eab69796949eb7bb537bd59de1ba6f1246a33b7b
 
             return RedirectToAction("Index");
 

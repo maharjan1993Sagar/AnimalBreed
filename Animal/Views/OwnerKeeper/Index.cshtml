@@ -127,9 +127,10 @@
                 @Html.DisplayFor(modelItem => item.farmid)
             </td>
             <td>
-                @Html.ActionLink("Edit", "AddEditOwnerKeeper", new {id=item.id }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "DeleteOwnerkeeper", new { id=item.id  })
+                @Html.ActionLink("Edit", "AddEditOwnerKeeper", new { id=item.id  }) |
+                @Html.ActionLink("Details", "Details", new {id=item.id }) |
+                @Html.ActionLink("Delete", "DeleteOwnerKeeper", new { id=item.id })
+
             </td>
         </tr>
 }

@@ -1,0 +1,163 @@
+﻿@model Animal.Models.FeedFooder
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FeedFooder</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.fooderNameNep)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.fooderNameNep)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.fooderNameEng)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.fooderNameEng)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.municipility)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.municipility)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.district)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.district)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.state)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.state)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.shortNote)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.shortNote)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.cultivation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cultivation)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.seedingMethod)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seedingMethod)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.seedHarvestingStorage)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.seedHarvestingStorage)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.grassProduct)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.grassProduct)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.dm)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.dm)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.cp)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cp)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.tdn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.tdn)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ndf)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ndf)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.c)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.c)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.p)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.p)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.df)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.df)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.adl)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.adl)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.tanni)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.tanni)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.nitrateScore)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.nitrateScore)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.remarks)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.remarks)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

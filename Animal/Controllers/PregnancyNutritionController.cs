@@ -10,18 +10,26 @@ namespace Animal.Controllers
 {
     public class PregnancyNutritionController : Controller
     {
-        private readonly IRepository<PregnancyBaseNutrition> _repo;
+        private readonly IUnitOfWork _repo;
 
-        public PregnancyNutritionController(IRepository<PregnancyBaseNutrition> repo)
+        public PregnancyNutritionController(IUnitOfWork repo)
         {
             _repo = repo;
         }
 
+       
+
 
         public IActionResult Index()
         {
-            IEnumerable<PregnancyBaseNutrition> all = _repo.GetModel();
+            IEnumerable<PregnancyBaseNutrition> all = _repo.PregnancyBaseNutrition.GetModel();
             return View(all);
+        }
+
+        public IActionResult Details(int id)
+        {
+            PregnancyBaseNutrition pregnancy = _repo.PregnancyBaseNutrition.GetById(id);
+            return View(pregnancy);
         }
 
         [HttpGet]
@@ -30,7 +38,7 @@ namespace Animal.Controllers
             PregnancyBaseNutrition model = new PregnancyBaseNutrition();
             if (id.HasValue)
             {
-                PregnancyBaseNutrition feed = _repo.GetById(id.Value);
+                PregnancyBaseNutrition feed = _repo.PregnancyBaseNutrition.GetById(id.Value);
                 if (feed != null)
                 {
                     model = feed;
@@ -50,14 +58,14 @@ namespace Animal.Controllers
                    // feed = model;
                     if (isNew)
                     {
-                        _repo.Insert(model);
+                        _repo.PregnancyBaseNutrition.Insert(model);
                         _repo.Save();
                     }
                     else
                     {
                          //To Avoid tracking error
                        // DbContextInMemory.Entry(entity).State = EntityState.Detached;
-                        _repo.Update(model);
+                        _repo.PregnancyBaseNutrition.Update(model);
                     }
                 }
             }
@@ -71,8 +79,8 @@ namespace Animal.Controllers
         [HttpGet]
         public IActionResult DeletePregnancy(int id)
         {
-            PregnancyBaseNutrition feed = _repo.GetById(id);
-            _repo.Delete(id);
+            PregnancyBaseNutrition feed = _repo.PregnancyBaseNutrition.GetById(id);
+            _repo.PregnancyBaseNutrition.Delete(id);
 
             return RedirectToAction("Index");
 

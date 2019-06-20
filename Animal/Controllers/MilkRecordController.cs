@@ -24,6 +24,12 @@ namespace Animal.Controllers
             return View(all);
         }
 
+        public IActionResult Details(int id)
+        {
+            MilkRecord milk = _repo.MilkRecord.GetById(id);
+                return View(milk);
+        }
+
         [HttpGet]
         public IActionResult AddEditMilk(int? id)
         {

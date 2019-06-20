@@ -23,6 +23,8 @@ namespace Animal.Repository
             Save();
         }
 
+        
+
         public T GetById(int id)
         {
             return db.Set<T>().Find(id);

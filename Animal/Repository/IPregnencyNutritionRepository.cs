@@ -1,14 +1,12 @@
-﻿using Animal.Models;
-using System;
+﻿using System;
+using Animal.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Animal.Repository
 {
-    public interface IFarmRepository : IRepository<Farm>
+    public interface IPregnencyNutritionRepository : IRepository<PregnancyBaseNutrition>
     {
-      
     }
 }

@@ -8,11 +8,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Animal.Controllers
 {
-    public class MilkBaseNutritionController : Controller
+    public class SpeciesController : Controller
     {
         private readonly IUnitOfWork _repo;
 
-        public MilkBaseNutritionController(IUnitOfWork repo)
+        public SpeciesController(IUnitOfWork repo)
         {
             _repo = repo;
         }
@@ -20,23 +20,23 @@ namespace Animal.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<MIlkBaseNutrition> all = _repo.MilkBase.GetModel();
+            IEnumerable<Species> all = _repo.Species.GetModel();
             return View(all);
         }
 
+
         public IActionResult Details(int id)
         {
-            MIlkBaseNutrition milk = _repo.MilkBase.GetById(id);
-            return View(milk);
+            Species farm = _repo.Species.GetById(id);
+            return View(farm);
         }
-
         [HttpGet]
-        public IActionResult AddEditMilk(int? id)
+        public IActionResult AddEditSpecies(int? id)
         {
-            MIlkBaseNutrition model = new MIlkBaseNutrition();
+            Species model = new Species();
             if (id.HasValue)
             {
-                MIlkBaseNutrition feed = _repo.MilkBase.GetById(id.Value);
+                Species feed = _repo.Species.GetById(id.Value);
                 if (feed != null)
                 {
                     model = feed;
@@ -45,25 +45,23 @@ namespace Animal.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult AddEditMilk(int? id, MIlkBaseNutrition model)
+        public ActionResult AddEditSpecies(int? id, Species model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
                     bool isNew = !id.HasValue;
-                    //MIlkBaseNutrition feed = isNew ? new MIlkBaseNutrition { } : _repo.GetById(id.Value);
-                   // feed = model;
+
                     if (isNew)
                     {
-                        _repo.MilkBase.Insert(model);
+                        _repo.Species.Insert(model);
                         _repo.Save();
                     }
                     else
                     {
-                         //To Avoid tracking error
-                       // DbContextInMemory.Entry(entity).State = EntityState.Detached;
-                        _repo.MilkBase.Update(model);
+
+                        _repo.Species.Update(model);
                     }
                 }
             }
@@ -75,15 +73,13 @@ namespace Animal.Controllers
         }
 
         [HttpGet]
-        public IActionResult DeleteMilk(int id)
+        public IActionResult DeleteSpecies(int id)
         {
-            MIlkBaseNutrition feed = _repo.MilkBase.GetById(id);
-            _repo.MilkBase.Delete(id);
+            Species feed = _repo.Species.GetById(id);
+            _repo.Species.Delete(id);
 
             return RedirectToAction("Index");
 
         }
-
-       
     }
 }

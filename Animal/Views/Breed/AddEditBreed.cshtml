@@ -9,15 +9,15 @@
 <h4>Breed</h4>
 <hr />
 <div class="row">
-    @Html.HiddenFor(m=>m.id)
+    @Html.HiddenFor(m => m.id)
     <div class="col-md-4">
         <form asp-action="AddEditBreed">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @*<div class="form-group">
-                <label asp-for="id" class="control-label"></label>
-                <input asp-for="id" class="form-control" />
-                <span asp-validation-for="id" class="text-danger"></span>
-            </div>*@
+                    <label asp-for="id" class="control-label"></label>
+                    <input asp-for="id" class="form-control" />
+                    <span asp-validation-for="id" class="text-danger"></span>
+                </div>*@
             <div class="form-group">
                 <label asp-for="breedNameShort" class="control-label"></label>
                 <input asp-for="breedNameShort" class="form-control" />
@@ -27,6 +27,17 @@
                 <label asp-for="breedNamelong" class="control-label"></label>
                 <input asp-for="breedNamelong" class="form-control" />
                 <span asp-validation-for="breedNamelong" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label>Species Name</label>
+                <select asp-for="speciesId" asp-items=" ViewBag.Species" class="form-control">
+                    <option disabled selected>select</option>
+                </select>
+
+
+
             </div>
             <div class="form-group">
                 <label asp-for="shortDetail" class="control-label"></label>

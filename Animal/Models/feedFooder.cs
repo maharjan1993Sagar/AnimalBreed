@@ -15,6 +15,7 @@ namespace Animal.Models
         public string address { get; set; }
         public string municipility { get; set; }
         public string district { get; set; }
+        public string category { get; set; }
         public string state { get; set; }
         public string shortNote { get; set; }
         public string cultivation { get; set; }

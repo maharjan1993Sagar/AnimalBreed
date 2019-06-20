@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Animal.Models;
 using Animal.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Animal.Controllers
 {
@@ -37,6 +38,7 @@ namespace Animal.Controllers
         public IActionResult AddEditFeed(int? id)
         {
             FeedFooder model = new FeedFooder();
+            
             if (id.HasValue)
             {
                 FeedFooder feed = _repoU.FeedFooder.GetById(id.Value);

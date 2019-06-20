@@ -34,11 +34,14 @@ namespace Animal.Controllers
         public IActionResult AddEditBreed(int? id)
         {
             Breed model = new Breed();
+            model.registeredBy = "admin";
+       
             ViewBag.Species = new SelectList(_repo.Species.GetModel(), "id", "speciesName");
             if (id.HasValue)
             {
                 
                 Breed feed = _repo.Breed.GetById(id.Value);
+                feed.updatedBy = "admin";
                 if (feed != null)
                 {
                     model = feed;

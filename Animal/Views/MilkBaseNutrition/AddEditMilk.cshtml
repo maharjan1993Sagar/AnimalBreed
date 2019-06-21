@@ -14,11 +14,23 @@
         <form asp-action="AddEditMilk">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="form-group">
-                <label asp-for="animalSpecies" class="control-label"></label>
-                <input asp-for="animalSpecies" class="form-control" />
-                <span asp-validation-for="animalSpecies" class="text-danger"></span>
+            @*<div class="form-group">
+            <label asp-for="animalSpecies" class="control-label"></label>
+            <input asp-for="animalSpecies" class="form-control" />
+            <span asp-validation-for="animalSpecies" class="text-danger"></span>
+        </div>*@
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Species Name</label>
+                    <select asp-for="animalSpecies" asp-items=" ViewBag.Species" class="form-control">
+                        <option disabled selected>select</option>
+                    </select>
+
+
+                </div>
             </div>
+
             <div class="form-group">
                 <label asp-for="fatPercentage" class="control-label"></label>
                 <input asp-for="fatPercentage" class="form-control" />

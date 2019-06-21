@@ -15,7 +15,7 @@ namespace Animal.Models
 
         public string weight { get; set; }
 
-        public string species { get; set; }
+       
 
         public int breedId { get; set; }
 
@@ -43,8 +43,11 @@ namespace Animal.Models
 
         public int? ownerId { get; set; }
 
+        public int? speciesId { get; set; }
+
         public int? keeperId { get; set; }
 
+      
         public int? farmId { get; set; }
 
         public string gender { get; set; }
@@ -55,8 +58,10 @@ namespace Animal.Models
         public DateTime declaredDate { get; set; }
 
         public virtual Breed Breed { get; set; }
-    
-        
+      
+        public virtual Species Species { get; set; }
+
+
         public virtual ICollection<GrowthMonitoring> GrowtthMonitorings { get; set; }
 
        

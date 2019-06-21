@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Animal.Models;
 using Animal.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Animal.Controllers
 {
@@ -34,6 +35,7 @@ namespace Animal.Controllers
         public IActionResult AddEditMilk(int? id)
         {
             MIlkBaseNutrition model = new MIlkBaseNutrition();
+            ViewBag.Species = new SelectList(_repo.Species.GetModel(), "id", "speciesName");
             if (id.HasValue)
             {
                 MIlkBaseNutrition feed = _repo.MilkBase.GetById(id.Value);

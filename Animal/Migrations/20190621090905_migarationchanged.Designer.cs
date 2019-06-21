@@ -4,14 +4,16 @@ using Animal.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Animal.Migrations
 {
     [DbContext(typeof(AnimalContext))]
-    partial class AnimalContextModelSnapshot : ModelSnapshot
+    [Migration("20190621090905_migarationchanged")]
+    partial class migarationchanged
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,7 +107,7 @@ namespace Animal.Migrations
 
                     b.Property<int>("sireId");
 
-                    b.Property<int?>("speciesId");
+                    b.Property<int>("speciesId");
 
                     b.Property<string>("updatedBy");
 
@@ -943,7 +945,8 @@ namespace Animal.Migrations
 
                     b.HasOne("Animal.Models.Species", "Species")
                         .WithMany("AnimalRegistrations")
-                        .HasForeignKey("speciesId");
+                        .HasForeignKey("speciesId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Animal.Models.Breed", b =>

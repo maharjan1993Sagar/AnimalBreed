@@ -4,14 +4,16 @@ using Animal.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Animal.Migrations
 {
     [DbContext(typeof(AnimalContext))]
-    partial class AnimalContextModelSnapshot : ModelSnapshot
+    [Migration("20190621055304_new")]
+    partial class @new
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,7 +107,7 @@ namespace Animal.Migrations
 
                     b.Property<int>("sireId");
 
-                    b.Property<int?>("speciesId");
+                    b.Property<string>("species");
 
                     b.Property<string>("updatedBy");
 
@@ -114,8 +116,6 @@ namespace Animal.Migrations
                     b.HasKey("id");
 
                     b.HasIndex("breedId");
-
-                    b.HasIndex("speciesId");
 
                     b.ToTable("dbug_animal");
                 });
@@ -806,8 +806,6 @@ namespace Animal.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("Speciesid");
-
                     b.Property<string>("originFrom");
 
                     b.Property<string>("shortNotes");
@@ -815,8 +813,6 @@ namespace Animal.Migrations
                     b.Property<string>("speciesName");
 
                     b.HasKey("id");
-
-                    b.HasIndex("Speciesid");
 
                     b.ToTable("dbug_Species");
                 });
@@ -940,10 +936,6 @@ namespace Animal.Migrations
                         .WithMany("AnimalRegistrations")
                         .HasForeignKey("breedId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Animal.Models.Species", "Species")
-                        .WithMany("AnimalRegistrations")
-                        .HasForeignKey("speciesId");
                 });
 
             modelBuilder.Entity("Animal.Models.Breed", b =>
@@ -1019,13 +1011,6 @@ namespace Animal.Migrations
                     b.HasOne("Animal.Models.SemenCollection", "SemenCollection")
                         .WithMany("SemenCollectionCenters")
                         .HasForeignKey("SemenCollectionid");
-                });
-
-            modelBuilder.Entity("Animal.Models.Species", b =>
-                {
-                    b.HasOne("Animal.Models.Species")
-                        .WithMany("Speciess")
-                        .HasForeignKey("Speciesid");
                 });
 
             modelBuilder.Entity("Animal.Models.Vaccination", b =>

@@ -16,5 +16,9 @@ namespace Animal.Models
         public string shortNotes { get; set; }
 
         public virtual ICollection<Breed> Breeds { get; set; }
+
+        public virtual ICollection<AnimalRegistration> AnimalRegistrations { get; set; }
+
+        public virtual ICollection<Species> Speciess { get; set; }
     }
 }

@@ -3,75 +3,83 @@
 @{
     ViewData["Title"] = "AddEditBreed";
 }
+<div class="card">
+    <div class="card-header py-3">
+        <h3 class="m-1 font-weight-bold center text-primary">Animal Breed</h3>
+    </div>
+    <div class="card-body">
 
-<h2>AddEditBreed</h2>
+        @Html.HiddenFor(m => m.id)
 
-<h4>Breed</h4>
-<hr />
-<div class="row">
-    @Html.HiddenFor(m => m.id)
-    <div class="col-md-4">
         <form asp-action="AddEditBreed">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-group">
-                    <label asp-for="id" class="control-label"></label>
-                    <input asp-for="id" class="form-control" />
-                    <span asp-validation-for="id" class="text-danger"></span>
-                </div>*@
-            <div class="form-group">
-                <label asp-for="breedNameShort" class="control-label"></label>
-                <input asp-for="breedNameShort" class="form-control" />
-                <span asp-validation-for="breedNameShort" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="breedNamelong" class="control-label"></label>
-                <input asp-for="breedNamelong" class="form-control" />
-                <span asp-validation-for="breedNamelong" class="text-danger"></span>
-            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Breed Short Names</label>
+                        <input asp-for="breedNameShort" class="form-control" />
+                        <span asp-validation-for="breedNameShort" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Breed Long Names</label>
+                        <input asp-for="breedNamelong" class="form-control" />
+                        <span asp-validation-for="breedNamelong" class="text-danger"></span>
+                    </div>
+                </div>
 
 
-            <div class="form-group">
-                <label>Species Name</label>
-                <select asp-for="speciesId" asp-items=" ViewBag.Species" class="form-control">
-                    <option disabled selected>select</option>
-                </select>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Species Name</label>
+                        <select asp-for="speciesId" asp-items=" ViewBag.Species" class="form-control">
+                            <option disabled selected>select</option>
+                        </select>
 
 
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label>Short Name</label>
+                    <input asp-for="shortDetail" class="form-control" />
+                    <span asp-validation-for="shortDetail" class="text-danger"></span>
+                </div>
+                <div class="col-md-4">
+                    <label>Origin From</label>
+                    <input asp-for="originFrom" class="form-control" />
+                    <span asp-validation-for="originFrom" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="display:none">
+                    <label asp-for="registeredBy" class="control-label"></label>
+                    <input asp-for="registeredBy" class="form-control" />
+                    <span asp-validation-for="registeredBy" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="display:none">
+                    <label asp-for="updatedBy" class="control-label"></label>
+                    <input asp-for="updatedBy" class="form-control" />
+                    <span asp-validation-for="updatedBy" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="display:none">
+                    <label asp-for="registeredDate" class="control-label"></label>
+                    <input asp-for="registeredDate" class="form-control" />
+                    <span asp-validation-for="registeredDate" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="col-md-12" style="text-align:center; padding-top:15px;">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
 
-            </div>
-            <div class="form-group">
-                <label asp-for="shortDetail" class="control-label"></label>
-                <input asp-for="shortDetail" class="form-control" />
-                <span asp-validation-for="shortDetail" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="originFrom" class="control-label"></label>
-                <input asp-for="originFrom" class="form-control" />
-                <span asp-validation-for="originFrom" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="registeredBy" class="control-label"></label>
-                <input asp-for="registeredBy" class="form-control" />
-                <span asp-validation-for="registeredBy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="updatedBy" class="control-label"></label>
-                <input asp-for="updatedBy" class="form-control" />
-                <span asp-validation-for="updatedBy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="registeredDate" class="control-label"></label>
-                <input asp-for="registeredDate" class="form-control" />
-                <span asp-validation-for="registeredDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
+</form>
+    </div>
+
+
+    <div>
+        <a asp-action="Index" class="btn btn-danger">Back to List</a>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 

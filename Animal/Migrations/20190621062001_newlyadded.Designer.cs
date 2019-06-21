@@ -4,14 +4,16 @@ using Animal.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Animal.Migrations
 {
     [DbContext(typeof(AnimalContext))]
-    partial class AnimalContextModelSnapshot : ModelSnapshot
+    [Migration("20190621062001_newlyadded")]
+    partial class newlyadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,6 +106,8 @@ namespace Animal.Migrations
                     b.Property<bool>("pregnencyStatus");
 
                     b.Property<int>("sireId");
+
+                    b.Property<string>("species");
 
                     b.Property<int?>("speciesId");
 
@@ -806,6 +810,8 @@ namespace Animal.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("AnimalRegistrationid");
+
                     b.Property<int?>("Speciesid");
 
                     b.Property<string>("originFrom");
@@ -815,6 +821,8 @@ namespace Animal.Migrations
                     b.Property<string>("speciesName");
 
                     b.HasKey("id");
+
+                    b.HasIndex("AnimalRegistrationid");
 
                     b.HasIndex("Speciesid");
 
@@ -942,7 +950,7 @@ namespace Animal.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Animal.Models.Species", "Species")
-                        .WithMany("AnimalRegistrations")
+                        .WithMany()
                         .HasForeignKey("speciesId");
                 });
 
@@ -1023,6 +1031,10 @@ namespace Animal.Migrations
 
             modelBuilder.Entity("Animal.Models.Species", b =>
                 {
+                    b.HasOne("Animal.Models.AnimalRegistration")
+                        .WithMany("speciess")
+                        .HasForeignKey("AnimalRegistrationid");
+
                     b.HasOne("Animal.Models.Species")
                         .WithMany("Speciess")
                         .HasForeignKey("Speciesid");

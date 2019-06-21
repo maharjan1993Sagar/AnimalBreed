@@ -7,5 +7,6 @@ namespace Animal.Repository
 {
   public interface IMilkBaseNutritionRepository:IRepository<MIlkBaseNutrition>
     {
+        MIlkBaseNutrition GetByWeight(string weight);
     }
 }

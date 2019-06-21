@@ -17,5 +17,9 @@ namespace Animal.Repository
             get { return db as AnimalContext; }
 
         }
+        public MIlkBaseNutrition GetByWeight(string weight)
+        {
+            return db.Set<MIlkBaseNutrition>().FirstOrDefault(m => m.ndf == weight);
+        }
     }
 }

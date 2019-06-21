@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Animal.Models;
 using Animal.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Animal.Controllers
 {
@@ -35,6 +36,7 @@ namespace Animal.Controllers
         [HttpGet]
         public IActionResult AddEditPregnancy(int? id)
         {
+            ViewBag.Species = new SelectList(_repo.Species.GetModel(), "id", "speciesName");
             PregnancyBaseNutrition model = new PregnancyBaseNutrition();
             if (id.HasValue)
             {

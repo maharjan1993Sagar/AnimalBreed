@@ -34,11 +34,11 @@ namespace Animal.Controllers
         public IActionResult AddEditMilk(int? id)
         {
             MilkRecordVM model = new MilkRecordVM();
-            model.animals = new SelectList(_repo.AnimalRegistration.GetModel(), "id", "earTagNo");
+        
             if (id.HasValue)
             {
                 MilkRecord feed = _repo.MilkRecord.GetById(id.Value);
-                model.animals = new SelectList(_repo.AnimalRegistration.GetModel(), "id", "earTagNo",_repo.MilkRecord.GetById(id.Value).animalRegistrationid);
+               // model.animals = new SelectList(_repo.AnimalRegistration.GetModel(), "id", "earTagNo");
                 if (feed != null)
                 {
                     var config = new MapperConfiguration(cfg =>
@@ -51,6 +51,7 @@ namespace Animal.Controllers
                     model = iMapper.Map<MilkRecord, MilkRecordVM>(feed);
                 }
             }
+            model.animals = new SelectList(_repo.AnimalRegistration.GetModel(), "id", "earTagNo");
             return View(model);
         }
         [HttpPost]

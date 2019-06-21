@@ -15,6 +15,8 @@ namespace Animal.Models
 
         public string breed { get; set; }
 
+        public string weight { get; set; }
+
         public string earlyPreg { get; set; }
 
         public string midPreg { get; set; }

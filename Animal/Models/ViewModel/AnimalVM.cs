@@ -14,9 +14,9 @@ namespace Animal.Models.ViewModel
 
         public string weight { get; set; }
 
-        public string species { get; set; }
+        public int? speciesId { get; set; }
 
-        public int breedId { get; set; }
+        public int? breedId { get; set; }
 
         public string age { get; set; }
 

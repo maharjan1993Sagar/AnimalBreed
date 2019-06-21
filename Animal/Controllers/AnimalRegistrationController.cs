@@ -37,41 +37,30 @@ namespace Animal.Controllers
         [HttpGet]
         public IActionResult AddEditAnimal(int? id)
         {
-            //AnimalRegistration model = new AnimalRegistration();
+           
             AnimalVM model = new AnimalVM();
-            model.breeds = new SelectList(_repo.Breed.GetModel(), "id", "breedNameShort");
-            model.farms = new SelectList(_repo.Farm.GetModel(), "id", "orgtanizationName");
-            model.owners = new SelectList(_repo.Farm.GetModel(), "id", "fullName");
-            
-           //List<SelectListItem> species =new List<SelectListItem>{ new SelectListItem { Text = "Cow", Value = "Cow" } , new SelectListItem { Text="Buffallo",Value="Buffallo"} } ;
-            model.speciess = new SelectList(_repo.Species.GetModel(),"id", "speciesName");
-
+         
             if (id.HasValue)
             {
                 AnimalRegistration feed = _repo.AnimalRegistration.GetById(id.Value);
+
+                
                 if (feed != null)
                 {
-
-                    //Mapping model and viewModel
 
                     var config = new MapperConfiguration(cfg =>
                     {
                         cfg.CreateMap<AnimalRegistration, AnimalVM>();
 
                     });
-
+    
                     IMapper iMapper = config.CreateMapper();
                     model = iMapper.Map<AnimalRegistration, AnimalVM>(feed);
-                    if (model.farmId.HasValue && model.farmId.ToString() != "0")
-                    {
-                        model.farms = new SelectList(_repo.Farm.GetModel(), "id", "orgtanizationName", model.farmId.Value);
-                    }
-                    if (model.ownerId.HasValue && model.ownerId.ToString() != "0")
-                    {
-                        model.owners = new SelectList(_repo.Farm.GetModel(), "id", "fullName", model.ownerId.Value);
-                    }
+         
                 }
             }
+            model.speciess = new SelectList(_repo.Species.GetModel(), "id", "speciesName");
+            model.breeds = new SelectList(_repo.Breed.GetModel(), "id", "breedNameShort");
             return View(model);
         }
         [HttpPost]
@@ -84,6 +73,7 @@ namespace Animal.Controllers
                     bool isNew = !id.HasValue;
                     if (isNew)
                     {
+                       
                         var config = new MapperConfiguration(cfg =>
                         {
                             cfg.CreateMap<AnimalVM,AnimalRegistration>();

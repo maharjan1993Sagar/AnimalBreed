@@ -442,6 +442,8 @@ namespace Animal.Migrations
 
                     b.Property<string>("cp");
 
+                    b.Property<string>("dm");
+
                     b.Property<string>("dp");
 
                     b.Property<string>("fatPercentage");
@@ -453,6 +455,8 @@ namespace Animal.Migrations
                     b.Property<string>("snf");
 
                     b.Property<string>("tdn");
+
+                    b.Property<string>("weight");
 
                     b.HasKey("id");
 

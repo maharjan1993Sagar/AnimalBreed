@@ -13,9 +13,13 @@ namespace Animal.Models
 
         public string animalSpecies { get; set; }
 
+        public string weight { get; set; }
+
         public string fatPercentage { get; set; }
 
         public string snf { get; set; }
+
+        public string dm { get; set; }
 
         public string dp { get; set; }
 

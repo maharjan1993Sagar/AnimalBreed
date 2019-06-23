@@ -19,9 +19,8 @@ namespace Animal.Models
 
         public string dm { get; set; }
 
-        public string dp { get; set; }
 
-        public string cp { get; set; }
+        public string dcp { get; set; }
 
         public string tdn { get; set; }
 

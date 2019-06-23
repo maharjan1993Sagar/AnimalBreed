@@ -4,137 +4,203 @@
     ViewData["Title"] = "AddEditMilk";
 }
 
-<h2>AddEditMilk</h2>
+<div class="card">
+    <div class="card-header py-3">
+        <h3 class="m-1 font-weight-bold center text-primary">Milk Record</h3>
+    </div>
+    <div class="card-body">
+        @Html.HiddenFor(m => m.id)
 
-<h4>MilkRecordVM</h4>
-<hr />
-<div class="row">
-    @Html.HiddenFor(m=>m.id)
-    <div class="col-md-4">
         <form asp-action="AddEditMilk">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @*<div class="form-group">
-                <label asp-for="id" class="control-label"></label>
-                <input asp-for="id" class="form-control" />
-                <span asp-validation-for="id" class="text-danger"></span>
-            </div>*@
+                    <label asp-for="id" class="control-label"></label>
+                    <input asp-for="id" class="form-control" />
+                    <span asp-validation-for="id" class="text-danger"></span>
+                </div>*@
             @*<div class="form-group">
-                <label asp-for="earTagNumber" class="control-label"></label>
-                <input asp-for="earTagNumber" class="form-control" />
-                <span asp-validation-for="earTagNumber" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="milkingStatus" /> @Html.DisplayNameFor(model => model.milkingStatus)
-                    </label>
+                    <label asp-for="earTagNumber" class="control-label"></label>
+                    <input asp-for="earTagNumber" class="form-control" />
+                    <span asp-validation-for="earTagNumber" class="text-danger"></span>
+                </div>*@
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        @Html.DisplayNameFor(model => model.milkingStatus)
+                        <div class="checkbox">
+            
+                                <input asp-for="milkingStatus"  />
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="recordingPeriod" class="control-label"></label>
+                        <input asp-for="recordingPeriod" class="form-control" />
+                        <span asp-validation-for="recordingPeriod" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="recordingDate" class="control-label"></label>
+                        <input asp-for="recordingDate" class="form-control" />
+                        <span asp-validation-for="recordingDate" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="milkVolume" class="control-label"></label>
+                        <input asp-for="milkVolume" class="form-control" />
+                        <span asp-validation-for="milkVolume" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="milkSampleBoxNo" class="control-label"></label>
+                        <input asp-for="milkSampleBoxNo" class="form-control" />
+                        <span asp-validation-for="milkSampleBoxNo" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="labId" class="control-label"></label>
+                        <input asp-for="labId" class="form-control" />
+                        <span asp-validation-for="labId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="testingCharge" class="control-label"></label>
+                        <input asp-for="testingCharge" class="form-control" />
+                        <span asp-validation-for="testingCharge" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="receiptNo" class="control-label"></label>
+                        <input asp-for="receiptNo" class="form-control" />
+                        <span asp-validation-for="receiptNo" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="genericProblem" class="control-label"></label>
+                        <input asp-for="genericProblem" class="form-control" />
+                        <span asp-validation-for="genericProblem" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="vacination" class="control-label"></label>
+                        <input asp-for="vacination" class="form-control" />
+                        <span asp-validation-for="vacination" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="shortNote" class="control-label"></label>
+                        <input asp-for="shortNote" class="form-control" />
+                        <span asp-validation-for="shortNote" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="animalRegistrationid" class="control-label"></label>
+
+                        @Html.DropDownList("animalRegistrationid", Model.animals, "Select", new { @class = "form-control" })
+                        <span asp-validation-for="animalRegistrationid" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="fatPercentage" class="control-label"></label>
+                        <input asp-for="fatPercentage" class="form-control" />
+                        <span asp-validation-for="fatPercentage" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="snf" class="control-label"></label>
+                        <input asp-for="snf" class="form-control" />
+                        <span asp-validation-for="snf" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="dp" class="control-label"></label>
+                        <input asp-for="dp" class="form-control" />
+                        <span asp-validation-for="dp" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="cp" class="control-label"></label>
+                        <input asp-for="cp" class="form-control" />
+                        <span asp-validation-for="cp" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="tdn" class="control-label"></label>
+                        <input asp-for="tdn" class="form-control" />
+                        <span asp-validation-for="tdn" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ndf" class="control-label"></label>
+                        <input asp-for="ndf" class="form-control" />
+                        <span asp-validation-for="ndf" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="c" class="control-label"></label>
+                        <input asp-for="c" class="form-control" />
+                        <span asp-validation-for="c" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="p" class="control-label"></label>
+                        <input asp-for="p" class="form-control" />
+                        <span asp-validation-for="p" class="text-danger"></span>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label asp-for="recordingPeriod" class="control-label"></label>
-                <input asp-for="recordingPeriod" class="form-control" />
-                <span asp-validation-for="recordingPeriod" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="recordingDate" class="control-label"></label>
-                <input asp-for="recordingDate" class="form-control" />
-                <span asp-validation-for="recordingDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="milkVolume" class="control-label"></label>
-                <input asp-for="milkVolume" class="form-control" />
-                <span asp-validation-for="milkVolume" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="milkSampleBoxNo" class="control-label"></label>
-                <input asp-for="milkSampleBoxNo" class="form-control" />
-                <span asp-validation-for="milkSampleBoxNo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="labId" class="control-label"></label>
-                <input asp-for="labId" class="form-control" />
-                <span asp-validation-for="labId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="testingCharge" class="control-label"></label>
-                <input asp-for="testingCharge" class="form-control" />
-                <span asp-validation-for="testingCharge" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="receiptNo" class="control-label"></label>
-                <input asp-for="receiptNo" class="form-control" />
-                <span asp-validation-for="receiptNo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="genericProblem" class="control-label"></label>
-                <input asp-for="genericProblem" class="form-control" />
-                <span asp-validation-for="genericProblem" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="vacination" class="control-label"></label>
-                <input asp-for="vacination" class="form-control" />
-                <span asp-validation-for="vacination" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="shortNote" class="control-label"></label>
-                <input asp-for="shortNote" class="form-control" />
-                <span asp-validation-for="shortNote" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="animalRegistrationid" class="control-label"></label>
-              
-                @Html.DropDownList("animalRegistrationid",Model.animals,"Select",new {@class="form-control" })
-                <span asp-validation-for="animalRegistrationid" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="fatPercentage" class="control-label"></label>
-                <input asp-for="fatPercentage" class="form-control" />
-                <span asp-validation-for="fatPercentage" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="snf" class="control-label"></label>
-                <input asp-for="snf" class="form-control" />
-                <span asp-validation-for="snf" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="dp" class="control-label"></label>
-                <input asp-for="dp" class="form-control" />
-                <span asp-validation-for="dp" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="cp" class="control-label"></label>
-                <input asp-for="cp" class="form-control" />
-                <span asp-validation-for="cp" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="tdn" class="control-label"></label>
-                <input asp-for="tdn" class="form-control" />
-                <span asp-validation-for="tdn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ndf" class="control-label"></label>
-                <input asp-for="ndf" class="form-control" />
-                <span asp-validation-for="ndf" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="c" class="control-label"></label>
-                <input asp-for="c" class="form-control" />
-                <span asp-validation-for="c" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="p" class="control-label"></label>
-                <input asp-for="p" class="form-control" />
-                <span asp-validation-for="p" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+
+
+            <div class="col-md-12" style="text-align:center; padding-top:15px;">
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+
+
+    <div>
+        <a asp-action="Index" class="btn btn-danger">Back to List</a>
+    </div>
 </div>
 
 @section Scripts {

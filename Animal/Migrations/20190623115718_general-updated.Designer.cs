@@ -4,14 +4,16 @@ using Animal.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Animal.Migrations
 {
     [DbContext(typeof(AnimalContext))]
-    partial class AnimalContextModelSnapshot : ModelSnapshot
+    [Migration("20190623115718_general-updated")]
+    partial class generalupdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,7 +73,7 @@ namespace Animal.Migrations
 
                     b.Property<string>("age");
 
-                    b.Property<int?>("breedId");
+                    b.Property<int>("breedId");
 
                     b.Property<string>("createdAt");
 
@@ -82,8 +84,6 @@ namespace Animal.Migrations
                     b.Property<DateTime>("declaredDate");
 
                     b.Property<string>("dob");
-
-                    b.Property<int>("earTagId");
 
                     b.Property<string>("earTagNo");
 
@@ -116,8 +116,6 @@ namespace Animal.Migrations
                     b.HasKey("id");
 
                     b.HasIndex("breedId");
-
-                    b.HasIndex("earTagId");
 
                     b.HasIndex("speciesId");
 
@@ -245,21 +243,6 @@ namespace Animal.Migrations
                     b.HasIndex("AnimalRegistrationid");
 
                     b.ToTable("dbug_diseases");
-                });
-
-            modelBuilder.Entity("Animal.Models.EarTag", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<long>("earTagNo");
-
-                    b.Property<string>("earTagNoStr");
-
-                    b.HasKey("id");
-
-                    b.ToTable("EarTags");
                 });
 
             modelBuilder.Entity("Animal.Models.Farm", b =>
@@ -986,11 +969,7 @@ namespace Animal.Migrations
                 {
                     b.HasOne("Animal.Models.Breed", "Breed")
                         .WithMany("AnimalRegistrations")
-                        .HasForeignKey("breedId");
-
-                    b.HasOne("Animal.Models.EarTag", "EarTag")
-                        .WithMany()
-                        .HasForeignKey("earTagId")
+                        .HasForeignKey("breedId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Animal.Models.Species", "Species")

@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Animal.Models.GeneralNutration>
+
+    @{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    <div class="card mb-4">
+        <div class="card-header py-3">
+            <h3 class="m-1 font-weight-bold center text-primary">General Nutrition </h3>
+        </div>
+        <div class="card-body">
+            <p>
+                <a asp-action="AddEditGeneralNutrition" class="btn btn-outline-primary">Create New</a>
+            </p>
+            <table class="table table-bordered" id="myTable">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.animalSpecies)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.weight)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.snf)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.dm)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.dcp)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.tdn)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ndf)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.c)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.p)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.animalSpecies)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.weight)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.snf)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dm)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dcp)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.tdn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ndf)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.c)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.p)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "AddEditGeneralNutrition", new { id=item.id },new{@class="btn btn-primary"}) |
+                            @Html.ActionLink("Details", "Details", new { id=item.id },new {@class="btn btn-info"}) |
+                            @Html.ActionLink("Delete", "DeleteGeneralNutrition", new { id=item.id }, new{@class="btn btn-success"})
+                        </td>
+                    </tr>
+}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @section Scripts {
+        <script type="text/javascript">
+        $(document).ready(function () {
+            $("body div.myTable input");
+            var dataSrc = [];
+            var table = $("#myTable").DataTable({
+                "columnDefs": [
+                    { "orderable": false, "targets": 3 }
+                ],
+                "pageLength": 50,
+            });
+        });
+        </script>
+    }
+
+

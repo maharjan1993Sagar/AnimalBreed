@@ -28,7 +28,13 @@ namespace Animal.Repository
             MilkBase = new MilkBaseNutritionRepository(_repoContext);
             MilkRecord = new MilkRecordRepository(_repoContext);
             PregnancyBaseNutrition = new PregnencyNutritionRepository(_repoContext);
-            Species = new SpeciesReporitory(_repoContext);            
+            Species = new SpeciesReporitory(_repoContext);
+            GeneralNutrition = new GeneralNutritionRepository(_repoContext);
+        }
+
+        public IGeneralNutritionRepository GeneralNutrition
+        {
+            get; private set;
         }
 
         public ISpeciesRepository Species
@@ -58,7 +64,7 @@ namespace Animal.Repository
         {
             get; private set;
         }
-        public  IFarmRepository Farm
+        public  IFarmReository Farm
         {
             get; private set;
         } 

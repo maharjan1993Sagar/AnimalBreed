@@ -1,0 +1,79 @@
+﻿@model Animal.Models.GeneralNutration
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>GeneralNutration</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.animalSpecies)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.animalSpecies)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.weight)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.weight)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.snf)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.snf)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.dm)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.dm)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.dcp)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.dcp)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.tdn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.tdn)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ndf)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ndf)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.c)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.c)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.p)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.p)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

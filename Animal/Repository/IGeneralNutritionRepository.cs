@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Animal.Repository
 {
-    public interface IFarmReository:IRepository<Farm>
+    public interface IGeneralNutritionRepository:IRepository<GeneralNutration>
     {
     }
 }

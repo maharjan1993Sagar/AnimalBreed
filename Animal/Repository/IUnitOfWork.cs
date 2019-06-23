@@ -11,12 +11,13 @@ namespace Animal.Repository
          IAnimalRepository AnimalRegistration { get; }
          IBreedRepository Breed { get; }
          IOwnerRepository OwnerKeeper { get; }
-         IFarmRepository Farm { get; }
+         IFarmReository Farm { get; }
          IFeedRepository FeedFooder { get; }
         IMilkBaseNutritionRepository MilkBase { get; }
         IMilkRecordRepository MilkRecord { get; }
         IPregnencyNutritionRepository PregnancyBaseNutrition { get; }
         ISpeciesRepository Species { get; }
+        IGeneralNutritionRepository GeneralNutrition { get; }
         void Save();
     }
 }

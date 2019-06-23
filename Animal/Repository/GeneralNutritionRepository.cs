@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace Animal.Repository
 {
-    public class FarmRepository:Repository<Farm>, IFarmReository
+    public class GeneralNutritionRepository:Repository<GeneralNutration>, IGeneralNutritionRepository
     {
-        public FarmRepository(AnimalContext Context):base(Context)
+        public GeneralNutritionRepository(AnimalContext Context)
+          : base(Context)
         {
-
         }
         public AnimalContext AnimalContext
         {
             get { return db as AnimalContext; }
 
         }
-
     }
 }

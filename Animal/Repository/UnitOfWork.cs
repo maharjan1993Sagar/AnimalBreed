@@ -28,7 +28,8 @@ namespace Animal.Repository
             MilkBase = new MilkBaseNutritionRepository(_repoContext);
             MilkRecord = new MilkRecordRepository(_repoContext);
             PregnancyBaseNutrition = new PregnencyNutritionRepository(_repoContext);
-            Species = new SpeciesReporitory(_repoContext);            
+            Species = new SpeciesReporitory(_repoContext);
+            EarTag = new EarTagRepository(_repoContext);
         }
 
         public ISpeciesRepository Species
@@ -71,6 +72,10 @@ namespace Animal.Repository
             get; private set;
         }
 
+        public IEarTagRepository EarTag
+        {
+            get;private set;
+        }
 
         public void Save()
         {

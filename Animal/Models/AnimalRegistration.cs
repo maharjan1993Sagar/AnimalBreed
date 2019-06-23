@@ -73,5 +73,7 @@ namespace Animal.Models
         public virtual ICollection<HealthCheckUp> HealthCheckUps { get; set; }
 
         public virtual ICollection<Diseases> Diseases { get; set; }
+        public int earTagId { get; set; }
+        public virtual EarTag EarTag { get; set; }
     }
 }

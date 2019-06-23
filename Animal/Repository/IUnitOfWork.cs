@@ -17,6 +17,7 @@ namespace Animal.Repository
         IMilkRecordRepository MilkRecord { get; }
         IPregnencyNutritionRepository PregnancyBaseNutrition { get; }
         ISpeciesRepository Species { get; }
+        IEarTagRepository EarTag { get; }
         void Save();
     }
 }

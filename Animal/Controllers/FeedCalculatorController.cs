@@ -75,12 +75,13 @@ namespace Animal.Controllers
             if (category == "MilkBase")
             {
                 MilkBase = _repo.MilkBase.GetByWeight(cowWeight);
+
                 FeedCalculator feed = new FeedCalculator();
                 feed.dm = MilkBase.dp;
                 feed.tdn = MilkBase.tdn;
                 feed.p = MilkBase.p;
                 feed.c = MilkBase.c;
-                feed.me = MilkBase.dp;
+                feed.me = MilkBase.dm;
                 feed.dcp = MilkBase.dp;
                 feed.animalWeight = feeds[0].animalWeight;
                 feed.animalCategories = feeds[0].animalCategories;

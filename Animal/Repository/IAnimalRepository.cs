@@ -8,5 +8,6 @@ namespace Animal.Repository
 {
    public interface IAnimalRepository : IRepository<AnimalRegistration>
     {
+        IEnumerable<AnimalRegistration> GetModel();
     }
 }

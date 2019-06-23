@@ -1,4 +1,5 @@
 ﻿using Animal.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -18,6 +19,9 @@ namespace Animal.Repository
         {
             get { return db as AnimalContext; }
 
+        }
+        public IEnumerable<AnimalRegistration> GetModel() {
+            return db.animalRegistration.Include(M => M.Species).ToList();
         }
     }
 }

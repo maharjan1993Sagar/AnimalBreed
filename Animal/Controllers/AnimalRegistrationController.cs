@@ -81,7 +81,7 @@ namespace Animal.Controllers
 
                         IMapper iMapper = config.CreateMapper();
                         AnimalRegistration animal = iMapper.Map<AnimalVM, AnimalRegistration>(model);
-
+                        animal.createdAt = DateTime.Now.ToShortDateString();
                         _repo.AnimalRegistration.Insert(animal);
                         _repo.Save();
                     }
@@ -97,7 +97,7 @@ namespace Animal.Controllers
 
                         AnimalRegistration animal = iMapper.Map<AnimalVM, AnimalRegistration>(model);
 
-
+                        animal.updatedBy = "admin";
 
                         _repo.AnimalRegistration.Update(animal);
                     }

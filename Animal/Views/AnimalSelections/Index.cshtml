@@ -3,57 +3,78 @@
 @{
     ViewData["Title"] = "Index";
 }
+<div class="card mb-4">
+    <div class="card-header py-3">
+        <h3 class="m-1 font-weight-bold center text-primary">Animal Selection</h3>
+    </div>
+    <div class="card-body">
+        <p>
+            <a asp-action="Create" class="btn btn-outline-primary">Create New</a>
+        </p>
+        <table class="table table-bordered" id="myTable">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.animalId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ownerId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.farmId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.selectionDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.shortNotes)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.animalId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ownerId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.farmId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.selectionDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.shortNotes)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-primary">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.id" class="btn btn-info">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-success">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
 
-<h2>Index</h2>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("body div.myTable input");
+            var dataSrc = [];
+            var table = $("#myTable").DataTable({
+                "columnDefs": [
+                    { "orderable": false, "targets": 3 }
+                ],
+                "pageLength": 50,
+            });
+        });
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.animalId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ownerId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.farmId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.selectionDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.shortNotes)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.animalId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ownerId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.farmId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.selectionDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.shortNotes)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
-            </td>
-        </tr>
+    </script>
 }
-    </tbody>
-</table>

@@ -17,7 +17,7 @@ namespace Animal.Models
 
        
 
-        public int breedId { get; set; }
+        public int? breedId { get; set; }
 
         public string age { get; set; }
 

@@ -43,7 +43,7 @@ namespace Animal.Repository
         public DbSet<AnimalSelection> animalSelections { get; set; }
         public DbSet<ResponsibleCollectorRegister> responsibleCollectorRegisters { get; set; }
         public DbSet<GeneralNutration> GeneralNutrations { get; set; }
-
+        public DbSet<EarTag> EarTags { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

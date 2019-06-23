@@ -26,8 +26,6 @@
 
   <ItemGroup>
     <None Include="bin\Debug\netcoreapp2.1\Animal.pdb" />
-    <None Include="bin\Debug\netcoreapp2.1\Animal.Views.dll" />
-    <None Include="bin\Debug\netcoreapp2.1\Animal.Views.pdb" />
     <None Include="wwwroot\Admin\.gitignore" />
     <None Include="wwwroot\Admin\.travis.yml" />
     <None Include="wwwroot\Admin\404.html" />

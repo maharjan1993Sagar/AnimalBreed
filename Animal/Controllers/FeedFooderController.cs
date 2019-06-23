@@ -22,7 +22,7 @@ namespace Animal.Controllers
 
 
         public IActionResult Index()
-        {
+    {
             IEnumerable<FeedFooder> all = _repoU.FeedFooder.GetModel();
             //IEnumerable<FeedFooder> all = _repo.GetModel();
             return View(all);

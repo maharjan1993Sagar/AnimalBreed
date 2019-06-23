@@ -4,14 +4,16 @@ using Animal.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Animal.Migrations
 {
     [DbContext(typeof(AnimalContext))]
-    partial class AnimalContextModelSnapshot : ModelSnapshot
+    [Migration("20190621115457_general")]
+    partial class general
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,7 +73,7 @@ namespace Animal.Migrations
 
                     b.Property<string>("age");
 
-                    b.Property<int?>("breedId");
+                    b.Property<int>("breedId");
 
                     b.Property<string>("createdAt");
 
@@ -355,9 +357,11 @@ namespace Animal.Migrations
 
                     b.Property<string>("c");
 
-                    b.Property<string>("dcp");
+                    b.Property<string>("cp");
 
                     b.Property<string>("dm");
+
+                    b.Property<string>("dp");
 
                     b.Property<string>("ndf");
 
@@ -967,7 +971,8 @@ namespace Animal.Migrations
                 {
                     b.HasOne("Animal.Models.Breed", "Breed")
                         .WithMany("AnimalRegistrations")
-                        .HasForeignKey("breedId");
+                        .HasForeignKey("breedId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Animal.Models.Species", "Species")
                         .WithMany("AnimalRegistrations")

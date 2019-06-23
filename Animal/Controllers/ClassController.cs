@@ -20,13 +20,13 @@ namespace Animal.Controllers
         {
 
             var lstModel = new List<SimpleReportViewModel>();
-            foreach (var item in _context.MilkRecords.Include(m=>m.animalRegistration).ThenInclude(m=>m.Breed))
+            foreach (var item in _context.MilkRecords.Include(m=>m.animalRegistration).ThenInclude(m=>m.Breed).OrderByDescending(m=>m.milkVolume).Take(10))
             
             {
                 lstModel.Add(new SimpleReportViewModel
                 {
                     
-                    DimensionOne = item.animalRegistration.Breed.breedNameShort,
+                    DimensionOne = item.animalRegistration.earTagNo.ToString(),
                    
                     Quantity = Convert.ToInt32(item.milkVolume)
                 });
@@ -34,6 +34,25 @@ namespace Animal.Controllers
         
              return View(lstModel);
           
+        }
+        public IActionResult Index1()
+        {
+
+            var lstModel = new List<SimpleReportViewModel>();
+            foreach (var item in _context.MilkRecords.Include(m => m.animalRegistration).ThenInclude(m => m.Breed))
+
+            {
+                lstModel.Add(new SimpleReportViewModel
+                {
+
+                    DimensionOne = item.animalRegistration.Breed.breedNameShort,
+
+                    Quantity = Convert.ToInt32(item.milkVolume)
+                });
+            }
+
+            return View(lstModel);
+
         }
     }
 }

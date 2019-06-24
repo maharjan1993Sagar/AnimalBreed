@@ -8,5 +8,6 @@ namespace Animal.Repository
 {
    public interface IEarTagRepository:IRepository<EarTag>
     {
+        EarTag GetByTag(string tag);
     }
 }

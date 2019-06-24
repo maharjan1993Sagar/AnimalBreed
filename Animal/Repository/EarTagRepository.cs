@@ -17,5 +17,17 @@ namespace Animal.Repository
             get { return db as AnimalContext; }
 
         }
+
+        public EarTag GetByTag(string tag)
+        {
+            if (db.EarTags.Any(m => m.earTagNoStr == tag))
+            {
+                return db.EarTags.FirstOrDefault(m => m.earTagNoStr == tag);
+            }
+            else {
+                return null;
+            }
+
+        }
     }
 }

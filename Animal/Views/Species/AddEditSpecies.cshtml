@@ -4,41 +4,56 @@
     ViewData["Title"] = "AddEditSpecies";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<div class="card">
+    <div class="card-header py-3">
+        <h3 class="m-1 font-weight-bold center text-primary">Species</h3>
+    </div>
+    <div class="card-body">
 
-<h2>AddEditSpecies</h2>
+        @Html.HiddenFor(m => m.id)
 
-<h4>Species</h4>
-<hr />
-<div class="row">
-    @Html.HiddenFor(m=>m.id)    
-    <div class="col-md-4">
         <form asp-action="AddEditSpecies">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-           
-            <div class="form-group">
-                <label asp-for="speciesName" class="control-label"></label>
-                <input asp-for="speciesName" class="form-control" />
-                <span asp-validation-for="speciesName" class="text-danger"></span>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Species Name</label>
+                        @*<label asp-for="speciesName" class="control-label"></label>*@
+                        <input asp-for="speciesName" class="form-control" />
+                        <span asp-validation-for="speciesName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Origin from</label>
+                        @*<label asp-for="originFrom" class="control-label"></label>*@
+                        <input asp-for="originFrom" class="form-control" />
+                        <span asp-validation-for="originFrom" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Short Notes</label>
+                        @*<label asp-for="shortNotes" class="control-label"></label>*@
+                        <input asp-for="shortNotes" class="form-control" />
+                        <span asp-validation-for="shortNotes" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="originFrom" class="control-label"></label>
-                <input asp-for="originFrom" class="form-control" />
-                <span asp-validation-for="originFrom" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="shortNotes" class="control-label"></label>
-                <input asp-for="shortNotes" class="form-control" />
-                <span asp-validation-for="shortNotes" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+
+
+            <div class="col-md-12" style="text-align:center; padding-top:15px;">
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+
+    <div>
+        <a asp-action="Index" class="btn btn-danger">Back to List</a>
+    </div>
 </div>
 
 @section Scripts {

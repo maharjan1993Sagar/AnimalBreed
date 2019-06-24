@@ -14,9 +14,7 @@
         <table class="table table-bordered" id="myTable">
             <thead>
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.category)
-                    </th>
+                 
                     <th>
                         @Html.DisplayNameFor(model => model.fooderNameNep)
                     </th>
@@ -24,153 +22,155 @@
                         @Html.DisplayNameFor(model => model.fooderNameEng)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.address)
+                        @Html.DisplayNameFor(model => model.category)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.municipility)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.district)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.state)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.shortNote)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.cultivation)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.seedingMethod)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.seedHarvestingStorage)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.grassProduct)
-                    </th>
+                    @*<th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.municipility)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.district)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.state)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.shortNote)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cultivation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.seedingMethod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.seedHarvestingStorage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.grassProduct)
+        </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.dm)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.cp)
-                    </th>
+                    @*<th>
+            @Html.DisplayNameFor(model => model.cp)
+        </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.tdn)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ndf)
-                    </th>
+                    @*<th>
+            @Html.DisplayNameFor(model => model.ndf)
+        </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.c)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.p)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.df)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.adl)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.tanni)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.nitrateScore)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.remarks)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.price)
-                    </th>
-                    <th></th>
+                    @*<th>
+            @Html.DisplayNameFor(model => model.df)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.adl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tanni)
+        </th>*@
+                    @*<th>
+            @Html.DisplayNameFor(model => model.nitrateScore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.remarks)
+        </th>*@
+              
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.category)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.fooderNameNep)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.fooderNameEng)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.address)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.municipility)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.district)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.state)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.shortNote)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.cultivation)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.seedingMethod)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.seedHarvestingStorage)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.grassProduct)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.dm)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.cp)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.tdn)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ndf)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.c)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.p)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.df)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.adl)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.tanni)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.nitrateScore)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.remarks)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.price)
-                        </td>
-                        <td>
-                            <a asp-action="AddEditFeed" class="btn btn-primary" asp-route-id="@item.id">Edit</a> |
-                            <a asp-action="Details" class="btn btn-info"  asp-route-id="@item.id">Details</a> |
-                            <a asp-action="DeleteFeed" class="btn btn-success"  asp-route-id="@item.id">Delete</a>
-                        </td>
-                    </tr>
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fooderNameNep)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fooderNameEng)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.category)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.municipility)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.district)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.state)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.shortNote)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cultivation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.seedingMethod)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.seedHarvestingStorage)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.grassProduct)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dm)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.cp)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tdn)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.ndf)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.c)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.p)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.df)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.adl)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tanni)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nitrateScore)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.remarks)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.price)
+                    </td>*@
+                    <td>
+                        <a asp-action="AddEditFeed" class="btn btn-primary" asp-route-id="@item.id">Edit</a> |
+                        <a asp-action="Details" class="btn btn-info" asp-route-id="@item.id">Details</a> |
+                        <a asp-action="DeleteFeed" class="btn btn-success" asp-route-id="@item.id">Delete</a>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>

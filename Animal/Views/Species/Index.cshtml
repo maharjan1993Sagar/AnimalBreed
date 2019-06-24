@@ -5,50 +5,74 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    <a asp-action="AddEditSpecies">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.speciesName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.originFrom)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.shortNotes)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.speciesName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.originFrom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.shortNotes)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "AddEditSpecies", new {  id=item.id  }) |
-                @Html.ActionLink("Details", "Details", new { id=item.id  }) |
-                @Html.ActionLink("Delete", "Delete", new {  id=item.id  })
-            </td>
-        </tr>
+
+<div class="card mb-4">
+    <div class="card-header py-3">
+        <h3 class="m-1 font-weight-bold center text-primary">Species</h3>
+    </div>
+    <div class="card-body">
+        <p>
+            <a asp-action="AddEditSpecies" class="btn btn-outline-primary">Create New</a>
+        </p>
+
+        <table class="table table-bordered" id="myTable">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.speciesName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.originFrom)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.shortNotes)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.speciesName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.originFrom)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.shortNotes)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "AddEditSpecies", new { id = item.id }, new { @class = "btn btn-primary" }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-success" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("body div.myTable input");
+            var dataSrc = [];
+            var table = $("#myTable").DataTable({
+                "columnDefs": [
+                    { "orderable": false, "targets": 3 }
+                ],
+                "pageLength": 50,
+            });
+        });
+    </script>
 }
-    </tbody>
-</table>

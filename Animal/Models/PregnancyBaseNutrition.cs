@@ -16,12 +16,13 @@ namespace Animal.Models
         public string breed { get; set; }
 
         public string weight { get; set; }
+        public String PregrenencyType { get; set; }
 
-        public string earlyPreg { get; set; }
+        //public string earlyPreg { get; set; }
 
-        public string midPreg { get; set; }
+        //public string midPreg { get; set; }
 
-        public string latePreg { get; set; }
+        //public string latePreg { get; set; }
 
         public string ageOfAnimal { get; set; }
 

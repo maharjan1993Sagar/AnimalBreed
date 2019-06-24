@@ -22,11 +22,13 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="animalSpecies" class="control-label"></label>
-                        <input asp-for="animalSpecies" class="form-control" />
-                        <span asp-validation-for="animalSpecies" class="text-danger"></span>
+                        <label>Species Name</label>
+                        <select asp-for="animalSpecies" asp-items=" ViewBag.Species" class="form-control">
+                            <option disabled selected>select</option>
+                        </select>
                     </div>
                 </div>
+
 
                 <div class="col-md-4">
                     <div class="form-group">

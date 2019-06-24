@@ -55,20 +55,19 @@ namespace Animal.Controllers
             {
                 //Reverse the Num
                 int Num = i;
-                int Reverse = 0;
-                int k = i;
-                while (k > 0)
-                {
-                    int remainder = k % 10;
-                    Reverse = (Reverse * 10) + remainder;
-                    k = k / 10;
-                }
+                //string Reverse = "0";
+                string numString = i.ToString();
+                char[] charArray = numString.ToCharArray();
+                Array.Reverse(charArray);
+                string revString = new string(charArray);
+                // If you need the numeric value too:
+                int revNumber = Convert.ToInt32(revString);
                 int sum = 0;
                 int j = 1;
                 int checkBit = 0;
 
                 //Calculation of checkout
-                foreach (char item in Reverse.ToString())
+                foreach (char item in revString)
                 {
                     sum = sum + Convert.ToInt32(item.ToString()) * j;
                     j++;
@@ -76,13 +75,13 @@ namespace Animal.Controllers
                 checkBit = sum % 7;
                 //Append Checkbit
 
-                string newNum = Num.ToString().Insert(Num.ToString().Length,checkBit.ToString());
+                string newNum = Num.ToString().Insert(Num.ToString().Length, checkBit.ToString());
 
 
-               
-               
-               // Num.ToString().PadLeft(12, '0');
-               
+
+
+                // Num.ToString().PadLeft(12, '0');
+
                 //Add Items to List
                 EarTag ear = new EarTag();
                 ear.earTagNo = Convert.ToInt32(newNum);
@@ -91,6 +90,45 @@ namespace Animal.Controllers
                 listEar.Add(ear);
 
                 //_repo.EarTag.Insert(ear);
+
+                // //Reverse the Num
+                // int Num = i;
+                // int Reverse = 0;
+                // int k = i;
+                // while (k > 0)
+                // {
+                //     int remainder = k % 10;
+                //     Reverse = (Reverse * 10) + remainder;
+                //     k = k / 10;
+                // }
+                // int sum = 0;
+                // int j = 1;
+                // int checkBit = 0;
+
+                // //Calculation of checkout
+                // foreach (char item in Reverse.ToString())
+                // {
+                //     sum = sum + Convert.ToInt32(item.ToString()) * j;
+                //     j++;
+                // }
+                // checkBit = sum % 7;
+                // //Append Checkbit
+
+                // string newNum = Num.ToString().Insert(Num.ToString().Length,checkBit.ToString());
+
+
+
+
+                //// Num.ToString().PadLeft(12, '0');
+
+                // //Add Items to List
+                // EarTag ear = new EarTag();
+                // ear.earTagNo = Convert.ToInt32(newNum);
+                // ear.earTagNoStr = ear.earTagNo.ToString();
+
+                // listEar.Add(ear);
+
+                // //_repo.EarTag.Insert(ear);
 
             }
 

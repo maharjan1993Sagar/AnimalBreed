@@ -1,5 +1,6 @@
 ﻿using Animal.Models;
 using Microsoft.EntityFrameworkCore;
+using PersonalBlog.Areas.Admin.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,8 @@ namespace Animal.Repository
         public DbSet<ResponsibleCollectorRegister> responsibleCollectorRegisters { get; set; }
         public DbSet<GeneralNutration> GeneralNutrations { get; set; }
         public DbSet<EarTag> EarTags { get; set; }
+        public DbSet<Login> login { get; set; }
+        public DbSet<User>  Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

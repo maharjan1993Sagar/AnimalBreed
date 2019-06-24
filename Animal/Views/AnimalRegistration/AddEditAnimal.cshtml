@@ -12,7 +12,7 @@
 
         @Html.HiddenFor(m => m.id)
 
-       
+
         <form asp-action="AddEditAnimal">
             @*<input asp-for="id" type="hidden" />*@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -20,7 +20,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label asp-for="earTagNo" class="control-label"></label>
-                        <input asp-for="earTagNo" class="form-control" />
+                        <input asp-for="earTagNo" class="form-control" id="txtEarTag"/>
                         <span asp-validation-for="earTagNo" class="text-danger"></span>
 
                     </div>
@@ -110,15 +110,15 @@
 
 
                 @*<div class="form-group">
-            <label asp-for="createdAt" class="control-label"></label>
-            <input asp-for="createdAt" class="form-control" />
-            <span asp-validation-for="createdAt" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="updatedBy" class="control-label"></label>
-            <input asp-for="updatedBy" class="form-control" />
-            <span asp-validation-for="updatedBy" class="text-danger"></span>
-        </div>*@
+                        <label asp-for="createdAt" class="control-label"></label>
+                        <input asp-for="createdAt" class="form-control" />
+                        <span asp-validation-for="createdAt" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="updatedBy" class="control-label"></label>
+                        <input asp-for="updatedBy" class="form-control" />
+                        <span asp-validation-for="updatedBy" class="text-danger"></span>
+                    </div>*@
 
                 <div class="col-md-4">
                     <div class="form-group">
@@ -197,15 +197,68 @@
                 </div>
 
                 <div class="col-md-12" style="text-align:center; padding-top:15px;">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <input type="submit" value="Create" class="btn btn-primary" id="txtSubmit"/>
                 </div>
-</form>
-        </div>
-    </div>
-
-    <div>
-        <a asp-action="Index" class="btn btn-danger">Back to List</a>
+        </form>
     </div>
 </div>
+
+<div>
+    <a asp-action="Index" class="btn btn-danger">Back to List</a>
+</div>
+</div>
+@section Scripts{
+    <script>
+        function CheckEarTag() {
+            var status = true;
+            var ear = $("#txtEarTag").val();
+            //var myData = { earTag: ear }
+            if (ear != null) {
+                var url = RootUrl + 'Request/CheckEarTag/';
+                var result = "";
+                result = $.post(url, { earTag: ear }, function (responseText, sta) {
+                    //$.ajax({
+                    //    async: false,
+                    //    type: "POST",
+                    //    dataType: "application/json",
+                    //    data: "{'earTag':'" + ear +"'}",
+                    //    contentType: "application/json; charset=utf-8",
+                    //    url: RootUrl + 'Request/CheckEarTag/earTag=' + ear,
+                    //    success: function (data) {
+
+                    //if (reponseText == "NULL") {
+                    //    status = false;
+                    //}
+
+                    // }
+                }).reponseText;
+                if (result == "NULL") {
+                    status = false;
+                }
+
+                return status;
+            }
+        }
+
+        $(document).ready(function () {
+
+            $("#txtEarTag").change(function () {
+                if (!CheckEarTag()) {
+                    alert("Ear Tag doesnot generated yet or invalid.");
+                }
+            })
+
+            $("#txtSubmit").click(function (e) {
+                if (!CheckEarTag()) {
+                    alert("Ear Tag doesnot generated yet or invalid.");
+                    e.preventDefault();
+                }
+            })
+
+               
+        })
+  
+    </script>
+    }
 
 

@@ -9,22 +9,25 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
+
+
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
         <form asp-action="GenerateEarTag">
 
-
+            <label>Last Ear Tag: @ViewBag.LastNum</label>
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label name="start" class="control-label">Start Ear Tag</label>
-                <input name="start" class="form-control" type="number"/>
-                
+                <input name="start" class="form-control" type="number" />
+
             </div>
             <div class="form-group">
                 <label name="end" class="control-label">End Ear Tag</label>
                 <input name="end" class="form-control" type="number" />
-               
+
             </div>
-           
+
             <div class="form-group">
                 <input type="submit" value="Generate" class="btn btn-default" />
             </div>

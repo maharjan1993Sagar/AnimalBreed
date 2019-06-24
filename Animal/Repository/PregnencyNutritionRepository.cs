@@ -17,9 +17,9 @@ namespace Animal.Repository
             get { return db as AnimalContext; }
 
         }
-        public PregnancyBaseNutrition GetByWeight(string weight)
+        public PregnancyBaseNutrition GetBySpecies(string species)
         {
-            return db.Set<PregnancyBaseNutrition>().FirstOrDefault(m => m.ndf == weight);
+            return db.Set<PregnancyBaseNutrition>().FirstOrDefault(m => m.animalSpecies == species);
         }
     }
 }

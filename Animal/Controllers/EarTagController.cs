@@ -26,9 +26,12 @@ namespace Animal.Controllers
         public IActionResult GenerateEarTag()
         {
             EarTag ear = _repo.EarTag.GetModel().LastOrDefault();
-            if (ear.earTagNo != 0)
+            if (ear != null)
             {
-                ViewBag.LastNum = (ear.earTagNo/10).ToString();
+                if (ear.earTagNo != 0)
+                {
+                    ViewBag.LastNum = (ear.earTagNo / 10).ToString();
+                }
             }
             return View();
         }

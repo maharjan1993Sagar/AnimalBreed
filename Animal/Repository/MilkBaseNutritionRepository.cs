@@ -17,9 +17,9 @@ namespace Animal.Repository
             get { return db as AnimalContext; }
 
         }
-        public MIlkBaseNutrition GetByWeight(string weight)
+        public MIlkBaseNutrition GetByFat(string fat)
         {
-            return db.Set<MIlkBaseNutrition>().FirstOrDefault(m => m.ndf == weight);
+            return db.Set<MIlkBaseNutrition>().FirstOrDefault(m => m.fatPercentage == fat);
         }
     }
 }

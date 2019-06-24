@@ -29,7 +29,7 @@ namespace Animal.Models
 
         public string snf { get; set; }
 
-        public string dp { get; set; }
+        public string dm { get; set; }
 
         public string cp { get; set; }
 

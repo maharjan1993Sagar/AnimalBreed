@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Animal.Models;
 using Animal.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Animal.Controllers
 {
+    [Authorize]
     public class RequestController : Controller
     {
         private readonly IUnitOfWork _repo;

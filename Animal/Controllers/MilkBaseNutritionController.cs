@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Animal.Models;
 using Animal.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Animal.Controllers
 {
+    [Authorize]
     public class MilkBaseNutritionController : Controller
     {
         private readonly IUnitOfWork _repo;

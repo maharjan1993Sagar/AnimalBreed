@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using Animal.Models;
 using Animal.Repository;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Animal.Controllers
 {
+    [Authorize]
     public class MilkRecordController : Controller
     {
         private readonly IUnitOfWork _repo;

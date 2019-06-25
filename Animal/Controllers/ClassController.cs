@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Animal.Models.ViewModel;
 using Animal.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Animal.Controllers
 {
+    [Authorize]
     public class ClassController : Controller
     {
         private AnimalContext _context;

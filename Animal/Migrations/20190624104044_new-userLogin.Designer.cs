@@ -4,14 +4,16 @@ using Animal.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Animal.Migrations
 {
     [DbContext(typeof(AnimalContext))]
-    partial class AnimalContextModelSnapshot : ModelSnapshot
+    [Migration("20190624104044_new-userLogin")]
+    partial class newuserLogin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -486,7 +488,7 @@ namespace Animal.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("SpeciesId");
+                    b.Property<string>("animalSpecies");
 
                     b.Property<string>("c");
 
@@ -509,8 +511,6 @@ namespace Animal.Migrations
                     b.Property<string>("weight");
 
                     b.HasKey("id");
-
-                    b.HasIndex("SpeciesId");
 
                     b.ToTable("dbug_milkBaseNutrition");
                 });
@@ -627,13 +627,15 @@ namespace Animal.Migrations
 
                     b.Property<string>("ageOfAnimal");
 
+                    b.Property<string>("animalSpecies");
+
                     b.Property<string>("breed");
 
                     b.Property<string>("c");
 
                     b.Property<string>("cp");
 
-                    b.Property<string>("dm");
+                    b.Property<string>("dp");
 
                     b.Property<string>("fatPercentage");
 
@@ -643,15 +645,11 @@ namespace Animal.Migrations
 
                     b.Property<string>("snf");
 
-                    b.Property<int?>("speciesId");
-
                     b.Property<string>("tdn");
 
                     b.Property<string>("weight");
 
                     b.HasKey("id");
-
-                    b.HasIndex("speciesId");
 
                     b.ToTable("dbug_pregnancyBawseNutrition");
                 });
@@ -1070,13 +1068,6 @@ namespace Animal.Migrations
                         .HasForeignKey("animalRegistrationid");
                 });
 
-            modelBuilder.Entity("Animal.Models.MIlkBaseNutrition", b =>
-                {
-                    b.HasOne("Animal.Models.Species", "Species")
-                        .WithMany()
-                        .HasForeignKey("SpeciesId");
-                });
-
             modelBuilder.Entity("Animal.Models.MilkRecord", b =>
                 {
                     b.HasOne("Animal.Models.AnimalRegistration", "animalRegistration")
@@ -1089,13 +1080,6 @@ namespace Animal.Migrations
                     b.HasOne("Animal.Models.Farm", "farm")
                         .WithMany("OwnerKeepers")
                         .HasForeignKey("farmid");
-                });
-
-            modelBuilder.Entity("Animal.Models.PregnancyBaseNutrition", b =>
-                {
-                    b.HasOne("Animal.Models.Species", "Species")
-                        .WithMany()
-                        .HasForeignKey("speciesId");
                 });
 
             modelBuilder.Entity("Animal.Models.RegisterServiceProvider", b =>

@@ -8,6 +8,6 @@ namespace Animal.Repository
 {
     public interface IPregnencyNutritionRepository : IRepository<PregnancyBaseNutrition>
     {
-        PregnancyBaseNutrition GetByWeight(string weight);
+        PregnancyBaseNutrition GetBySpecies(string species);
     }
 }

@@ -58,20 +58,16 @@ namespace Animal.Controllers
                             var objAdmin = context.login.FirstOrDefault(a => (a.Email == l.Email));
 
 
-                      Session.Add("id", Admin.Id);
-                            Session.Add("userEmail", Admin.Email);
-                            Session.Add("category", Admin.Role);
+                    
 
                             return Redirect(ReturnUrl);
 
                         }
                         else
                         {
-                            Session.Add("id", Admin.Id);
-                            Session.Add("userEmail", Admin.Email);
-                            Session.Add("category", Admin.Role);
+                          
                             var objAdmin = context.login.FirstOrDefault(a => (a.Email == l.Email));
-                            FormsAuthentication.SetAuthCookie(l.Email, false);
+                           
                             string[] roles = role.GetRolesForUser(objAdmin.Email);
                             if (roles.Contains("SuperAdmin"))
                             {
@@ -132,9 +128,8 @@ namespace Animal.Controllers
             {
 
 
-                FormsAuthentication.SignOut();
-
-                Session.Abandon();
+              
+           
                 return RedirectToAction("Login");
 
 

@@ -16,6 +16,7 @@
   <ItemGroup>
     <Compile Remove="Repository\IVaccinationRepository.cs" />
     <Compile Remove="Repository\VaccinationRepository.cs" />
+    <Compile Remove="Role.cs" />
   </ItemGroup>
 
   <ItemGroup>

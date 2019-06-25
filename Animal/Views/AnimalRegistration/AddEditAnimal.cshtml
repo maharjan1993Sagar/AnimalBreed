@@ -20,7 +20,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label asp-for="earTagNo" class="control-label"></label>
-                        <input asp-for="earTagNo" class="form-control" id="txtEarTag"/>
+                        <input asp-for="earTagNo" class="form-control" id="txtEarTag" />
                         <span asp-validation-for="earTagNo" class="text-danger"></span>
 
                     </div>
@@ -197,7 +197,7 @@
                 </div>
 
                 <div class="col-md-12" style="text-align:center; padding-top:15px;">
-                    <input type="submit" value="Create" class="btn btn-primary" id="txtSubmit"/>
+                    <input type="submit" value="Create" class="btn btn-primary" id="txtSubmit" />
                 </div>
         </form>
     </div>
@@ -212,32 +212,25 @@
         function CheckEarTag() {
             var status = true;
             var ear = $("#txtEarTag").val();
-            //var myData = { earTag: ear }
             if (ear != null) {
-                var url = RootUrl + 'Request/CheckEarTag/';
-                var result = "";
-                result = $.post(url, { earTag: ear }, function (responseText, sta) {
-                    //$.ajax({
-                    //    async: false,
-                    //    type: "POST",
-                    //    dataType: "application/json",
-                    //    data: "{'earTag':'" + ear +"'}",
-                    //    contentType: "application/json; charset=utf-8",
-                    //    url: RootUrl + 'Request/CheckEarTag/earTag=' + ear,
-                    //    success: function (data) {
+                $.ajax({
+                    async: false,
+                    type: "POST",
+                    dataType: "json",
+                    //data: "{'earTag':'" + ear + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    url: RootUrl + 'Request/CheckEarTag?earTag=' + ear,
+                    success: function (response) {
+                        if (response.toString() == "NULL") {
+                            status = false;
 
-                    //if (reponseText == "NULL") {
-                    //    status = false;
-                    //}
+                        }
+                    }
 
-                    // }
-                }).reponseText;
-                if (result == "NULL") {
-                    status = false;
-                }
-
-                return status;
+                })
             }
+
+            return status;
         }
 
         $(document).ready(function () {
@@ -255,10 +248,10 @@
                 }
             })
 
-               
+
         })
-  
+
     </script>
-    }
+}
 
 

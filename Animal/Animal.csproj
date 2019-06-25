@@ -21,13 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="bin\Debug\netcoreapp2.1\Animal.deps.json" />
-    <Content Include="bin\Debug\netcoreapp2.1\Animal.runtimeconfig.dev.json" />
-    <Content Include="bin\Debug\netcoreapp2.1\Animal.runtimeconfig.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="bin\Debug\netcoreapp2.1\Animal.pdb" />
     <None Include="wwwroot\Admin\.gitignore" />
     <None Include="wwwroot\Admin\.travis.yml" />
     <None Include="wwwroot\Admin\404.html" />
@@ -2007,6 +2000,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="bin\Debug\netcoreapp2.1\" />
     <Folder Include="wwwroot\Admin\" />
   </ItemGroup>
 

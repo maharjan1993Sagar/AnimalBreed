@@ -19,7 +19,7 @@
                         @Html.DisplayNameFor(model => model.id)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.animalSpecies)
+                        @Html.DisplayNameFor(model => model.SpeciesId)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.fatPercentage)
@@ -62,7 +62,7 @@
                             @Html.DisplayFor(modelItem => item.id)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.animalSpecies)
+                            @Html.DisplayFor(modelItem => item.Species.speciesName)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.fatPercentage)

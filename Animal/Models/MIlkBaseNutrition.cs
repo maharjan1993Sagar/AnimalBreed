@@ -11,7 +11,7 @@ namespace Animal.Models
     {
         public int id { get; set; }
 
-        public string animalSpecies { get; set; }
+        public int? SpeciesId { get; set; }
 
         public string weight { get; set; }
 
@@ -32,5 +32,7 @@ namespace Animal.Models
         public string c { get; set; }
 
         public string p { get; set; }
+
+        public virtual Species Species { get; set; }
     }
 }

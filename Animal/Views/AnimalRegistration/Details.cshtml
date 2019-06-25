@@ -5,147 +5,195 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
+<div class="card mb-4 col-md-8" >
+    <div class="card-header py-3">
+        <h3 class="m-1 font-weight-bold center text-primary">Animal Registration</h3>
+    </div>
+    
+        <div style="patding-top:10px;">
+            <table class="table table-bordered" id="myTable">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.id)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.id)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.earTagNo)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(model => model.earTagNo)
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.weight)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => model.weight)
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.speciesId)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => model.Species.speciesName)
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.breedId)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => model.Breed.breedNameShort)
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.age)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => model.age)
+                    </th>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.dob)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => model.dob)
+                    </th>
+                </tr>
 
-<div>
-    <h4>AnimalRegistration</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.id)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.id)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.earTagNo)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.earTagNo)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.weight)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.weight)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.speciesId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.speciesId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.breedId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.breedId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.age)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.age)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.dob)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.dob)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.sireId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.sireId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.damId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.damId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.noOfCalving)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.noOfCalving)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.lastCalvingDate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.lastCalvingDate)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.pregnencyStatus)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.pregnencyStatus)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.pregnencyDuration)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.pregnencyDuration)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.milkingStatus)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.milkingStatus)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.createdAt)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.createdAt)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.updatedBy)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.updatedBy)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ownerId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ownerId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.keeperId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.keeperId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.farmId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.farmId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.gender)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.gender)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.declaredBy)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.declaredBy)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.declaredDate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.declaredDate)
-        </dd>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.sireId)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => model.sireId)
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.damId)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => model.damId)
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.noOfCalving)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => model.noOfCalving)
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.lastCalvingDate)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => model.lastCalvingDate)
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.pregnencyStatus)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => model.pregnencyStatus)
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.pregnencyDuration)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => model.pregnencyDuration)
+                    </th>
+
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.milkingStatus)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => model.milkingStatus)
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.createdAt)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => model.createdAt)
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.updatedBy)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => model.updatedBy)
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.ownerId)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => model.ownerId)
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.keeperId)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => model.keeperId)
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.farmId)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => model.farmId)
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.gender)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => model.gender)
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.declaredBy)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => model.declaredBy)
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.declaredDate)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => model.declaredDate)
+                    </th>
+                </tr>
+            </table>
+      
+    </div>
+
+    <div>
+        <a asp-action="Index" class="btn btn-danger">Back to List</a>
+    </div>
 </div>

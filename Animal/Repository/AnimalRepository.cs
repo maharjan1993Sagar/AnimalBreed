@@ -1,10 +1,7 @@
 ﻿using Animal.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Animal.Repository
 {
@@ -21,7 +18,14 @@ namespace Animal.Repository
 
         }
         public IEnumerable<AnimalRegistration> GetModel() {
-            return db.animalRegistration.Include(M => M.Species).ToList();
+            return db.animalRegistration.Include(M => M.Species).Include(m=>m.Breed).ToList();
+            
+        }
+
+        public AnimalRegistration GetById(int id)
+        {
+            return db.animalRegistration.Include(m => m.Species).Include(m=>m.Breed).FirstOrDefault(m=>m.id==id);
+
         }
     }
 }

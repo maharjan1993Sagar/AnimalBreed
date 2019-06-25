@@ -6,7 +6,7 @@
 
 <div class="card mb-4">
     <div class="card-header py-3">
-        <h3 class="m-1 font-weight-bold center text-primary">Milk Record </h3>
+        <h3 class="m-1 font-weight-bold center text-primary">Pregnancy Base Nutrition</h3>
     </div>
     <div class="card-body">
         <p>
@@ -19,30 +19,33 @@
                         @Html.DisplayNameFor(model => model.id)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.animalSpecies)
+                        @Html.DisplayNameFor(model => model.speciesId)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.weight)
+                        @Html.DisplayNameFor(model => model.PregrenencyType)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.breed)
-                    </th>
-                  
-                    <th>
-                        @Html.DisplayNameFor(model => model.ageOfAnimal)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.fatPercentage)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.snf)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.dp)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.cp)
-                    </th>
+                    @*<th>
+            @Html.DisplayNameFor(model => model.weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.breed)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ageOfAnimal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fatPercentage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.snf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cp)
+        </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.tdn)
                     </th>
@@ -61,53 +64,56 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.id)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.animalSpecies)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.weight)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.breed)
-                        </td>
-                     
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ageOfAnimal)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.fatPercentage)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.snf)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.dp)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.cp)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.tdn)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ndf)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.c)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.p)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "AddEditPregnancy", new { id = item.id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                            @Html.ActionLink("Delete", "DeletePregnancy", new { id = item.id })
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Species.speciesName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PregrenencyType)
+                    </td>
+                    @*<td>
+            @Html.DisplayFor(modelItem => item.weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.breed)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.ageOfAnimal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fatPercentage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.snf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cp)
+        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tdn)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ndf)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.c)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.p)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "AddEditPregnancy", new { id = item.id }, new { @class = "btn btn-primary" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info" }) |
+                        @Html.ActionLink("Delete", "DeletePregnancy", new { id = item.id }, new { @class = "btn btn-success" })
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>

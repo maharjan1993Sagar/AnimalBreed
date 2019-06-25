@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Animal.Repository;
 using HotelManagemant;
 using HotelManagemant.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PersonalBlog.Areas.Admin.Models;
 using SchoolInformationSystem.Data;
@@ -58,16 +59,20 @@ namespace Animal.Controllers
                             var objAdmin = context.login.FirstOrDefault(a => (a.Email == l.Email));
 
 
-                    
+                        HttpContext.Session.SetString("id", Admin.Id.ToString());
+                        HttpContext.Session.SetString("userEmail", Admin.Email);
+                        HttpContext.Session.SetString("category", Admin.Role);
 
                             return Redirect(ReturnUrl);
 
                         }
                         else
                         {
-                          
+                        HttpContext.Session.SetString("id", Admin.Id.ToString());
+                        HttpContext.Session.SetString("userEmail", Admin.Email);
+                        HttpContext.Session.SetString("category", Admin.Role);
                             var objAdmin = context.login.FirstOrDefault(a => (a.Email == l.Email));
-                           
+                           // FormsAuthentication.SetAuthCookie(l.Email, false);
                             string[] roles = role.GetRolesForUser(objAdmin.Email);
                             if (roles.Contains("SuperAdmin"))
                             {
@@ -128,8 +133,9 @@ namespace Animal.Controllers
             {
 
 
-              
-           
+                //FormsAuthentication.SignOut();
+
+            HttpContext.Session.Clear();
                 return RedirectToAction("Login");
 
 
@@ -137,6 +143,3 @@ namespace Animal.Controllers
 
         }
     }
-
-}
-}

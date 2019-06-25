@@ -8,5 +8,8 @@ namespace Animal.Repository
 {
     public interface IGeneralNutritionRepository:IRepository<GeneralNutration>
     {
+        GeneralNutration GetBySpecies(string species);
+
+        GeneralNutration GetByWeight(string weight);
     }
 }

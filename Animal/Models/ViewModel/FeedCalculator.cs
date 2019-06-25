@@ -8,10 +8,13 @@ namespace Animal.Models.ViewModel
 {
     public class FeedCalculator
     {
+        public string type { get; set; }
         public string category { get; set; }
-        public decimal animalWeight { get; set; }
+        public string species { get; set; }
+        public decimal fatPercentage { get; set; }
         public int feedId { get; set; }
         public decimal weight { get; set; }
+        public int animalWeight { get; set; }
         public string remarks { get; set; }
         public string dm { get; set; }
         public string dcp { get; set; }
@@ -22,5 +25,6 @@ namespace Animal.Models.ViewModel
         public SelectList feeds { get; set; }
         public SelectList animalCategories { get; set; }
         public SelectList feedCategories { get; set; }
+        public SelectList types { get; set; }
     }
 }

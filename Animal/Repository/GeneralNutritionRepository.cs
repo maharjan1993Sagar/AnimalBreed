@@ -17,5 +17,14 @@ namespace Animal.Repository
             get { return db as AnimalContext; }
 
         }
+        public GeneralNutration GetBySpecies(string species)
+        {
+            return db.Set<GeneralNutration>().FirstOrDefault(m => m.animalSpecies ==species);
+        }
+
+        public GeneralNutration GetByWeight(string weight)
+        {
+            return db.Set<GeneralNutration>().FirstOrDefault(m => m.weight == weight);
+        }
     }
 }

@@ -1,10 +1,8 @@
-﻿
-
-using PersonalBlog.Areas.Admin.Models;
-using PersonalBlog.Areas.Data;
+﻿using PersonalBlog.Areas.Admin.Models;
+//using PersonalBlog.Areas.Data;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+//using System.Data.Entity;
 using System.Linq;
 using System.Web;
 

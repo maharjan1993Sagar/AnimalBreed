@@ -4,14 +4,16 @@ using Animal.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Animal.Migrations
 {
     [DbContext(typeof(AnimalContext))]
-    partial class AnimalContextModelSnapshot : ModelSnapshot
+    [Migration("20190625024630_preg")]
+    partial class preg
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -625,7 +627,11 @@ namespace Animal.Migrations
 
                     b.Property<string>("PregrenencyType");
 
+                    b.Property<int?>("Speciesid");
+
                     b.Property<string>("ageOfAnimal");
+
+                    b.Property<string>("animalSpecies");
 
                     b.Property<string>("breed");
 
@@ -643,17 +649,15 @@ namespace Animal.Migrations
 
                     b.Property<string>("snf");
 
-                    b.Property<int?>("speciesId");
-
                     b.Property<string>("tdn");
 
                     b.Property<string>("weight");
 
                     b.HasKey("id");
 
-                    b.HasIndex("speciesId");
+                    b.HasIndex("Speciesid");
 
-                    b.ToTable("dbug_pregnancyBaseNutrition");
+                    b.ToTable("dbug_pregnancyBawseNutrition");
                 });
 
             modelBuilder.Entity("Animal.Models.PregnancyDiagnosis", b =>
@@ -1095,7 +1099,7 @@ namespace Animal.Migrations
                 {
                     b.HasOne("Animal.Models.Species", "Species")
                         .WithMany()
-                        .HasForeignKey("speciesId");
+                        .HasForeignKey("Speciesid");
                 });
 
             modelBuilder.Entity("Animal.Models.RegisterServiceProvider", b =>

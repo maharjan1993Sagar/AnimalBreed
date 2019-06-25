@@ -4,14 +4,16 @@ using Animal.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Animal.Migrations
 {
     [DbContext(typeof(AnimalContext))]
-    partial class AnimalContextModelSnapshot : ModelSnapshot
+    [Migration("20190625025816_newpreg")]
+    partial class newpreg
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -653,7 +655,7 @@ namespace Animal.Migrations
 
                     b.HasIndex("speciesId");
 
-                    b.ToTable("dbug_pregnancyBaseNutrition");
+                    b.ToTable("dbug_pregnancyBawseNutrition");
                 });
 
             modelBuilder.Entity("Animal.Models.PregnancyDiagnosis", b =>

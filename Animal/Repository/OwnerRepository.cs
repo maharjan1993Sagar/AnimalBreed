@@ -1,4 +1,5 @@
 ﻿using Animal.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,11 @@ namespace Animal.Repository
         {
             get { return db as AnimalContext; }
 
+        }
+
+        public IEnumerable<OwnerKeeper> GetModel()
+        {
+            return db.OwnerKeeper.Include(M => M.farm).ToList();
         }
 
     }

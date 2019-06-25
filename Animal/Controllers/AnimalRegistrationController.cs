@@ -82,6 +82,8 @@ namespace Animal.Controllers
                         IMapper iMapper = config.CreateMapper();
                         AnimalRegistration animal = iMapper.Map<AnimalVM, AnimalRegistration>(model);
                         animal.createdAt = DateTime.Now.ToShortDateString();
+                        animal.EarTag = _repo.EarTag.GetByTag(model.earTagNo);
+                        animal.earTagId = animal.EarTag.id;
                         _repo.AnimalRegistration.Insert(animal);
                         _repo.Save();
                     }
@@ -96,7 +98,8 @@ namespace Animal.Controllers
                         IMapper iMapper = config.CreateMapper();
 
                         AnimalRegistration animal = iMapper.Map<AnimalVM, AnimalRegistration>(model);
-
+                        animal.EarTag = _repo.EarTag.GetByTag(model.earTagNo);
+                        animal.earTagId = animal.EarTag.id;
                         animal.updatedBy = "admin";
 
                         _repo.AnimalRegistration.Update(animal);

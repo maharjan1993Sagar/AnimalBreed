@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Animal.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Animal.Repository
 {
@@ -17,9 +18,15 @@ namespace Animal.Repository
             get { return db as AnimalContext; }
 
         }
-        public MIlkBaseNutrition GetByWeight(string weight)
+
+        public IEnumerable<MIlkBaseNutrition> GetModel()
         {
-            return db.Set<MIlkBaseNutrition>().FirstOrDefault(m => m.ndf == weight);
+            return db.MilkBaseNutritions.Include(M => M.Species).ToList();
+        }
+
+        public MIlkBaseNutrition GetByFat(string fat)
+        {
+            return db.Set<MIlkBaseNutrition>().FirstOrDefault(m => m.fatPercentage == fat);
         }
     }
 }

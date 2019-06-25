@@ -4,14 +4,16 @@ using Animal.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Animal.Migrations
 {
     [DbContext(typeof(AnimalContext))]
-    partial class AnimalContextModelSnapshot : ModelSnapshot
+    [Migration("20190624083343_dpChangedToDmPregnancy")]
+    partial class dpChangedToDmPregnancy
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -486,7 +488,7 @@ namespace Animal.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("SpeciesId");
+                    b.Property<string>("animalSpecies");
 
                     b.Property<string>("c");
 
@@ -509,8 +511,6 @@ namespace Animal.Migrations
                     b.Property<string>("weight");
 
                     b.HasKey("id");
-
-                    b.HasIndex("SpeciesId");
 
                     b.ToTable("dbug_milkBaseNutrition");
                 });
@@ -623,9 +623,9 @@ namespace Animal.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("PregrenencyType");
-
                     b.Property<string>("ageOfAnimal");
+
+                    b.Property<string>("animalSpecies");
 
                     b.Property<string>("breed");
 
@@ -635,7 +635,13 @@ namespace Animal.Migrations
 
                     b.Property<string>("dm");
 
+                    b.Property<string>("earlyPreg");
+
                     b.Property<string>("fatPercentage");
+
+                    b.Property<string>("latePreg");
+
+                    b.Property<string>("midPreg");
 
                     b.Property<string>("ndf");
 
@@ -643,17 +649,13 @@ namespace Animal.Migrations
 
                     b.Property<string>("snf");
 
-                    b.Property<int?>("speciesId");
-
                     b.Property<string>("tdn");
 
                     b.Property<string>("weight");
 
                     b.HasKey("id");
 
-                    b.HasIndex("speciesId");
-
-                    b.ToTable("dbug_pregnancyBaseNutrition");
+                    b.ToTable("dbug_pregnancyBawseNutrition");
                 });
 
             modelBuilder.Entity("Animal.Models.PregnancyDiagnosis", b =>
@@ -869,31 +871,6 @@ namespace Animal.Migrations
                     b.ToTable("dbug_Species");
                 });
 
-            modelBuilder.Entity("Animal.Models.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address");
-
-                    b.Property<string>("Email");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("Password");
-
-                    b.Property<string>("PhoneNo");
-
-                    b.Property<string>("Role");
-
-                    b.Property<string>("UserName");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
-                });
-
             modelBuilder.Entity("Animal.Models.Vaccination", b =>
                 {
                     b.Property<int>("id")
@@ -994,25 +971,6 @@ namespace Animal.Migrations
                     b.ToTable("dbug_vaccinationType");
                 });
 
-            modelBuilder.Entity("PersonalBlog.Areas.Admin.Models.Login", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Email");
-
-                    b.Property<byte[]>("PasswordHash");
-
-                    b.Property<byte[]>("PasswordSalt");
-
-                    b.Property<string>("Role");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("login");
-                });
-
             modelBuilder.Entity("Animal.Models.AnimalOwner", b =>
                 {
                     b.HasOne("Animal.Models.AnimalRegistration", "AnimalRegistration")
@@ -1070,13 +1028,6 @@ namespace Animal.Migrations
                         .HasForeignKey("animalRegistrationid");
                 });
 
-            modelBuilder.Entity("Animal.Models.MIlkBaseNutrition", b =>
-                {
-                    b.HasOne("Animal.Models.Species", "Species")
-                        .WithMany()
-                        .HasForeignKey("SpeciesId");
-                });
-
             modelBuilder.Entity("Animal.Models.MilkRecord", b =>
                 {
                     b.HasOne("Animal.Models.AnimalRegistration", "animalRegistration")
@@ -1089,13 +1040,6 @@ namespace Animal.Migrations
                     b.HasOne("Animal.Models.Farm", "farm")
                         .WithMany("OwnerKeepers")
                         .HasForeignKey("farmid");
-                });
-
-            modelBuilder.Entity("Animal.Models.PregnancyBaseNutrition", b =>
-                {
-                    b.HasOne("Animal.Models.Species", "Species")
-                        .WithMany()
-                        .HasForeignKey("speciesId");
                 });
 
             modelBuilder.Entity("Animal.Models.RegisterServiceProvider", b =>

@@ -13,7 +13,7 @@ namespace Animal.Models
 
         public string earTagNumber { get; set; }
 
-        public bool milkingStatus { get; set; }
+        public string milkingStatus { get; set; }
 
         public string recordingPeriod { get; set; }
      
@@ -43,16 +43,6 @@ namespace Animal.Models
 
         public string snf { get; set; }
 
-        public string dp { get; set; }
-
-        public string cp { get; set; }
-
-        public string tdn { get; set; }
-
-        public string ndf { get; set; }
-
-        public string c { get; set; }
-
-        public string p { get; set; }
+        
     }
 }

@@ -14,8 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\LoginController.cs" />
     <Compile Remove="Repository\IVaccinationRepository.cs" />
     <Compile Remove="Repository\VaccinationRepository.cs" />
+    <Compile Remove="Role.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -1983,6 +1985,7 @@
     <PackageReference Include="AutoMapper" Version="8.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.1">

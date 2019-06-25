@@ -4,14 +4,16 @@ using Animal.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Animal.Migrations
 {
     [DbContext(typeof(AnimalContext))]
-    partial class AnimalContextModelSnapshot : ModelSnapshot
+    [Migration("20190625075216_someItemsAddedToUser")]
+    partial class someItemsAddedToUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -881,6 +883,8 @@ namespace Animal.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<string>("Password");
+
                     b.Property<string>("PhoneNo");
 
                     b.Property<string>("Role");
@@ -890,8 +894,6 @@ namespace Animal.Migrations
                     b.Property<byte[]>("passwordHash");
 
                     b.Property<byte[]>("passwordSalt");
-
-                    b.Property<bool>("permission");
 
                     b.HasKey("Id");
 

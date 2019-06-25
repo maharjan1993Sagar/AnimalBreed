@@ -41,5 +41,7 @@ namespace Animal.Models
         public string c { get; set; }
 
         public string p { get; set; }
+
+        public virtual Species Species { get; set; }
     }
 }

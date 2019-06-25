@@ -11,7 +11,7 @@
         <p>
             <a asp-action="AddEditOwnerKeeper" class="btn btn-outline-primary">Create New</a>
         </p>
-        <table class="table">
+        <table class="table table-bordered" id="myTable">
             <thead>
                 <tr>
                     <th>
@@ -26,45 +26,45 @@
                     <th>
                         @Html.DisplayNameFor(model => model.occupation)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.address)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.municipililty)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.wardNo)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.state)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.latitude)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.logitude)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.dob)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.academicQualification)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.finantanceStatus)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.mobileNumber)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.otherNumber)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.email)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.url)
-                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.address)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.municipililty)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.wardNo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.state)
+                        </th>*@
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.latitude)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.logitude)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.dob)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.academicQualification)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.finantanceStatus)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.mobileNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.otherNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.url)
+                        </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.farmid)
                     </th>
@@ -87,54 +87,55 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.occupation)
                         </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.municipililty)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.wardNo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.state)
+                            </td>*@
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.latitude)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.logitude)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.dob)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.academicQualification)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.finantanceStatus)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.mobileNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.otherNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.url)
+                            </td>*@
                         <td>
-                            @Html.DisplayFor(modelItem => item.address)
+                            @Html.DisplayFor(modelItem => item.farm.orgtanizationName)
                         </td>
+                      
                         <td>
-                            @Html.DisplayFor(modelItem => item.municipililty)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.wardNo)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.state)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.latitude)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.logitude)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.dob)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.academicQualification)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.finantanceStatus)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.mobileNumber)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.otherNumber)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.url)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.farmid)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "AddEditOwnerKeeper", new { id = item.id }, new { @class = "btn btn-primary" }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info" }) |
-                            @Html.ActionLink("Delete", "DeleteOwnerKeeper", new { id = item.id }, new { @class = "btn btn-success" })
+                                @Html.ActionLink("Edit", "AddEditOwnerKeeper", new { id = item.id }, new { @class = "btn btn-primary" }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info" }) |
+                                @Html.ActionLink("Delete", "DeleteOwnerKeeper", new { id = item.id }, new { @class = "btn btn-success" })
 
-                        </td>
+                            </td>
                     </tr>
                 }
             </tbody>

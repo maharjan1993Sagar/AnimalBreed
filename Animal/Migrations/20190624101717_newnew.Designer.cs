@@ -4,14 +4,16 @@ using Animal.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Animal.Migrations
 {
     [DbContext(typeof(AnimalContext))]
-    partial class AnimalContextModelSnapshot : ModelSnapshot
+    [Migration("20190624101717_newnew")]
+    partial class newnew
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -623,8 +625,6 @@ namespace Animal.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("PregrenencyType");
-
                     b.Property<string>("ageOfAnimal");
 
                     b.Property<string>("breed");
@@ -633,9 +633,15 @@ namespace Animal.Migrations
 
                     b.Property<string>("cp");
 
-                    b.Property<string>("dm");
+                    b.Property<string>("dp");
+
+                    b.Property<string>("earlyPreg");
 
                     b.Property<string>("fatPercentage");
+
+                    b.Property<string>("latePreg");
+
+                    b.Property<string>("midPreg");
 
                     b.Property<string>("ndf");
 
@@ -869,31 +875,6 @@ namespace Animal.Migrations
                     b.ToTable("dbug_Species");
                 });
 
-            modelBuilder.Entity("Animal.Models.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address");
-
-                    b.Property<string>("Email");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("Password");
-
-                    b.Property<string>("PhoneNo");
-
-                    b.Property<string>("Role");
-
-                    b.Property<string>("UserName");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
-                });
-
             modelBuilder.Entity("Animal.Models.Vaccination", b =>
                 {
                     b.Property<int>("id")
@@ -992,25 +973,6 @@ namespace Animal.Migrations
                     b.HasKey("id");
 
                     b.ToTable("dbug_vaccinationType");
-                });
-
-            modelBuilder.Entity("PersonalBlog.Areas.Admin.Models.Login", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Email");
-
-                    b.Property<byte[]>("PasswordHash");
-
-                    b.Property<byte[]>("PasswordSalt");
-
-                    b.Property<string>("Role");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("login");
                 });
 
             modelBuilder.Entity("Animal.Models.AnimalOwner", b =>

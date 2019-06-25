@@ -20,7 +20,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label asp-for="earTagNo" class="control-label"></label>
-                        <input asp-for="earTagNo" class="form-control" id="txtEarTag"/>
+                        <input asp-for="earTagNo" class="form-control" id="txtEarTag" Required/>
                         <span asp-validation-for="earTagNo" class="text-danger"></span>
 
                     </div>
@@ -212,32 +212,22 @@
         function CheckEarTag() {
             var status = true;
             var ear = $("#txtEarTag").val();
-            //var myData = { earTag: ear }
             if (ear != null) {
-                var url = RootUrl + 'Request/CheckEarTag/';
-                var result = "";
-                result = $.post(url, { earTag: ear }, function (responseText, sta) {
-                    //$.ajax({
-                    //    async: false,
-                    //    type: "POST",
-                    //    dataType: "application/json",
-                    //    data: "{'earTag':'" + ear +"'}",
-                    //    contentType: "application/json; charset=utf-8",
-                    //    url: RootUrl + 'Request/CheckEarTag/earTag=' + ear,
-                    //    success: function (data) {
-
-                    //if (reponseText == "NULL") {
-                    //    status = false;
-                    //}
-
-                    // }
-                }).reponseText;
-                if (result == "NULL") {
-                    status = false;
-                }
-
-                return status;
+                $.ajax({
+                    async: false,
+                    type: "POST",
+                    dataType: "json",
+                    //data: "{'earTag':'" + ear + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    url: RootUrl + 'Request/CheckEarTag?earTag=' + ear,
+                    success: function (response) {
+                        if (response.toString() == "NULL") {
+                            status = false;
+                        }
+                    }
+                })
             }
+            return status;
         }
 
         $(document).ready(function () {

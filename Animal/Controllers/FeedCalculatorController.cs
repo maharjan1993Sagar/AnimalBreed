@@ -120,7 +120,7 @@ namespace Animal.Controllers
 
                 generalNutrition = _repo.GeneralNutrition.GetByWeight(feeds[0].animalWeight.ToString());
 
-                PregancyBase = _repo.PregnancyBaseNutrition.GetBySpecies(feeds[0].category);
+                PregancyBase = _repo.PregnancyBaseNutrition.GetBySpecies(feeds[0].animalWeight.ToString());
                 if (PregancyBase == null)
                 {
                     ModelState.AddModelError(string.Empty, "Preganancy Base Record Not Found.");

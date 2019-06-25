@@ -1,4 +1,5 @@
 ﻿using Animal.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,12 @@ namespace Animal.Repository
         }
         public PregnancyBaseNutrition GetBySpecies(string species)
         {
-            return db.Set<PregnancyBaseNutrition>().FirstOrDefault(m => m.animalSpecies == species);
+            return db.Set<PregnancyBaseNutrition>().FirstOrDefault(m => m.weight == species);
+        }
+
+        public IEnumerable<PregnancyBaseNutrition> GetModel()
+        {
+            return db.PregnancyBaseNutritions.Include(M => M.Species).ToList();
         }
     }
 }

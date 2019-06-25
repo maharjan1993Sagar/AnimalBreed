@@ -6,24 +6,19 @@ using System.Threading.Tasks;
 
 namespace Animal.Models
 {
-    [Table("dbug_pregnancyBawseNutrition")]
+    [Table("dbug_pregnancyBaseNutrition")]
     public class PregnancyBaseNutrition
     {
         public int id { get; set; }
 
-        public string animalSpecies { get; set; }
+        public int? speciesId { get; set; }
 
         public string breed { get; set; }
 
         public string weight { get; set; }
-        public String PregrenencyType { get; set; }
 
-        //public string earlyPreg { get; set; }
-
-        //public string midPreg { get; set; }
-
-        //public string latePreg { get; set; }
-
+        public string PregrenencyType { get; set; }
+   
         public string ageOfAnimal { get; set; }
 
         public string fatPercentage { get; set; }

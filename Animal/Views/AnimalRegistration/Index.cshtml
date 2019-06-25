@@ -40,7 +40,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.damId)
                         </th>
-                        <th>
+                        @*<th>
                             @Html.DisplayNameFor(model => model.noOfCalving)
                         </th>
                         <th>
@@ -78,7 +78,7 @@
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.declaredDate)
-                        </th>
+                        </th>*@
                         <th></th>
                     </tr>
                 </thead>
@@ -94,10 +94,10 @@
                                 @Html.DisplayFor(modelItem => item.weight)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.speciesId)
+                                @Html.DisplayFor(modelItem => item.Species.speciesName)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.breedId)
+                                @Html.DisplayFor(modelItem => item.Breed.breedNameShort)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.age)
@@ -111,7 +111,7 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.damId)
                             </td>
-                            <td>
+                            @*<td>
                                 @Html.DisplayFor(modelItem => item.noOfCalving)
                             </td>
                             <td>
@@ -149,7 +149,7 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.declaredDate)
-                            </td>
+                            </td>*@
                             <td>
                                 @Html.ActionLink("Edit", "AddEditAnimal", new { id = item.id }, new { @class = "btn btn-primary" }) |
                                 @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info" }) |

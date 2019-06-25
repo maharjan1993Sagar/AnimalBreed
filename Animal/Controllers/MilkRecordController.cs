@@ -93,6 +93,7 @@ namespace Animal.Controllers
                         milk.animalRegistration = _repo.AnimalRegistration.GetById(model.animalRegistrationid.Value);
                         //To Avoid tracking error
                         // DbContextInMemory.Entry(entity).State = EntityState.Detached;
+                        milk.earTagNumber = milk.animalRegistration.earTagNo;
                         _repo.MilkRecord.Update(milk);
                     }
                 }

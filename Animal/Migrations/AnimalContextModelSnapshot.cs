@@ -617,45 +617,6 @@ namespace Animal.Migrations
                     b.ToTable("dbug_ownerKeeper");
                 });
 
-            modelBuilder.Entity("Animal.Models.PregnancyBaseNutrition", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("PregrenencyType");
-
-                    b.Property<string>("ageOfAnimal");
-
-                    b.Property<string>("breed");
-
-                    b.Property<string>("c");
-
-                    b.Property<string>("cp");
-
-                    b.Property<string>("dm");
-
-                    b.Property<string>("fatPercentage");
-
-                    b.Property<string>("ndf");
-
-                    b.Property<string>("p");
-
-                    b.Property<string>("snf");
-
-                    b.Property<int?>("speciesId");
-
-                    b.Property<string>("tdn");
-
-                    b.Property<string>("weight");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("speciesId");
-
-                    b.ToTable("dbug_pregnancyBaseNutrition");
-                });
-
             modelBuilder.Entity("Animal.Models.PregnancyDiagnosis", b =>
                 {
                     b.Property<int>("id")

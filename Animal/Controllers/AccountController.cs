@@ -62,7 +62,7 @@ namespace Animal.Controllers
             ViewBag.Message = "User Created Successfully.";
             return View();
         }
-        [HttpPost]
+        [HttpGet]
         public IActionResult Logout()
         {
             var login = HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

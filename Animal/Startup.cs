@@ -12,7 +12,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Animal.Repository;
 using Microsoft.EntityFrameworkCore;
 using Animal.Models;
-
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Animal
 {
@@ -39,7 +42,23 @@ namespace Animal
             services.AddDbContext<AnimalContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));            
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //    .AddJwtBearer(options => {
+            //        options.TokenValidationParameters = new TokenValidationParameters
+            //        {
+            //            ValidateIssuerSigningKey = true,
+            //            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII
+            //                                .GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
+            //            ValidateIssuer = false,
+            //            ValidateAudience = false
+
+            //        };
+            //    });
 
         }
 
@@ -60,6 +79,8 @@ namespace Animal
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            app.UseAuthentication();
+           // app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()); 
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

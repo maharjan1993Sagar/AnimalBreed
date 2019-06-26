@@ -4,14 +4,16 @@ using Animal.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Animal.Migrations
 {
     [DbContext(typeof(AnimalContext))]
-    partial class AnimalContextModelSnapshot : ModelSnapshot
+    [Migration("20190625100658_PasswordFieldRemoveFromUser")]
+    partial class PasswordFieldRemoveFromUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -523,6 +525,12 @@ namespace Animal.Migrations
 
                     b.Property<int?>("animalRegistrationid");
 
+                    b.Property<string>("c");
+
+                    b.Property<string>("cp");
+
+                    b.Property<string>("dp");
+
                     b.Property<string>("earTagNumber");
 
                     b.Property<string>("fatPercentage");
@@ -535,7 +543,11 @@ namespace Animal.Migrations
 
                     b.Property<string>("milkVolume");
 
-                    b.Property<string>("milkingStatus");
+                    b.Property<bool>("milkingStatus");
+
+                    b.Property<string>("ndf");
+
+                    b.Property<string>("p");
 
                     b.Property<string>("receiptNo");
 
@@ -546,6 +558,8 @@ namespace Animal.Migrations
                     b.Property<string>("shortNote");
 
                     b.Property<string>("snf");
+
+                    b.Property<string>("tdn");
 
                     b.Property<string>("testingCharge");
 

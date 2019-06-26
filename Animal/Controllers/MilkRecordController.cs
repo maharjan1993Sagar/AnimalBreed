@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using Animal.Models;
 using Animal.Repository;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Animal.Controllers
 {
+    [Authorize]
     public class MilkRecordController : Controller
     {
         private readonly IUnitOfWork _repo;
@@ -93,6 +95,7 @@ namespace Animal.Controllers
                         milk.animalRegistration = _repo.AnimalRegistration.GetById(model.animalRegistrationid.Value);
                         //To Avoid tracking error
                         // DbContextInMemory.Entry(entity).State = EntityState.Detached;
+                        milk.earTagNumber = milk.animalRegistration.earTagNo;
                         _repo.MilkRecord.Update(milk);
                     }
                 }

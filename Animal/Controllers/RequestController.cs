@@ -13,9 +13,11 @@ namespace Animal.Controllers
     public class RequestController : Controller
     {
         private readonly IUnitOfWork _repo;
-        public RequestController(IUnitOfWork repo)
+        private readonly IUserRepository _user;
+        public RequestController(IUnitOfWork repo,IUserRepository user)
         {
             _repo = repo;
+            _user = user;
         }
         public IActionResult Index()
         {
@@ -35,6 +37,26 @@ namespace Animal.Controllers
                 return Json("NULL");
             }
             
+        }
+        
+        [HttpPost]
+        public JsonResult AllowAccess(string userId)
+       {
+            try
+            {
+                int id = Convert.ToInt32(userId);
+               
+                User user = _user.GetById(id);
+                user.permission = !user.permission;
+                
+                _user.Update(user);
+                return Json("Access Permission Changed Successfully.");
+            }
+            catch
+            {
+                return Json("Print Error.");
+            }
+
         }
 
 

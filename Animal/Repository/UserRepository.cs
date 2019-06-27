@@ -1,4 +1,5 @@
 ﻿using Animal.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,36 @@ namespace Animal.Repository
         {
             _context = Context;   
         }
+        public void Delete(int id)
+        {
+            User model = _context.Users.Find(id);
+            _context.Users.Remove(model);
+            Save();
+        }
+
+
+
+        public User GetById(int id)
+        {
+            return _context.Users.Find(id);
+
+        }
+
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
+
+        public void Update(User Model)
+        {
+            _context.Entry(Model).State = EntityState.Modified;
+            Save();
+        }
+        public IEnumerable<User> GetAll()
+        {
+            return _context.Users;
+        }
+
         public User Login(string username, string password)
         {
             var user = _context.Users.FirstOrDefault(c=>c.UserName==username);

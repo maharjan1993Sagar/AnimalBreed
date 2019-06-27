@@ -8,8 +8,13 @@ namespace Animal.Repository
 {
    public interface IUserRepository
     {
+        IEnumerable<User> GetAll();
         User Register(User user, string password);
         User Login(string username, string password);
         bool UserExists(string username);
+        User GetById(int id);
+        void Delete(int id);
+        void Update(User Model);
+        void Save();
     }
 }

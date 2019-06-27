@@ -9,6 +9,7 @@ using Animal.Models;
 using Animal.Repository;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -27,11 +28,20 @@ namespace Animal.Controllers
             _user = user;
             _config = config;
         }
+        [Authorize]
         public IActionResult Index()
         {
+            IEnumerable<User> users = _user.GetAll();
+            return View(users);
+        }
+        [Authorize]
+        public IActionResult ChangePassword()
+        {
+            var User = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+
             return View();
         }
-
         [HttpGet]
         public IActionResult Register()
         {
@@ -92,7 +102,7 @@ namespace Animal.Controllers
 
             var identity = new ClaimsIdentity(new[] {
                     new Claim(ClaimTypes.Name, username),
-                new Claim(ClaimTypes.Role, "Admin")
+                new Claim(ClaimTypes.Role, userFromRepo.Role)
                 }, CookieAuthenticationDefaults.AuthenticationScheme);
 
            // isAuthenticated = true;

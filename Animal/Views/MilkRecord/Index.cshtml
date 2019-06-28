@@ -14,22 +14,22 @@
         <table class="table table-bordered" id="myTable">
             <thead>
                 <tr>
-                    <th>
+                    @*<th>
                         @Html.DisplayNameFor(model => model.id)
+                    </th>*@
+                    <th>
+                       Ear Tag No
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.earTagNumber)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.milkVolume)
+                        Milk Volume
                     </th>
                     
                   
                     <th>
-                        @Html.DisplayNameFor(model => model.fatPercentage)
+                        Fat Percent
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.recordingPeriod)
+                       Recording Period
                     </th>
                    
                     <th></th>
@@ -40,9 +40,9 @@
                 {
                 <tr>
 
-                    <td>
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.id)
-                    </td>
+                    </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.earTagNumber)
                     </td>

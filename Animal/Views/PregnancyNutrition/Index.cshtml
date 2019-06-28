@@ -15,14 +15,14 @@
         <table class="table table-bordered" id="myTable">
             <thead>
                 <tr>
-                    <th>
+                    @*<th>
                         @Html.DisplayNameFor(model => model.id)
+                    </th>*@
+                    <th>
+                      Species Name
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.speciesId)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PregrenencyType)
+                        Pregnancy Type
                     </th>
                     @*<th>
             @Html.DisplayNameFor(model => model.weight)
@@ -47,10 +47,10 @@
             @Html.DisplayNameFor(model => model.cp)
         </th>*@
                     <th>
-                        @Html.DisplayNameFor(model => model.tdn)
+                       TDN
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.ndf)
+                       NDF
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.c)
@@ -65,9 +65,9 @@
                 @foreach (var item in Model)
                 {
                 <tr>
-                    <td>
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.id)
-                    </td>
+                    </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.Species.speciesName)
                     </td>

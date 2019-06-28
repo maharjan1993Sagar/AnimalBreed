@@ -2,26 +2,28 @@
 
 @{
     ViewData["Title"] = "Index";
+
 }
 <div class="card mb-4">
     <div class="card-header py-3">
         <h3 class="m-1 font-weight-bold center text-primary">Ear Tag</h3>
     </div>
-    <div class="card-body">
+    <div class="card-body col-md-6">
         <p>
             <a asp-action="GenerateEarTag" class="btn btn-outline-primary">Generate Eartag No:</a>
         </p>
-        <table class="table table-bordered col-md-5" id="myTable">
+
+        <table class="table table-bordered col-md-12" id="myTable">
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.id)
+                       Id
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.earTagNo)
+                       Ear Tag No
                     </th>
 
-                    @*<th></th>*@
+
                 </tr>
             </thead>
             <tbody>
@@ -35,15 +37,13 @@
                             @Html.DisplayFor(modelItem => item.earTagNo)
                         </td>
 
-                        @*<td>
-                            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                        </td>*@
+
+
                     </tr>
                 }
             </tbody>
         </table>
+
     </div>
 </div>
 @section Scripts {
@@ -53,11 +53,10 @@
             var dataSrc = [];
             var table = $("#myTable").DataTable({
                 "columnDefs": [
-                    { "orderable": false, "targets": 3 }
+                    { "orderable": false, "targets": 1 }
                 ],
                 "pageLength": 50,
             });
         });
     </script>
 }
-

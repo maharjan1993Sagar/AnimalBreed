@@ -15,36 +15,36 @@
         <table class="table table-bordered" id="myTable">
             <thead>
                 <tr>
-                    <th>
+                    @*<th>
                         @Html.DisplayNameFor(model => model.id)
-                    </th>
+                    </th>*@
                     <th>
-                        @Html.DisplayNameFor(model => model.SpeciesId)
+                       Species Name
                     </th>
-                    <th>
+                    @*<th>
                         @Html.DisplayNameFor(model => model.fatPercentage)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.weight)
+                    </th>*@
+                    <th>
+                       DM
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.dm)
+                       SNF
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.snf)
+                       DP
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.dp)
+                       CP
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.cp)
-                    </th>
-                    <th>
+                    @*<th>
                         @Html.DisplayNameFor(model => model.tdn)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.ndf)
-                    </th>
+                    </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.c)
                     </th>
@@ -58,18 +58,18 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
+                        @*<td>
                             @Html.DisplayFor(modelItem => item.id)
-                        </td>
+                        </td>*@
                         <td>
                             @Html.DisplayFor(modelItem => item.Species.speciesName)
                         </td>
-                        <td>
+                        @*<td>
                             @Html.DisplayFor(modelItem => item.fatPercentage)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.weight)
-                        </td>
+                        </td>*@
                         <td>
                             @Html.DisplayFor(modelItem => item.dm)
                         </td>
@@ -82,12 +82,12 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.cp)
                         </td>
-                        <td>
+                        @*<td>
                             @Html.DisplayFor(modelItem => item.tdn)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.ndf)
-                        </td>
+                        </td>*@
                         <td>
                             @Html.DisplayFor(modelItem => item.c)
                         </td>

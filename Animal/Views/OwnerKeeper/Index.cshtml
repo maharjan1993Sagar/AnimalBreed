@@ -14,22 +14,22 @@
         <table class="table table-bordered" id="myTable">
             <thead>
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.id)
-                    </th>
+                    @*<th>
+                        Id
+                    </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.category)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.fullName)
+                        Full Name
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.occupation)
                     </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.address)
+                    </th>
                     @*<th>
-                            @Html.DisplayNameFor(model => model.address)
-                        </th>
-                        <th>
                             @Html.DisplayNameFor(model => model.municipililty)
                         </th>
                         <th>
@@ -66,7 +66,7 @@
                             @Html.DisplayNameFor(model => model.url)
                         </th>*@
                     <th>
-                        @Html.DisplayNameFor(model => model.farmid)
+                        Farm
                     </th>
                     <th></th>
                 </tr>
@@ -75,9 +75,9 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
+                        @*<td>
                             @Html.DisplayFor(modelItem => item.id)
-                        </td>
+                        </td>*@
                         <td>
                             @Html.DisplayFor(modelItem => item.category)
                         </td>
@@ -87,18 +87,18 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.occupation)
                         </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.address)
+                        </td>
                         @*<td>
-                                @Html.DisplayFor(modelItem => item.address)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.municipililty)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.wardNo)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.state)
-                            </td>*@
+                            @Html.DisplayFor(modelItem => item.municipililty)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.wardNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.state)
+                        </td>*@
                         @*<td>
                                 @Html.DisplayFor(modelItem => item.latitude)
                             </td>
@@ -129,13 +129,13 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.farm.orgtanizationName)
                         </td>
-                      
-                        <td>
-                                @Html.ActionLink("Edit", "AddEditOwnerKeeper", new { id = item.id }, new { @class = "btn btn-primary" }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info" }) |
-                                @Html.ActionLink("Delete", "DeleteOwnerKeeper", new { id = item.id }, new { @class = "btn btn-success" })
 
-                            </td>
+                        <td>
+                            @Html.ActionLink("Edit", "AddEditOwnerKeeper", new { id = item.id }, new { @class = "btn btn-primary" }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info" }) |
+                            @Html.ActionLink("Delete", "DeleteOwnerKeeper", new { id = item.id }, new { @class = "btn btn-success" })
+
+                        </td>
                     </tr>
                 }
             </tbody>

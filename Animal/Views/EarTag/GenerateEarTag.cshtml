@@ -2,40 +2,43 @@
 @{
     ViewData["Title"] = "GenerateEarTag";
 }
-
-<h2>GenerateEarTag</h2>
-
-<h4>EarTag</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-
-
-        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
-        <form asp-action="GenerateEarTag">
-
-            <label>Last Ear Tag: @ViewBag.LastNum</label>
-
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label name="start" class="control-label">Start Ear Tag</label>
-                <input name="start" class="form-control" type="number" />
-
-            </div>
-            <div class="form-group">
-                <label name="end" class="control-label">End Ear Tag</label>
-                <input name="end" class="form-control" type="number" />
-
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="Generate" class="btn btn-default" />
-            </div>
-        </form>
+<div class="card">
+    <div class="card-header py-3">
+        <h3 class="m-1 font-weight-bold center text-primary">Generate Ear Tag</h3>
     </div>
-</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                <form asp-action="GenerateEarTag">
+
+                    <label>Last Ear Tag: @ViewBag.LastNum</label>
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label name="start" class="control-label">Start Ear Tag</label>
+                        <input name="start" class="form-control" type="number" />
+
+                    </div>
+                    <div class="form-group">
+                        <label name="end" class="control-label">End Ear Tag</label>
+                        <input name="end" class="form-control" type="number" />
+
+                    </div>
+
+                    <div class="col-md-12" style="text-align:center;">
+                        <input type="submit" value="Generate" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+        <div>
+            <a asp-action="Index" class="btn btn-danger">Back to List</a>
+        </div>
+
+       
+</div>

@@ -85,10 +85,12 @@ namespace Animal.Controllers
                 return BadRequest(ModelState);
             //validate request
             user.UserName = user.UserName.ToLower();
-
+            user.Role = "Admin";
             if (_user.UserExists(user.UserName))
             {
-                return BadRequest("username already exists");
+
+                ModelState.AddModelError(string.Empty, "Username already exist");
+                return View();
             }
 
             //    var userToCreate = new User {
@@ -100,7 +102,7 @@ namespace Animal.Controllers
 
             // return StatusCode(201);
             ViewBag.Message = "User Created Successfully.";
-            return View();
+            return View("Login");
         }
         [HttpGet]
         public IActionResult Logout()

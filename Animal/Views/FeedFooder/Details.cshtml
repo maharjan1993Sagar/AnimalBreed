@@ -4,166 +4,220 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<div class="card mb-4 col-md-8">
+    <div class="card-header py-3">
+        <h3 class="m-1 font-weight-bold center text-primary">Feed Fooder</h3>
+    </div>
 
-<h2>Details</h2>
+    <div style="padding-top:10px;">
+        <table class="table table-bordered" id="myTable">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.category)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.category)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Id
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.id)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Fooder Nepali Name
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.fooderNameNep)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Fooder English Name
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.fooderNameEng)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.address)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.address)
+                </td>
+            </tr>
+            <tr>
 
-<div>
-    <h4>FeedFooder</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.category)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.category)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.id)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.id)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.fooderNameNep)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.fooderNameNep)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.fooderNameEng)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.fooderNameEng)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.address)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.address)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.municipility)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.municipility)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.district)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.district)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.state)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.state)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.shortNote)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.shortNote)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.cultivation)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.cultivation)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.seedingMethod)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.seedingMethod)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.seedHarvestingStorage)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.seedHarvestingStorage)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.grassProduct)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.grassProduct)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.dm)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.dm)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.cp)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.cp)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.tdn)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.tdn)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ndf)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ndf)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.c)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.c)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.p)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.p)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.df)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.df)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.adl)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.adl)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.tanni)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.tanni)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.nitrateScore)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.nitrateScore)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.remarks)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.remarks)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.price)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.price)
-        </dd>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+                <th>
+                    @Html.DisplayNameFor(model => model.municipility)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.municipility)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.district)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.district)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.state)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.state)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Short Note
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.shortNote)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.cultivation)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.cultivation)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Seeding Method
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.seedingMethod)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Seed Harvesting Storage
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.seedHarvestingStorage)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Grass Product
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.grassProduct)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.dm)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.dm)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.cp)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.cp)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.tdn)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.tdn)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ndf)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.ndf)
+                </td>
+            </tr>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.c)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.c)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.p)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.p)
+                </td>
+
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.df)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.df)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.adl)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.adl)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.tanni)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.tanni)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Nitrate Score
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.nitrateScore)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.remarks)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.remarks)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.price)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.price)
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+       
+        <a asp-action="Index" class="btn btn-danger">Back to List</a>
+    </div>
 </div>

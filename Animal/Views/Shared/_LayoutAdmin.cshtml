@@ -9,20 +9,20 @@
     <title>SB Admin 2 - Dashboard</title>
     <!-- Custom fonts for this template-->
     @*<environment include="Development">*@
-        <link href="~/Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="~/Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-        <!-- Custom styles for this template -->
-        <link href="~/Admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="~/Admin/css/sb-admin-2.min.css" rel="stylesheet">
 
-        <!-- Custom styles for this page -->
-        <link href="~/Admin/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- Custom styles for this page -->
+    <link href="~/Admin/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 
-        <link href="~/Admin/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-        <!-- Custom styles for this template-->
-        <link href="~/Admin/css/sb-admin-2.css" rel="stylesheet">
+    <link href="~/Admin/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="~/Admin/css/sb-admin-2.css" rel="stylesheet">
     @*</environment>*@
 </head>
 <body id="page-top">
@@ -40,24 +40,9 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Dashboard -->
-            @*<li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>Pages</span>
-            </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Login Screens:</h6>
-                    <a class="collapse-item" href="login.html">Login</a>
-                    <a class="collapse-item" href="register.html">Register</a>
-                    <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                    <div class="collapse-divider"></div>
-                    <h6 class="collapse-header">Other Pages:</h6>
-                    <a class="collapse-item" href="404.html">404 Page</a>
-                    <a class="collapse-item" href="blank.html">Blank Page</a>
-                </div>
-            </div>
-        </li>*@
+
+
+
 
 
             <li class="nav-item">
@@ -72,6 +57,23 @@
                     <span>Breed</span>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Nutrition</span>
+                </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+
+                        <a class="collapse-item" href="@Url.Action("Index","FeedFooder")">Feed Fooder Library</a>
+                        <a class="collapse-item" href="@Url.Action("Index","MilkBaseNutrition")">Milk Base Nutrition</a>
+                        <a class="collapse-item" href="@Url.Action("Index","PregnancyNutrition")">Pregnancy Base Nutrition</a>
+
+                    </div>
+                </div>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="@Url.Action("Index","EarTag")">
                     <i class="fas fa-fw fa-table"></i>
@@ -84,24 +86,24 @@
                     <span>Farm</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","FeedFooder")">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Feed Fooder</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","MilkBaseNutrition")">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Milk Base Nutrition</span>
-                </a>
-            </li>
             @*<li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","FeedFooder")">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Feed Fooder</span>
-                </a>
-            </li>*@
+            <a class="nav-link" href="@Url.Action("Index","FeedFooder")">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Feed Fooder</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","MilkBaseNutrition")">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Milk Base Nutrition</span>
+            </a>
+        </li>*@
+            @*<li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","FeedFooder")">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Feed Fooder</span>
+            </a>
+        </li>*@
             <li class="nav-item">
                 <a class="nav-link" href="@Url.Action("Index","MilkRecord")">
                     <i class="fas fa-fw fa-table"></i>
@@ -115,12 +117,12 @@
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","PregnancyNutrition")">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Preganacy Nutrition</span>
-                </a>
-            </li>
+            @*<li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","PregnancyNutrition")">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Preganacy Nutrition</span>
+            </a>
+        </li>*@
             <li class="nav-item">
                 <a class="nav-link" href="@Url.Action("Index","Species")">
                     <i class="fas fa-fw fa-table"></i>
@@ -358,26 +360,26 @@
         </div>
     </div>
     @*<environment include="Development">*@
-        <!-- Bootstrap core JavaScript-->
-        <script src="@Url.Content("~/Admin/vendor/jquery/jquery.min.js")"></script>
-        <script src="@Url.Content("~/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js")"></script>
-        <!-- Core plugin JavaScript-->
-        <script src="@Url.Content("~/Admin/vendor/jquery-easing/jquery.easing.min.js")"></script>
-        <!-- Custom scripts for all pages-->
-        <script src="@Url.Content("~/Admin/js/sb-admin-2.min.js")"></script>
-        <!-- Page level plugins -->
-        <script src="@Url.Content("~/Admin/vendor/chart.js/Chart.min.js")"></script>
-        <!-- Page level custom scripts -->
-        <script src="@Url.Content("~/Admin/js/demo/chart-area-demo.js")"></script>
-        <script src="@Url.Content("~/Admin/js/demo/chart-pie-demo.js")"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="@Url.Content("~/Admin/vendor/jquery/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js")"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="@Url.Content("~/Admin/vendor/jquery-easing/jquery.easing.min.js")"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="@Url.Content("~/Admin/js/sb-admin-2.min.js")"></script>
+    <!-- Page level plugins -->
+    <script src="@Url.Content("~/Admin/vendor/chart.js/Chart.min.js")"></script>
+    <!-- Page level custom scripts -->
+    <script src="@Url.Content("~/Admin/js/demo/chart-area-demo.js")"></script>
+    <script src="@Url.Content("~/Admin/js/demo/chart-pie-demo.js")"></script>
 
-        <!-- new added-->
-        <!-- Page level plugins -->
-        <script src="@Url.Content("~/Admin/vendor/datatables/jquery.dataTables.min.js")"></script>
-        <script src="@Url.Content("~/Admin/vendor/datatables/dataTables.bootstrap4.min.js")"></script>
+    <!-- new added-->
+    <!-- Page level plugins -->
+    <script src="@Url.Content("~/Admin/vendor/datatables/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/Admin/vendor/datatables/dataTables.bootstrap4.min.js")"></script>
 
-        <!-- Page level custom scripts -->
-        <script src="@Url.Content("~/Admin/js/demo/datatables-demo.js")"></script>
+    <!-- Page level custom scripts -->
+    <script src="@Url.Content("~/Admin/js/demo/datatables-demo.js")"></script>
     @*</environment>*@
     <script type="text/javascript">
         var RootUrl = '@Url.Content("~/")';

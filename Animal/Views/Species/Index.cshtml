@@ -19,17 +19,17 @@
         <table class="table table-bordered" id="myTable">
             <thead>
                 <tr>
-                    <th>
+                    @*<th>
                         @Html.DisplayNameFor(model => model.id)
+                    </th>*@
+                    <th>
+                     Species Name
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.speciesName)
+                        Origin From
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.originFrom)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.shortNotes)
+                        Short Notes
                     </th>
                     <th></th>
                 </tr>
@@ -38,9 +38,9 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
+                        @*<td>
                             @Html.DisplayFor(modelItem => item.id)
-                        </td>
+                        </td>*@
                         <td>
                             @Html.DisplayFor(modelItem => item.speciesName)
                         </td>

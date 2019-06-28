@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="milkingStatus" class="control-label"></label>
+                       <label>Milking Status</label>
                         <select asp-for="milkingStatus" class="form-control">
                             <option disabled selected>select  status</option>
                             <option value="Milking">Milking</option>
@@ -29,7 +29,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="recordingPeriod" class="control-label"></label>
+                        <label>Recording Period</label>
                         
                         <select asp-for="recordingPeriod" class="form-control" id="trigger-dp" >
                             <option disabled selected>select Recording Period</option>
@@ -44,7 +44,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="recordingDate" class="control-label"></label>
+                        <label>Recording Date</label>
                         <input asp-for="recordingDate" class="form-control" />
                         <span asp-validation-for="recordingDate" class="text-danger"></span>
                     </div>
@@ -52,7 +52,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="milkVolume" class="control-label"></label>
+                        <label>Milk Volume</label>
                         <input asp-for="milkVolume" class="form-control" />
                         <span asp-validation-for="milkVolume" class="text-danger"></span>
                     </div>
@@ -60,7 +60,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="milkSampleBoxNo" class="control-label"></label>
+                        <label>Milk Sample Box No</label>
                         <input asp-for="milkSampleBoxNo" class="form-control" />
                         <span asp-validation-for="milkSampleBoxNo" class="text-danger"></span>
                     </div>
@@ -68,7 +68,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="labId" class="control-label"></label>
+                        <label>Lab Id</label>
                         <input asp-for="labId" class="form-control" />
                         <span asp-validation-for="labId" class="text-danger"></span>
                     </div>
@@ -76,7 +76,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="testingCharge" class="control-label"></label>
+                        <label>Testing Charge</label>
                         <input asp-for="testingCharge" class="form-control" />
                         <span asp-validation-for="testingCharge" class="text-danger"></span>
                     </div>
@@ -84,7 +84,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="receiptNo" class="control-label"></label>
+                        <label>Receipt No</label>
                         <input asp-for="receiptNo" class="form-control" />
                         <span asp-validation-for="receiptNo" class="text-danger"></span>
                     </div>
@@ -92,7 +92,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="genericProblem" class="control-label"></label>
+                        <label>Gneneric Problem</label>
                         <input asp-for="genericProblem" class="form-control" />
                         <span asp-validation-for="genericProblem" class="text-danger"></span>
                     </div>
@@ -108,7 +108,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="shortNote" class="control-label"></label>
+                        <label>Short Note</label>
                         <input asp-for="shortNote" class="form-control" />
                         <span asp-validation-for="shortNote" class="text-danger"></span>
                     </div>
@@ -125,7 +125,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="fatPercentage" class="control-label"></label>
+                        <label>Fat Percentage</label>
                         <input asp-for="fatPercentage" class="form-control" />
                         <span asp-validation-for="fatPercentage" class="text-danger"></span>
                     </div>
@@ -143,7 +143,7 @@
 
 
             <div class="col-md-12" style="text-align:center; padding-top:15px;">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Submit" class="btn btn-primary" />
             </div>
                 </div>
         </form>

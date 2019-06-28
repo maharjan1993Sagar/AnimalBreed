@@ -28,7 +28,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="fullName" class="control-label"></label>
+                       <label>Full Name</label>
                         <input asp-for="fullName" class="form-control" />
                         <span asp-validation-for="fullName" class="text-danger"></span>
                     </div>
@@ -60,7 +60,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="wardNo" class="control-label"></label>
+                        <label>Ward no</label>
                         <input asp-for="wardNo" class="form-control" />
                         <span asp-validation-for="wardNo" class="text-danger"></span>
                     </div>
@@ -100,7 +100,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="academicQualification" class="control-label"></label>
+                      <label>Academic Qualification</label>
                         <input asp-for="academicQualification" class="form-control" />
                         <span asp-validation-for="academicQualification" class="text-danger"></span>
                     </div>
@@ -108,7 +108,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="finantanceStatus" class="control-label"></label>
+                        <label>Finantance Status</label>
                         <input asp-for="finantanceStatus" class="form-control" />
                         <span asp-validation-for="finantanceStatus" class="text-danger"></span>
                     </div>
@@ -116,7 +116,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="mobileNumber" class="control-label"></label>
+                      <label>Mobile Number</label>
                         <input asp-for="mobileNumber" class="form-control" />
                         <span asp-validation-for="mobileNumber" class="text-danger"></span>
                     </div>
@@ -124,7 +124,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="otherNumber" class="control-label"></label>
+                       <label>Other Number</label>
                         <input asp-for="otherNumber" class="form-control" />
                         <span asp-validation-for="otherNumber" class="text-danger"></span>
                     </div>
@@ -148,7 +148,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="farmid" class="control-label"></label>
+                       <label>Farm</label>
                         @*<input asp-for="farmid" class="form-control" />*@
                         @Html.DropDownList("farmid", Model.farms, "Choose Farm", htmlAttributes: new { @class = "form-control" })
 
@@ -158,7 +158,7 @@
             </div>
 
             <div class="col-md-12" style="text-align:center; padding-top:15px;">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Submit" class="btn btn-primary" />
             </div>
         </form>
     </div>

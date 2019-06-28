@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "Send Verification Code";
+}
+
+<h2>Send Password Reset Link</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SendLink">
+           
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label name="UserName" class="control-label">User Name</label>
+                <input name="UserName" class="form-control" required/>
+                
+            </div>
+            
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

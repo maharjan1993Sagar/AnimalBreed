@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Animal Breed</title>
     <!-- Custom fonts for this template-->
     @*<environment include="Development">*@
         <link href="~/Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -97,11 +97,11 @@
                 </a>
             </li>
             @*<li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","FeedFooder")">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Feed Fooder</span>
-                </a>
-            </li>*@
+            <a class="nav-link" href="@Url.Action("Index","FeedFooder")">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Feed Fooder</span>
+            </a>
+        </li>*@
             <li class="nav-item">
                 <a class="nav-link" href="@Url.Action("Index","MilkRecord")">
                     <i class="fas fa-fw fa-table"></i>
@@ -127,7 +127,12 @@
                     <span>Species</span>
                 </a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("calculate","FeedCalculator")">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Nutrition Balance</span>
+                </a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

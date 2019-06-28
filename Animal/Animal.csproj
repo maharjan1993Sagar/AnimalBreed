@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
     <UserSecretsId>45ede0bc-8fe8-4dd9-9b3a-b33042281c1d</UserSecretsId>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +16,9 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\LoginController.cs" />
+    <Compile Remove="Migrations\20190625095128_testst.cs" />
+    <Compile Remove="Migrations\20190625095128_testst.Designer.cs" />
+    <Compile Remove="Models\EmailManager.cs" />
     <Compile Remove="Repository\IVaccinationRepository.cs" />
     <Compile Remove="Repository\VaccinationRepository.cs" />
     <Compile Remove="Role.cs" />
@@ -1987,6 +1991,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.4.10" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+    <PackageReference Include="WebMatrix.WebData" Version="2.0.30506" />
   </ItemGroup>
 
   <ItemGroup>

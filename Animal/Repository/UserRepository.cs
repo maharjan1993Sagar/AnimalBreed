@@ -28,6 +28,12 @@ namespace Animal.Repository
             return _context.Users.Find(id);
 
         }
+        public User GetByName(string name)
+        {
+            return _context.Users.FirstOrDefault(m=>m.UserName==name);
+
+        }
+
 
         public void Save()
         {
@@ -78,11 +84,24 @@ namespace Animal.Repository
 
             user.passwordHash = passwordHash;
             user.passwordSalt = passwordSalt;
-
+           
             _context.Users.Add(user);
             _context.SaveChanges();
             return user;
         }
+        public User ChangePassword(User user, string password)
+        {
+            byte[] passwordHash, passwordSalt;
+            CreatePasswordHash(password, out passwordHash, out passwordSalt);
+
+            user.passwordHash = passwordHash;
+            user.passwordSalt = passwordSalt;
+            _context.Entry(user).State = EntityState.Modified;
+            
+            _context.SaveChanges();
+            return user;
+        }
+
 
         public void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {

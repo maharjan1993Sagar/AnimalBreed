@@ -2,42 +2,61 @@
 
 @{
     ViewData["Title"] = "Index";
-}
 
-<h2>Index</h2>
-
-<p>
-    <a asp-action="GenerateEarTag">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.earTagNo)
-            </th>
-           
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.earTagNo)
-            </td>
-           
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
 }
-    </tbody>
-</table>
+<div class="card mb-4">
+    <div class="card-header py-3">
+        <h3 class="m-1 font-weight-bold center text-primary">Ear Tag</h3>
+    </div>
+    <div class="card-body col-md-6">
+        <p>
+            <a asp-action="GenerateEarTag" class="btn btn-outline-primary">Generate Eartag No:</a>
+        </p>
+
+        <table class="table table-bordered col-md-12" id="myTable">
+            <thead>
+                <tr>
+                    <th>
+                       Id
+                    </th>
+                    <th>
+                       Ear Tag No
+                    </th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.earTagNo)
+                        </td>
+
+
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("body div.myTable input");
+            var dataSrc = [];
+            var table = $("#myTable").DataTable({
+                "columnDefs": [
+                    { "orderable": false, "targets": 1 }
+                ],
+                "pageLength": 50,
+            });
+        });
+    </script>
+}

@@ -1,0 +1,126 @@
+﻿@model List<Animal.Models.ViewModel.FeedCalculator>
+
+    @{
+    ViewData["Title"] = "Feed Calculate";
+    }
+
+
+
+    @if (Context.Request.Method.ToString() == "GET")
+{
+
+    <form asp-action="Calculation">
+        <h2 class="text-center">Feed Calculator</h2>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Feed Type</label>
+                    @Html.DropDownList("[0].type", new List<SelectListItem>{
+                                new SelectListItem{ Text="MilkBase", Value = "MilkBase" },
+                                new SelectListItem{ Text="PregnancyBase", Value = "PregnancyBase" }
+                            },"Select",new {@class="form-control" })
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Fat Percentage </label>
+                    <input name="[0].fatPercentage" class="form-control" value="@Model[0].fatPercentage" />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Animal Weight </label>
+                    <input name="[0].animalWeight" class="form-control" value="@Model[0].animalWeight" />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Category  </label>
+                    @Html.DropDownList("[0].category", Model[0].animalCategories, "Select", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h2>Feed</h2>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Select Feed</label>
+                    @Html.DropDownList("[0].feedId", Model[0].feeds, "Select", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Feed Weight</label>
+                    <input asp-for="@Model[0].weight" class="form-control" value="@Model[0].weight" />
+                </div>
+            </div>
+            @*<div class="col-md-12">
+                    <label>Feed2</label>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Feed Category</label>
+                            @Html.DropDownList("[1].feedCategory", Model[0].feedCategories, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Select Feed</label>
+                            @Html.DropDownList("[1].feedId", Model[0].feeds, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Feed Weight</label>
+                            <input asp-for="@Model[1].weight" class="form-control" />
+                        </div>
+                    </div>
+                </div>*@
+            <div class="col-md-12">
+                <input type="submit" value="Calculate" class="btn btn-default" />
+            </div>
+        </div>
+    </form>
+
+
+}
+    @if (Context.Request.Method.ToString() == "POST")
+{<div class="row">
+
+        <h2>Feed Calculator</h2>
+        <table class="table table-bordered">
+            <tr>
+                <th>Discription</th>
+                <th>DM</th>
+
+                <th>TDN</th>
+                <th>C</th>
+                <th>P</th>
+            </tr>
+            @for (int i = 0; i < Model.Count(); i++)
+        {
+            <tr>
+                <td>@Model[i].remarks</td>
+                <td>@Model[i].dm</td>
+
+                <td>@Model[i].tdn</td>
+                <td>@Model[i].c</td>
+                <td>@Model[i].p</td>
+            </tr>
+        }
+        </table>
+
+        <div>
+            <a asp-action="Calculate">Calculate Feed</a>
+        </div>
+    </div>
+}
+
+
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

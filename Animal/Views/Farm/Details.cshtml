@@ -3,121 +3,155 @@
 @{
     ViewData["Title"] = "Details";
 }
+<div class="card mb-4 col-md-8">
+    <div class="card-header py-3">
+        <h3 class="m-1 font-weight-bold center text-primary">Farm</h3>
+    </div>
 
-<h2>Details</h2>
+    <div style="padding-top:10px;">
+        <table class="table table-bordered" id="myTable">
+            <tr>
+                <th>
+                  Id
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.id)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Organization Name
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.orgtanizationName)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Short Detail
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.shortDetail)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Date of Organization
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.dateOfRegistration)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Reg Certificate
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.regCertification)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Mobile 1
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.mobile1)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Mobile
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.mobile)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Email
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.email)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    URL
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.url)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Address
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.address)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Municipility
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.municipility)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Ward
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.ward)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.longitude)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.longitude)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.latitude)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.latitude)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Farm Type
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.farmType)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.land)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.land)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.area)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.area)
+                </td>
+            </tr>
+        </table>
+    </div>
 
 
-<div>
-    <h4>Farm</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.id)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.id)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.orgtanizationName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.orgtanizationName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.shortDetail)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.shortDetail)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.dateOfRegistration)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.dateOfRegistration)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.regCertification)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.regCertification)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.mobile1)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.mobile1)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.mobile)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.mobile)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.email)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.email)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.url)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.url)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.address)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.address)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.municipility)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.municipility)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ward)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ward)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.longitude)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.longitude)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.latitude)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.latitude)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.farmType)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.farmType)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.land)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.land)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.area)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.area)
-        </dd>
-    </dl>
-</div>
+    <div>
 
-
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+        <a asp-action="Index" class="btn btn-danger">Back to List</a>
+    </div>
 </div>

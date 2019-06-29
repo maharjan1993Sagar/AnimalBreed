@@ -4,70 +4,91 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<div class="card mb-4 col-md-8">
+    <div class="card-header py-3">
+        <h3 class="m-1 font-weight-bold center text-primary">Breed</h3>
+    </div>
 
-<h2>Details</h2>
+    <div style="patding-top:10px;">
+        <table class="table table-bordered" id="myTable">
+            <tr>
+                <th>
+                   Id
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.id)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Species Name
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.speciesId)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Breed Short Name
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.breedNameShort)
+                </td>
+            </tr>
+            <tr>
 
-<div>
-    <h4>Breed</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.id)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.id)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.speciesId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.speciesId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.breedNameShort)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.breedNameShort)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.breedNamelong)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.breedNamelong)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.shortDetail)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.shortDetail)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.originFrom)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.originFrom)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.registeredBy)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.registeredBy)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.updatedBy)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.updatedBy)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.registeredDate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.registeredDate)
-        </dd>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+                <th>
+                   Breed Long Name
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.breedNamelong)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Short Detail
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.shortDetail)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Origin From
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.originFrom)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Register By
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.registeredBy)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                  Updated By
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.updatedBy)
+                </td>
+            </tr>
+            <tr>
+            <th>
+                Register Date
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.registeredDate)
+            </td>
+                </tr>
+        </table>
+    </div>
+
+    <div>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        <a asp-action="Index">Back to List</a>
+    </div>
 </div>

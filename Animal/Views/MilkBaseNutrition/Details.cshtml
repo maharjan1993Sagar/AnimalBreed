@@ -4,82 +4,114 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<div class="card mb-4 col-md-8">
+    <div class="card-header py-3">
+        <h3 class="m-1 font-weight-bold center text-primary">Milk Base Nutrition</h3>
+    </div>
 
-<h2>Details</h2>
+    <div style="padding-top:10px;">
+        <table class="table table-bordered" id="myTable">
+            <tr>
+                <th>
+                    Id
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.id)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Species Name
+                </th>
+                <td>
+                    @Html.DisplayNameFor(model => model.Species.speciesName)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.weight)
+                </th>
+                <td>
+                    @Html.DisplayNameFor(model => model.weight)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.dm)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.dm)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Fat Percent
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.fatPercentage)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.snf)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.snf)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.dp)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.dp)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.cp)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.cp)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.tdn)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.tdn)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ndf)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.ndf)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.c)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.c)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.p)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.p)
+                </td>
+            </tr>
 
-<div>
-    <h4>MIlkBaseNutrition</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.id)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.id)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.weight)
-        </dt>
-        <dt>
-            @Html.DisplayNameFor(model => model.weight)
-        </dt>
-        <dt>
-            @Html.DisplayNameFor(model => model.dm)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.dm)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.fatPercentage)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.fatPercentage)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.snf)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.snf)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.dp)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.dp)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.cp)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.cp)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.tdn)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.tdn)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ndf)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ndf)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.c)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.c)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.p)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.p)
-        </dd>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+        </table>
+    </div>
+    <div>
+
+        <a asp-action="Index" class="btn btn-danger">Back to List</a>
+    </div>
 </div>

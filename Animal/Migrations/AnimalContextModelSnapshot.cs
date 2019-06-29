@@ -871,6 +871,8 @@ namespace Animal.Migrations
 
                     b.Property<string>("PhoneNo");
 
+                    b.Property<string>("ResetPasswordCode");
+
                     b.Property<string>("Role");
 
                     b.Property<string>("UserName");

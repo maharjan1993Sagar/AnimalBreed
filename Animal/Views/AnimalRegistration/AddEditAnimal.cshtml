@@ -19,7 +19,8 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="earTagNo" class="control-label"></label>
+                        <label>Ear Tag No</label>
+                       
 
                         <input asp-for="earTagNo" class="form-control" id="txtEarTag" Required/>
 
@@ -38,7 +39,8 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="speciesId" class="control-label"></label>
+                        <label>Species Name</label>
+                       
                         @Html.DropDownList("speciesId", Model.speciess, "Select", new { @class = "form-control" })
                         <span asp-validation-for="speciesId" class="text-danger"></span>
                     </div>
@@ -46,7 +48,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="breedId" class="control-label"></label>
+                        <label>Breed</label>
                         @Html.DropDownList("breedId", Model.breeds, "Select", new { @class = "form-control" })
 
                         <span asp-validation-for="breedId" class="text-danger"></span>
@@ -71,7 +73,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="sireId" class="control-label"></label>
+                        <label>Sire Id</label>
                         <input asp-for="sireId" class="form-control" />
                         <span asp-validation-for="sireId" class="text-danger"></span>
                     </div>
@@ -79,7 +81,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="damId" class="control-label"></label>
+                       <label>Dam Id</label>
                         <input asp-for="damId" class="form-control" />
                         <span asp-validation-for="damId" class="text-danger"></span>
                     </div>
@@ -87,7 +89,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="noOfCalving" class="control-label"></label>
+                       <label>No of calving</label>
                         <input asp-for="noOfCalving" class="form-control" />
                         <span asp-validation-for="noOfCalving" class="text-danger"></span>
                     </div>
@@ -95,7 +97,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="lastCalvingDate" class="control-label"></label>
+                        <label>Last calving Date</label>
                         <input asp-for="lastCalvingDate" class="form-control" />
                         <span asp-validation-for="lastCalvingDate" class="text-danger"></span>
                     </div>
@@ -104,7 +106,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="pregnencyDuration" class="control-label"></label>
+                        <label>Pregnancy Duration</label>
                         <input asp-for="pregnencyDuration" class="form-control" />
                         <span asp-validation-for="pregnencyDuration" class="text-danger"></span>
                     </div>
@@ -124,7 +126,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="ownerId" class="control-label"></label>
+                       <label>Owner</label>
                         @*@Html.DropDownList("ownerId",Model.owners,"Select", htmlAttributes: new { @class = "form-control" })*@
 
                         <input asp-for="ownerId" class="form-control" />
@@ -134,7 +136,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="keeperId" class="control-label"></label>
+                       <label>Keeper</label>
                         @*  @Html.DropDownList("keeperId", Model.owners, "Select", htmlAttributes: new { @class = "form-control" })*@
 
                         <input asp-for="keeperId" class="form-control" />
@@ -144,7 +146,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="farmId" class="control-label"></label>
+                       <label>Farm</label>
                         @*@Html.DropDownList("farmId", Model.farms, "Select", htmlAttributes: new { @class = "form-control" })*@
                         <input asp-for="farmId" class="form-control" />
                         <span asp-validation-for="farmId" class="text-danger"></span>
@@ -153,7 +155,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="gender" class="control-label"></label>
+                       <label>Gender</label>
                         <input asp-for="gender" class="form-control" />
                         <span asp-validation-for="gender" class="text-danger"></span>
                     </div>
@@ -161,7 +163,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="declaredBy" class="control-label"></label>
+                       <label>Declared By</label>
                         <input asp-for="declaredBy" class="form-control" />
                         <span asp-validation-for="declaredBy" class="text-danger"></span>
                     </div>
@@ -169,7 +171,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label asp-for="declaredDate" class="control-label"></label>
+                        <label>Declared Date</label>
                         <input asp-for="declaredDate" class="form-control" />
                         <span asp-validation-for="declaredDate" class="text-danger"></span>
                     </div>
@@ -199,7 +201,7 @@
                 </div>
 
                 <div class="col-md-12" style="text-align:center; padding-top:15px;">
-                    <input type="submit" value="Create" class="btn btn-primary" id="txtSubmit" />
+                    <input type="submit" value="Submit" class="btn btn-primary" id="txtSubmit" />
                 </div>
         </form>
     </div>

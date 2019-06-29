@@ -4,113 +4,146 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<div class="card mb-4 col-md-8">
+    <div class="card-header py-3">
+        <h3 class="m-1 font-weight-bold center text-primary">Milk Record</h3>
+    </div>
 
-<h2>Details</h2>
+    <div style="padding-top:10px;">
+        <table class="table table-bordered" id="myTable">
+            <tr>
+                <th>
+                   Id
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.id)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Ear Tag Number
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.earTagNumber)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Milking Status
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.milkingStatus)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                  Recording Period
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.recordingPeriod)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Recording Date
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.recordingDate)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Milk Volume
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.milkVolume)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Milk Sample Box No
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.milkSampleBoxNo)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                  Lab Id
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.labId)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Testing Charge
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.testingCharge)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Receipt No
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.receiptNo)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Generic Problem
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.genericProblem)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.vacination)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.vacination)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Short Note
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.shortNote)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Animal Registration Id
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.animalRegistrationid)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Fat Percentage Id
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.fatPercentage)
+                </td>
+            </tr>
 
-<div>
-    <h4>MilkRecord</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.id)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.id)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.earTagNumber)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.earTagNumber)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.milkingStatus)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.milkingStatus)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.recordingPeriod)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.recordingPeriod)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.recordingDate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.recordingDate)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.milkVolume)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.milkVolume)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.milkSampleBoxNo)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.milkSampleBoxNo)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.labId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.labId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.testingCharge)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.testingCharge)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.receiptNo)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.receiptNo)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.genericProblem)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.genericProblem)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.vacination)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.vacination)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.shortNote)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.shortNote)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.animalRegistrationid)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.animalRegistrationid)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.fatPercentage)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.fatPercentage)
-        </dd>
-        @*<dt>
-            @Html.DisplayNameFor(model => model.snf)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.snf)
-        </dd>*@
-        
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.snf)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.snf)
+                </td>*@
+
+        </table>
+    </div>
+
+    <div>
+
+        <a asp-action="Index" class="btn btn-danger">Back to List</a>
+    </div>
 </div>

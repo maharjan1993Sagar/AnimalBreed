@@ -38,5 +38,6 @@ namespace Animal.Models
         public string p { get; set; }
 
         public virtual Species Species { get; set; }
+        public string milkVolumn { get; set; }
     }
 }

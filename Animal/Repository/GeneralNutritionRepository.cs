@@ -22,9 +22,9 @@ namespace Animal.Repository
             return db.Set<GeneralNutration>().FirstOrDefault(m => m.animalSpecies ==species);
         }
 
-        public GeneralNutration GetByWeight(string weight)
+        public GeneralNutration GetByWeight(string weight,string species)
         {
-            return db.Set<GeneralNutration>().FirstOrDefault(m => m.weight == weight);
+            return db.Set<GeneralNutration>().FirstOrDefault(m => m.weight == weight && m.animalSpecies==species);
         }
     }
 }

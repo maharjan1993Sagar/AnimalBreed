@@ -132,12 +132,14 @@ namespace Animal.Controllers
             List<FeedCalculator> feedResult = new List<FeedCalculator>();
             string fat = feeds[0].fatPercentage.ToString();
             string type = feeds[0].type;
+            string volumn = feeds[0].milkvolumn;
+            string species = feeds[0].species;
             GeneralNutration generalNutrition = new GeneralNutration();
             MIlkBaseNutrition MilkBase = new MIlkBaseNutrition();
             PregnancyBaseNutrition PregancyBase = new PregnancyBaseNutrition();
 
             if (_repoU.FeedFooder.GetById(feeds[0].feedId) == null ||
-                _repoU.GeneralNutrition.GetByWeight(feeds[0].animalWeight.ToString()) == null
+                _repoU.GeneralNutrition.GetByWeight(feeds[0].animalWeight.ToString(),species) == null
                 )
             {
                 ModelState.AddModelError(string.Empty, "Feed Fooder Record Not Found.");
@@ -163,9 +165,9 @@ namespace Animal.Controllers
 
             if (type == "MilkBase")
             {
-                generalNutrition = _repoU.GeneralNutrition.GetByWeight(feeds[0].animalWeight.ToString());
+                generalNutrition = _repoU.GeneralNutrition.GetByWeight(feeds[0].animalWeight.ToString(),species);
 
-                MilkBase = _repoU.MilkBase.GetByFat(fat);
+                MilkBase = _repoU.MilkBase.GetByFat(fat,volumn,species);
                 if (MilkBase == null)
                 {
                     ModelState.AddModelError(string.Empty, "Milk Base Record Not Found.");
@@ -191,7 +193,7 @@ namespace Animal.Controllers
             else
             {
 
-                generalNutrition = _repoU.GeneralNutrition.GetByWeight(feeds[0].animalWeight.ToString());
+                generalNutrition = _repoU.GeneralNutrition.GetByWeight(feeds[0].animalWeight.ToString(),species);
 
                 PregancyBase = _repoU.PregnancyBaseNutrition.GetBySpecies(feeds[0].animalWeight.ToString());
                 if (PregancyBase == null)

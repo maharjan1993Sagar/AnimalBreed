@@ -7,6 +7,6 @@ namespace Animal.Repository
 {
   public interface IMilkBaseNutritionRepository:IRepository<MIlkBaseNutrition>
     {
-        MIlkBaseNutrition GetByFat(string weight);
+        MIlkBaseNutrition GetByFat(string fat,string volumn,string species);
     }
 }

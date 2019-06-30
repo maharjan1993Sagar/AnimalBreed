@@ -18,5 +18,7 @@ namespace Animal.Models
         public byte[] passwordHash { get; set; }
         public byte[] passwordSalt { get; set; }
         public bool permission { get; set; }
+        //public bool emailConfirmation { get; set; }
+        public string ResetPasswordCode { get; set; }
     }
 }

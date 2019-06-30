@@ -58,6 +58,22 @@ namespace Animal.Controllers
             }
 
         }
+        [HttpPost]
+        public JsonResult GetNutrition(string milkVolumn, string fat, string weight, string nutrition,string species)
+        {
+            GeneralNutration gn = _repo.GeneralNutrition.GetByWeight(weight,species);
+            MIlkBaseNutrition mn = _repo.MilkBase.GetByFat(fat, milkVolumn,species);
+            EarTag ear = _repo.EarTag.GetByTag("");
+            if (ear != null)
+            {
+                return Json("NOTNULL");
+            }
+            else
+            {
+                return Json("NULL");
+            }
+
+        }
 
 
     }

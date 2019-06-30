@@ -10,7 +10,6 @@
     </div>
     <div class="card-body">
         @Html.HiddenFor(m => m.id)
-
         <form asp-action="AddEditPregnancy">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -86,7 +85,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                       <label>Age of Animal</label>
+                        <label>Age of Animal</label>
                         <input asp-for="ageOfAnimal" class="form-control" />
                         <span asp-validation-for="ageOfAnimal" class="text-danger"></span>
                     </div>
@@ -94,7 +93,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                      <label>Fat Percentage</label>
+                        <label>Fat Percentage</label>
                         <input asp-for="fatPercentage" class="form-control" />
                         <span asp-validation-for="fatPercentage" class="text-danger"></span>
                     </div>
@@ -153,6 +152,13 @@
                         <label asp-for="p" class="control-label"></label>
                         <input asp-for="p" class="form-control" />
                         <span asp-validation-for="p" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="milkVolumn" class="control-label"></label>
+                        <input asp-for="milkVolumn" class="form-control" />
+                        <span asp-validation-for="milkVolumn" class="text-danger"></span>
                     </div>
                 </div>
             </div>

@@ -24,9 +24,9 @@ namespace Animal.Repository
             return db.MilkBaseNutritions.Include(M => M.Species).ToList();
         }
 
-        public MIlkBaseNutrition GetByFat(string fat)
+        public MIlkBaseNutrition GetByFat(string fat, string volumn,string species)
         {
-            return db.Set<MIlkBaseNutrition>().FirstOrDefault(m => m.fatPercentage == fat);
+            return db.Set<MIlkBaseNutrition>().FirstOrDefault(m => m.fatPercentage == fat && m.milkVolumn==volumn && m.Species.speciesName==species);
         }
     }
 }

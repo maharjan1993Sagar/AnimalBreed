@@ -10,6 +10,6 @@ namespace Animal.Repository
     {
         GeneralNutration GetBySpecies(string species);
 
-        GeneralNutration GetByWeight(string weight);
+        GeneralNutration GetByWeight(string weight, string species);
     }
 }

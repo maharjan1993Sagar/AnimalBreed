@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Animal.Migrations
 {
     [DbContext(typeof(AnimalContext))]
-    [Migration("20190625095117_milk-base")]
-    partial class milkbase
+    [Migration("20190628061345_resetpasswordcode")]
+    partial class resetpasswordcode
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -871,13 +871,19 @@ namespace Animal.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("Password");
-
                     b.Property<string>("PhoneNo");
+
+                    b.Property<string>("ResetPasswordCode");
 
                     b.Property<string>("Role");
 
                     b.Property<string>("UserName");
+
+                    b.Property<byte[]>("passwordHash");
+
+                    b.Property<byte[]>("passwordSalt");
+
+                    b.Property<bool>("permission");
 
                     b.HasKey("Id");
 

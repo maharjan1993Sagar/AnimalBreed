@@ -26,5 +26,6 @@ namespace Animal.Models.ViewModel
         public SelectList animalCategories { get; set; }
         public SelectList feedCategories { get; set; }
         public SelectList types { get; set; }
+        public string milkvolumn { get; set; }
     }
 }

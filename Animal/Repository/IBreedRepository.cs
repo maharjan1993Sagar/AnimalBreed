@@ -8,5 +8,6 @@ namespace Animal.Repository
 {
     public interface IBreedRepository : IRepository<Breed>
     {
+        IEnumerable<Breed> GetBySpecies(int species);
     }
 }

@@ -6,10 +6,11 @@ using Animal.Models;
 using Animal.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Animal.Controllers
 {
-    [Authorize]
+   // [Authorize]
     public class RequestController : Controller
     {
         private readonly IUnitOfWork _repo;
@@ -38,7 +39,17 @@ namespace Animal.Controllers
             }
             
         }
-        
+
+        public JsonResult CascadeBreed(string speciesId)
+        {
+            IEnumerable<Breed> breeds = _repo.Breed.GetBySpecies(int.Parse(speciesId));
+            SelectList BreedList = new SelectList(breeds,"id", "breedNameShort");
+            
+            return Json(BreedList);
+
+
+        }
+
         [HttpPost]
         public JsonResult AllowAccess(string userId)
        {

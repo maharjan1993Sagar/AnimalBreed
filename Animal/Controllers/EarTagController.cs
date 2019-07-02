@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Animal.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class EarTagController : Controller
     {
         private readonly IUnitOfWork _repo;
@@ -74,7 +74,7 @@ namespace Animal.Controllers
                     sum = sum + Convert.ToInt32(item.ToString()) * j;
                     j++;
                 }
-                checkBit = sum % 7;
+                checkBit = sum % 9;
                 //Append Checkbit
 
                 string newNum = Num.ToString().Insert(Num.ToString().Length, checkBit.ToString());

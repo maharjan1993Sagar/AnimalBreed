@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Animal.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class MilkBaseNutritionController : Controller
     {
         private readonly IUnitOfWork _repo;

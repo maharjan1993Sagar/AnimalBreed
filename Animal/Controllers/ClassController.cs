@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Animal.Controllers
 {
-    [Authorize]
+   // [Authorize]
     public class ClassController : Controller
     {
         private AnimalContext _context;

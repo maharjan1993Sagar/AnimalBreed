@@ -65,7 +65,7 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-
+                        <a class="collapse-item" href="@Url.Action("Index","GeneralNutrition")">General Nutrition</a>
                         <a class="collapse-item" href="@Url.Action("Index","FeedFooder")">Feed Fooder Library</a>
                         <a class="collapse-item" href="@Url.Action("Index","MilkBaseNutrition")">Milk Base Nutrition</a>
                         <a class="collapse-item" href="@Url.Action("Index","PregnancyNutrition")">Pregnancy Base Nutrition</a>
@@ -87,17 +87,17 @@
                 </a>
             </li>
             @*<li class="nav-item">
-            <a class="nav-link" href="@Url.Action("Index","FeedFooder")">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Feed Fooder</span>
-            </a>
- </li>
-        <li class="nav-item">
-            <a class="nav-link" href="@Url.Action("Index","MilkBaseNutrition")">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Milk Base Nutrition</span>
-            </a>
-        </li>*@
+                   <a class="nav-link" href="@Url.Action("Index","FeedFooder")">
+                       <i class="fas fa-fw fa-table"></i>
+                       <span>Feed Fooder</span>
+                   </a>
+        </li>
+             <li class="nav-item">
+                   <a class="nav-link" href="@Url.Action("Index","GeneralNutrition")">
+                       <i class="fas fa-fw fa-table"></i>
+                       <span>General Nutrition</span>
+                   </a>
+               </li> *@
             <li class="nav-item">
                 <a class="nav-link" href="@Url.Action("Index","MilkRecord")">
                     <i class="fas fa-fw fa-table"></i>
@@ -124,7 +124,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("calculate","FeedCalculator")">
+                <a class="nav-link" href="@Url.Action("calculation","FeedFooder")">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Nutrition Balance</span>
                 </a>

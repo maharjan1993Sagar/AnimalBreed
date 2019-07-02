@@ -62,7 +62,7 @@ namespace Animal.Controllers
         public JsonResult GetNutrition(string milkVolumn, string fat, string weight, string nutrition,string species)
         {
             GeneralNutration gn = _repo.GeneralNutrition.GetByWeight(weight,species);
-            MIlkBaseNutrition mn = _repo.MilkBase.GetByFat(fat, milkVolumn,species);
+            MIlkBaseNutrition mn = _repo.MilkBase.GetByFat(fat, milkVolumn,int.Parse(species));
             EarTag ear = _repo.EarTag.GetByTag("");
             if (ear != null)
             {

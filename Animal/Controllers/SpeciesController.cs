@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Animal.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class SpeciesController : Controller
     {
         private readonly IUnitOfWork _repo;

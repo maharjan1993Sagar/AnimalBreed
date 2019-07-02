@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Animal.Controllers
 {
-    [Authorize]
+   // [Authorize]
     public class MilkRecordController : Controller
     {
         private readonly IUnitOfWork _repo;

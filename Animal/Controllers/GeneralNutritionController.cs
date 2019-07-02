@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Animal.Controllers
 {
-    [Authorize]
+   // [Authorize]
     public class GeneralNutritionController : Controller
     {
         private readonly IUnitOfWork _repo;

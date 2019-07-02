@@ -36,13 +36,13 @@ namespace Animal.Controllers
 
 
 
-        [Authorize]
+      //  [Authorize]
         public IActionResult Index()
         {
             IEnumerable<User> users = _user.GetAll();
             return View(users);
         }
-        [Authorize]
+      //  [Authorize]
         public IActionResult ChangePassword()
         {
             ChangePassword model = new ChangePassword();

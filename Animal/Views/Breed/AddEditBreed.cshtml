@@ -18,6 +18,16 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
+                        <label>Species</label>
+                        <select asp-for="speciesId" asp-items=" ViewBag.Species" class="form-control">
+                            <option disabled selected>select</option>
+                        </select>
+
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
                         <label>Breed Short Names</label>
                         <input asp-for="breedNameShort" class="form-control" />
                         <span asp-validation-for="breedNameShort" class="text-danger"></span>
@@ -33,25 +43,17 @@
                 </div>
 
 
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Species Name</label>
-                        <select asp-for="speciesId" asp-items=" ViewBag.Species" class="form-control">
-                            <option disabled selected>select</option>
-                        </select>
 
 
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <label>Short Name</label>
-                    <input asp-for="shortDetail" class="form-control" />
-                    <span asp-validation-for="shortDetail" class="text-danger"></span>
-                </div>
                 <div class="col-md-4">
                     <label>Origin From</label>
                     <input asp-for="originFrom" class="form-control" />
                     <span asp-validation-for="originFrom" class="text-danger"></span>
+                </div>
+                <div class="col-md-12">
+                    <label>Short Details</label>
+                    <input asp-for="shortDetail" class="form-control" />
+                    <span asp-validation-for="shortDetail" class="text-danger"></span>
                 </div>
                 <div class="form-group" style="display:none">
                     <label asp-for="registeredBy" class="control-label"></label>

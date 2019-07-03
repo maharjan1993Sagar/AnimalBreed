@@ -22,10 +22,14 @@ namespace Animal.Controllers
         }
         public IActionResult Index()
         {
-            dynamic model = new ExpandoObject();
-            model.animals= _repo.AnimalRegistration.GetModel();
-            
-            return View(model.animals);
+            AnimalIndexVM indexvm = new AnimalIndexVM();
+           
+            indexvm.animals= _repo.AnimalRegistration.GetModel();
+            indexvm.species = new SelectList(_repo.Species.GetModel(), "speciesName", "speciesName");
+            indexvm.owner = new SelectList(_repo.OwnerKeeper.GetModel(), "fullName", "fullName");
+            indexvm.farm = new SelectList(_repo.Farm.GetModel(), "organizationName", "organizationName");
+            indexvm.breed = new SelectList(_repo.Breed.GetModel(), "breedNameShort", "breedNameShort");
+            return View(indexvm);
         }
 
         public IActionResult Details(int id)
@@ -91,6 +95,12 @@ namespace Animal.Controllers
                         animal.earTagId = animal.EarTag.id;
                         _repo.AnimalRegistration.Insert(animal);
                         _repo.Save();
+
+
+                        
+
+                        
+
                     }
                     else
                     {

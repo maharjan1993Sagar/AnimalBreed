@@ -23,7 +23,7 @@ namespace Animal.Models
 
         public string milkSampleBoxNo { get; set; }
 
-        public string labId { get; set; }
+        public int labId { get; set; }
 
         public string testingCharge { get; set; }
 
@@ -43,6 +43,6 @@ namespace Animal.Models
 
         public string snf { get; set; }
 
-        
+        public virtual lab lab { get; set; }
     }
 }

@@ -45,6 +45,6 @@ namespace Animal.Models
         public string fatPercentage { get; set; }
         public string snf { get; set; }
 
-
+        public SelectList labs { get; set; }
     }
 }

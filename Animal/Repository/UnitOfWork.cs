@@ -30,6 +30,7 @@ namespace Animal.Repository
             PregnancyBaseNutrition = new PregnencyNutritionRepository(_repoContext);
             Species = new SpeciesReporitory(_repoContext);
             EarTag = new EarTagRepository(_repoContext);
+            labs = new labRepository(_repoContext);
 
             GeneralNutrition = new GeneralNutritionRepository(_repoContext);
         }
@@ -85,6 +86,11 @@ namespace Animal.Repository
         public IEarTagRepository EarTag
         {
             get;private set;
+        }
+
+        public ILabRepository labs
+        {
+            get; private set;
         }
 
         public void Save()

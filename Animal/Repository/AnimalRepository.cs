@@ -1,5 +1,6 @@
 ﻿using Animal.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,7 +10,7 @@ namespace Animal.Repository
     {
         public AnimalRepository(AnimalContext Context)
             : base(Context)
-        {
+        {   
         }
 
         public AnimalContext AnimalContext
@@ -25,6 +26,32 @@ namespace Animal.Repository
         public AnimalRegistration GetById(int id)
         {
             return db.animalRegistration.Include(m => m.Species).Include(m=>m.Breed).FirstOrDefault(m=>m.id==id);
+
+        }
+
+        public IEnumerable<AnimalRegistration> GetByGender(string gender)
+        {
+            return db.animalRegistration.Include(m => m.Species).Include(m => m.Breed).Where(m => m.gender == gender).ToList();
+        }
+
+        public AnimalRegistration GetByEartag(string eartag)
+        {
+            return db.animalRegistration.FirstOrDefault(m => m.earTagNo == eartag);
+
+        }
+
+        public void Insert(AnimalRegistration animal)
+        {
+            db.animalRegistration.Add(animal);
+            db.SaveChanges();
+            animal = db.animalRegistration.LastOrDefault();
+
+            //AnimalOwner animalowner = new AnimalOwner();
+            //animalowner.AnimalRegistration = animal;
+            //animalowner.AnimalId = animal.id;
+            //animalowner.Owner = db.OwnerKeeper.Find(Convert.ToInt32(animal.ownerId));
+            //animalowner.OwnerId = Convert.ToInt32(animal.ownerId);
+            //db.AnimalOwners.Add(animalowner);
 
         }
     }

@@ -78,7 +78,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label asp-for="dob" class="control-label"></label>
-                            <input asp-for="dob" class="form-control" type="date"/>
+                            <input asp-for="dob" class="form-control" type="date" />
                             <span asp-validation-for="dob" class="text-danger"></span>
                         </div>
                     </div>
@@ -100,56 +100,7 @@
                             <span asp-validation-for="damId" class="text-danger"></span>
                         </div>
                     </div>
-                    <div id="divFemale">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>No of calving</label>
-                                <input asp-for="noOfCalving" class="form-control" />
-                                <span asp-validation-for="noOfCalving" class="text-danger"></span>
-                            </div>
-                        </div>
 
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Last calving Date</label>
-                                <input asp-for="lastCalvingDate" class="form-control" />
-                                <span asp-validation-for="lastCalvingDate" class="text-danger"></span>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Pregnancy Duration</label>
-                                <input asp-for="pregnencyDuration" class="form-control" />
-                                <span asp-validation-for="pregnencyDuration" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>
-                                    milking Status
-                                </label><br />
-                                <input type="radio" name="milkingStatus" onclick="clickEventGender(this);" value="Yes" />Yes<br />
-                                <input type="radio" name="gender" onclick="clickEventGender(this);" value="No" />No<br />
-
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>
-                                    pregnency Status
-                                </label><br />
-                                <input type="radio" name="pregnancyStatus" value="Early" />Early<br />
-                                <input type="radio" name="pregnancyStatus" value="Mid" />Mid<br />
-                                <input type="radio" name="pregnancyStatus" value="Late" />Late<br />
-                                <input type="radio" name="pregnancyStatus" value="No" />No<br />
-                            </div>
-                        </div>
-
-                    </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Owner/Keeper</label>
@@ -161,14 +112,14 @@
                     </div>
 
                     @*<div class="col-md-4">
-                            <div class="form-group">
-                                <label>Keeper</label>
-                                  @Html.DropDownList("keeperId", Model.owners, "Select", htmlAttributes: new { @class = "form-control" })
+                <div class="form-group">
+                    <label>Keeper</label>
+                      @Html.DropDownList("keeperId", Model.owners, "Select", htmlAttributes: new { @class = "form-control" })
 
-                                <input asp-for="keeperId" class="form-control" />
-                                <span asp-validation-for="keeperId" class="text-danger"></span>
-                            </div>
-                        </div>*@
+                    <input asp-for="keeperId" class="form-control" />
+                    <span asp-validation-for="keeperId" class="text-danger"></span>
+                </div>
+            </div>*@
 
                     <div class="col-md-4">
                         <div class="form-group">
@@ -192,13 +143,62 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Declared Date</label>
-                            <input asp-for="declaredDate" class="form-control" type="date"/>
-                            <span asp-validation-for="declaredDate" class="text-danger" ></span>
+                            <input asp-for="declaredDate" class="form-control" type="date" />
+                            <span asp-validation-for="declaredDate" class="text-danger"></span>
                         </div>
                     </div>
 
                 </div>
+                <div id="divFemale" class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>No of calving</label>
+                            <input asp-for="noOfCalving" class="form-control" />
+                            <span asp-validation-for="noOfCalving" class="text-danger"></span>
+                        </div>
+                    </div>
 
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Last calving Date</label>
+                            <input asp-for="lastCalvingDate" class="form-control" />
+                            <span asp-validation-for="lastCalvingDate" class="text-danger"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Pregnancy Duration</label>
+                            <input asp-for="pregnencyDuration" class="form-control" />
+                            <span asp-validation-for="pregnencyDuration" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>
+                                milking Status
+                            </label><br />
+                            <input type="radio" name="milkingStatus" onclick="clickEventGender(this);" value="Yes" />Yes<br />
+                            <input type="radio" name="gender" onclick="clickEventGender(this);" value="No" />No<br />
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>
+                                pregnency Status
+                            </label><br />
+                            <input type="radio" name="pregnancyStatus" value="Early" />Early<br />
+                            <input type="radio" name="pregnancyStatus" value="Mid" />Mid<br />
+                            <input type="radio" name="pregnancyStatus" value="Late" />Late<br />
+                            <input type="radio" name="pregnancyStatus" value="No" />No<br />
+                        </div>
+                    </div>
+
+                </div>
                 <div class="col-md-12" style="text-align:center; padding-top:15px;">
                     <input type="submit" value="Submit" class="btn btn-primary" id="txtSubmit" />
                 </div>
@@ -256,15 +256,18 @@
                 $("#ddlSpecies").change(function () {
                     var url = RootUrl + "Request/CascadeBreed";
                     var ddlsource = "#ddlSpecies";
-                    $.getJSON(url, { speciesId: $(ddlsource).val() }, function (data) {
-                        var items = '<option value="0">Select</option>';
-                        $("#ddlBreed").empty();
+                    var val = $(ddlsource).val();
+                    if (val) {
+                        $.getJSON(url, { speciesId: $(ddlsource).val() }, function (data) {
+                            var items = '<option value="0">Select</option>';
+                            $("#ddlBreed").empty();
 
-                        $.each(data, function (i, breeds) {
-                            items += "<option value='" + breeds.value + "'>" + breeds.text + "</options>";
+                            $.each(data, function (i, breeds) {
+                                items += "<option value='" + breeds.value + "'>" + breeds.text + "</options>";
+                            })
+                            $("#ddlBreed").html(items);
                         })
-                        $("#ddlBreed").html(items);
-                    })
+                    }
                 })
 
 

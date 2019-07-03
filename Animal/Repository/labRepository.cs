@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Animal.Repository
 {
-    public class labRepository:Repository<lab>,ILabRepository
+    public class labRepository : Repository<lab>, ILabRepository
     {
         public labRepository(AnimalContext Context)
             : base(Context)

@@ -18,7 +18,7 @@ namespace Animal.Repository
         IPregnencyNutritionRepository PregnancyBaseNutrition { get; }
         ISpeciesRepository Species { get; }
         ILabRepository labs { get; }
-
+        IKeeperRepository keepers{ get; }
         IGeneralNutritionRepository GeneralNutrition { get; }
 
         IEarTagRepository EarTag { get; }

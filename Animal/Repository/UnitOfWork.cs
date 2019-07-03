@@ -31,7 +31,7 @@ namespace Animal.Repository
             Species = new SpeciesReporitory(_repoContext);
             EarTag = new EarTagRepository(_repoContext);
             labs = new labRepository(_repoContext);
-
+            keepers = new keeperRepository(_repoContext);
             GeneralNutrition = new GeneralNutritionRepository(_repoContext);
         }
 
@@ -89,6 +89,11 @@ namespace Animal.Repository
         }
 
         public ILabRepository labs
+        {
+            get; private set;
+        }
+
+        public IKeeperRepository keepers
         {
             get; private set;
         }

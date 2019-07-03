@@ -27,7 +27,7 @@ namespace Animal.Controllers
             indexvm.animals= _repo.AnimalRegistration.GetModel();
             indexvm.species = new SelectList(_repo.Species.GetModel(), "speciesName", "speciesName");
             indexvm.owner = new SelectList(_repo.OwnerKeeper.GetModel(), "fullName", "fullName");
-            indexvm.farm = new SelectList(_repo.Farm.GetModel(), "organizationName", "organizationName");
+            indexvm.farm = new SelectList(_repo.Farm.GetModel(), "orgtanizationName", "orgtanizationName");
             indexvm.breed = new SelectList(_repo.Breed.GetModel(), "breedNameShort", "breedNameShort");
             return View(indexvm);
         }
@@ -64,11 +64,16 @@ namespace Animal.Controllers
                 }
             }
             model.speciess = new SelectList(_repo.Species.GetModel(), "id", "speciesName");
+            
             model.breeds = new SelectList(_repo.Breed.GetModel(), "id", "breedNameShort");
             model.owners = new SelectList(_repo.OwnerKeeper.GetModel(), "id", "fullName");
             model.farms = new SelectList(_repo.Farm.GetModel(), "id", "orgtanizationName");
+            model.keepers = new SelectList(_repo.keepers.GetModel(), "id", "fullName");
             model.dams = new SelectList(_repo.AnimalRegistration.GetModel().Where(m=>m.gender=="Male"), "id", "earTagNo");
             model.sires = new SelectList(_repo.AnimalRegistration.GetModel().Where(m => m.gender == "Female"), "id", "earTagNo");
+
+
+
             model.declaredDate = DateTime.Now.Date;
             return View(model);
         }

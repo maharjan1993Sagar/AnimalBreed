@@ -44,6 +44,7 @@
                         <div class="form-group">
                             <label>Breed</label>
                             @Html.DropDownList("breedId", Model.breeds, "Select", new { @class = "form-control", id = "ddlBreed" })
+                            
 
                             <span asp-validation-for="breedId" class="text-danger"></span>
                         </div>
@@ -111,7 +112,7 @@
                         </div>
                     </div>
 
-                    @*<div class="col-md-4">
+                    <div class="col-md-4">
                 <div class="form-group">
                     <label>Keeper</label>
                       @Html.DropDownList("keeperId", Model.owners, "Select", htmlAttributes: new { @class = "form-control" })
@@ -119,7 +120,7 @@
                     <input asp-for="keeperId" class="form-control" />
                     <span asp-validation-for="keeperId" class="text-danger"></span>
                 </div>
-            </div>*@
+            </div>
 
                     <div class="col-md-4">
                         <div class="form-group">

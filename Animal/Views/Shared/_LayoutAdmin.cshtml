@@ -46,8 +46,29 @@
             <!-- Nav Item - Dashboard -->
 
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Master Setup</span>
+                </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="@Url.Action("Index","Lab")">Lab Register</a>
+                        <a class="collapse-item" href="@Url.Action("Index","Owner")">Owner Register</a>
+                        <a class="collapse-item" href="@Url.Action("Index","OwnerKeeper")">Keeper Register</a>
+                        <a class="collapse-item" href="@Url.Action("Index","Farm")">Farm Register</a>
+                        <a class="collapse-item" href="@Url.Action("Index","Breed")">Breed Register</a>
+                        <a class="collapse-item" href="@Url.Action("Index","Species")">Species Register</a>
+                    </div>
+                </div>
+            </li>
 
-
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index","EarTag")">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Generate Ear Tag</span>
+                </a>
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="@Url.Action("Index","AnimalRegistration")">
@@ -55,19 +76,14 @@
                     <span>Animal Registration</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","Breed")">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Breed</span>
-                </a>
-            </li>
+
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages1" aria-expanded="true" aria-controls="collapsePages1">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Nutrition</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="@Url.Action("Index","GeneralNutrition")">General Nutrition</a>
                         <a class="collapse-item" href="@Url.Action("Index","FeedFooder")">Feed Fooder Library</a>
@@ -78,58 +94,36 @@
                 </div>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2" aria-expanded="true" aria-controls="collapsePages2">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Performance Recording</span>
+                </a>
+                <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="@Url.Action("Index","MilkRecord")">Milking performance</a>
 
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","EarTag")">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Generate Ear Tag</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","Farm")">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Farm</span>
-                </a>
-            </li>
-            @*
-                <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action(" Index","FeedFooder")">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>Feed Fooder</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action(" Index","MilkBaseNutrition")">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>Milk Base Nutrition</span>
-                    </a>
-                </li>*@
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","MilkRecord")">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Milk Record</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","OwnerKeeper")">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Owner Keeper</span>
-                </a>
+
+                    </div>
+                </div>
             </li>
 
-            @*
-                <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action(" Index","PregnancyNutrition")">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>Preganacy Nutrition</span>
-                    </a>
-                </li>*@
+
             <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","Species")">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Species</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages3" aria-expanded="true" aria-controls="collapsePages3">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Performance Report</span>
                 </a>
+                <div id="collapsePages3" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="@Url.Action("Index","Class")">Milking performance</a>
+
+
+                    </div>
+                </div>
             </li>
+          
+
             <li class="nav-item">
                 <a class="nav-link" href="@Url.Action("calculation","FeedFooder")">
                     <i class="fas fa-fw fa-table"></i>

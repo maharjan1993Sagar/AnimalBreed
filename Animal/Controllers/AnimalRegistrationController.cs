@@ -27,7 +27,7 @@ namespace Animal.Controllers
             indexvm.animals= _repo.AnimalRegistration.GetModel();
             indexvm.species = new SelectList(_repo.Species.GetModel(), "speciesName", "speciesName");
             indexvm.owner = new SelectList(_repo.OwnerKeeper.GetModel(), "fullName", "fullName");
-            indexvm.farm = new SelectList(_repo.Farm.GetModel(), "organizationName", "organizationName");
+            indexvm.farm = new SelectList(_repo.Farm.GetModel(), "orgtanizationName", "orgtanizationName");
             indexvm.breed = new SelectList(_repo.Breed.GetModel(), "breedNameShort", "breedNameShort");
             return View(indexvm);
         }

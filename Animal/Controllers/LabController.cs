@@ -1,57 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using Animal.Models;
 using Animal.Repository;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Animal.Controllers
 {
-   // [Authorize]
-    public class GeneralNutritionController : Controller
+    public class LabController : Controller
     {
         private readonly IUnitOfWork _repo;
 
-        public GeneralNutritionController(IUnitOfWork repo)
+        public LabController(IUnitOfWork repo)
         {
             _repo = repo;
         }
-
-
         public IActionResult Index()
         {
-            IEnumerable<GeneralNutration> all = _repo.GeneralNutrition.GetModel();
+            IEnumerable<lab> all = _repo.labs.GetModel();
             return View(all);
         }
 
 
         public IActionResult Details(int id)
         {
-            GeneralNutration farm = _repo.GeneralNutrition.GetById(id);
-            return View(farm);
+            lab lab = _repo.labs.GetById(id);
+            return View(lab);
         }
         [HttpGet]
-        public IActionResult AddEditGeneralNutrition(int? id)
+        public IActionResult AddEditLab(int? id)
         {
-            GeneralNutration model = new GeneralNutration();
-            
-            ViewBag.Species = new SelectList(_repo.Species.GetModel(), "id", "speciesName");
+            lab model = new lab();
             if (id.HasValue)
             {
-                GeneralNutration feed = _repo.GeneralNutrition.GetById(id.Value);
-                if (feed != null)
+                lab lab = _repo.labs.GetById(id.Value);
+                if (lab != null)
                 {
-                    model = feed;
+                    model = lab;
                 }
             }
             return View(model);
         }
         [HttpPost]
-        public ActionResult AddEditGeneralNutrition(int? id, GeneralNutration model)
+        public ActionResult AddEditlab(int? id, lab model)
         {
             try
             {
@@ -61,13 +53,13 @@ namespace Animal.Controllers
 
                     if (isNew)
                     {
-                        _repo.GeneralNutrition.Insert(model);
+                        _repo.labs.Insert(model);
                         _repo.Save();
                     }
                     else
                     {
 
-                        _repo.GeneralNutrition.Update(model);
+                        _repo.labs.Update(model);
                     }
                 }
             }
@@ -79,13 +71,14 @@ namespace Animal.Controllers
         }
 
         [HttpGet]
-        public IActionResult DeleteGeneralNutrition(int id)
+        public IActionResult Deletelab(int id)
         {
-            GeneralNutration feed = _repo.GeneralNutrition.GetById(id);
-            _repo.GeneralNutrition.Delete(id);
+            lab lab = _repo.labs.GetById(id);
+            _repo.labs.Delete(id);
 
             return RedirectToAction("Index");
 
         }
+
     }
 }

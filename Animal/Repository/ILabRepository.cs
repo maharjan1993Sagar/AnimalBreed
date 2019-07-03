@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Animal.Repository
 {
-    public interface IBreedRepository : IRepository<Breed>
+   public interface ILabRepository:IRepository<lab>
     {
-        IEnumerable<Breed> GetBySpecies(int species);
     }
 }

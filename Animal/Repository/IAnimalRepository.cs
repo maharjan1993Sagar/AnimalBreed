@@ -9,5 +9,7 @@ namespace Animal.Repository
    public interface IAnimalRepository : IRepository<AnimalRegistration>
     {
         IEnumerable<AnimalRegistration> GetModel();
+        IEnumerable<AnimalRegistration> GetByGender(string gender);
+        AnimalRegistration GetByEartag(string eartag);
     }
 }

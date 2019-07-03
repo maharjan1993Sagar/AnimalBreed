@@ -13,40 +13,24 @@
 
         <form asp-action="AddEditMilk">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-       
+
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                       <label>Milking Status</label>
-                        <select asp-for="milkingStatus" class="form-control">
-                            <option disabled selected>select  status</option>
-                            <option value="Milking">Milking</option>
-                            <option value="Dry Off">Dry Off</option>
-                           
-                        </select>
+                        <label class="control-label">Ear tag Number</label>
+
+                        @Html.DropDownList("animalRegistrationid", Model.animals, "Select", new { @class = "form-control" })
+                        <span asp-validation-for="animalRegistrationid" class="text-danger"></span>
                     </div>
                 </div>
-
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label>Recording Period</label>
-                        
-                        <select asp-for="recordingPeriod" class="form-control" id="trigger-dp" >
-                            <option disabled selected>select Recording Period</option>
-                            <option value="Morning">Morning</option>
-                            <option value="Noon">Noon</option>
-                            <option value="Evening">Evening</option>
-                        </select>
-                        </div>
-                        <span asp-validation-for="recordingPeriod" class="text-danger"></span>
-                    </div>
-        
+                        <label>
+                            milking Status
+                        </label><br />
+                        <input type="radio" name="milkingStatus" onclick="clickEventGender(this);" value="Yes" />Yes<br />
+                        <input type="radio" name="gender" onclick="clickEventGender(this);" value="No" />No<br />
 
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Recording Date</label>
-                        <input asp-for="recordingDate" class="form-control" />
-                        <span asp-validation-for="recordingDate" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -57,6 +41,45 @@
                         <span asp-validation-for="milkVolume" class="text-danger"></span>
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Fat Percentage</label>
+                        <input asp-for="fatPercentage" class="form-control" />
+                        <span asp-validation-for="fatPercentage" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="snf" class="control-label"></label>
+                        <input asp-for="snf" class="form-control" />
+                        <span asp-validation-for="snf" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Recording Period</label>
+
+                        <select asp-for="recordingPeriod" class="form-control" id="trigger-dp">
+                            <option disabled selected>select Recording Period</option>
+                            <option value="Morning">Morning</option>
+                            <option value="Noon">Noon</option>
+                            <option value="Evening">Evening</option>
+                        </select>
+                    </div>
+                    <span asp-validation-for="recordingPeriod" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Recording Date</label>
+                        <input asp-for="recordingDate" class="form-control" type="date" />
+                        <span asp-validation-for="recordingDate" class="text-danger"></span>
+                    </div>
+                </div>
+
+
 
                 <div class="col-md-4">
                     <div class="form-group">
@@ -69,7 +92,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Lab Id</label>
-                        <input asp-for="labId" class="form-control" />
+                        @Html.DropDownList("labId", Model.labs, "Select", new { @class = "form-control", id = "ddlLab" })
                         <span asp-validation-for="labId" class="text-danger"></span>
                     </div>
                 </div>
@@ -106,7 +129,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <div class="form-group">
                         <label>Short Note</label>
                         <input asp-for="shortNote" class="form-control" />
@@ -114,38 +137,16 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label  class="control-label">Ear tag Number</label>
 
-                        @Html.DropDownList("animalRegistrationid", Model.animals, "Select", new { @class = "form-control" })
-                        <span asp-validation-for="animalRegistrationid" class="text-danger"></span>
-                    </div>
+
+
+
+
+
+                <div class="col-md-12" style="text-align:center; padding-top:15px;">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
                 </div>
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Fat Percentage</label>
-                        <input asp-for="fatPercentage" class="form-control" />
-                        <span asp-validation-for="fatPercentage" class="text-danger"></span>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="snf" class="control-label"></label>
-                        <input asp-for="snf" class="form-control" />
-                        <span asp-validation-for="snf" class="text-danger"></span>
-                    </div>
-                </div>
-
-
-
-
-            <div class="col-md-12" style="text-align:center; padding-top:15px;">
-                <input type="submit" value="Submit" class="btn btn-primary" />
             </div>
-                </div>
         </form>
     </div>
 

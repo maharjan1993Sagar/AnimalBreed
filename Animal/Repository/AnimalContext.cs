@@ -47,7 +47,7 @@ namespace Animal.Repository
         public DbSet<EarTag> EarTags { get; set; }
         public DbSet<Login> login { get; set; }
         public DbSet<User>  Users { get; set; }
-        
+        //public DbSet<AnimalOwner> AnimalOwners { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

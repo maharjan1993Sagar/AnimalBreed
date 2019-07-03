@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Animal.Controllers
 {
-    [Authorize]
+   // [Authorize]
     public class MilkRecordController : Controller
     {
         private readonly IUnitOfWork _repo;
@@ -51,9 +51,12 @@ namespace Animal.Controllers
 
                     IMapper iMapper = config.CreateMapper();
                     model = iMapper.Map<MilkRecord, MilkRecordVM>(feed);
+                  
                 }
             }
-            model.animals = new SelectList(_repo.AnimalRegistration.GetModel(), "id", "earTagNo");
+            model.animals = new SelectList(_repo.AnimalRegistration.GetByGender("Female"), "id", "earTagNo");
+            model.labs = new SelectList(_repo.labs.GetModel(), "id", "name");
+            model.recordingDate = DateTime.Now.Date;
             return View(model);
         }
         [HttpPost]
@@ -98,6 +101,13 @@ namespace Animal.Controllers
                         milk.earTagNumber = milk.animalRegistration.earTagNo;
                         _repo.MilkRecord.Update(milk);
                     }
+                }
+                else {
+                    model.animals = new SelectList(_repo.AnimalRegistration.GetByGender("Female"), "id", "earTagNo",model.animalRegistrationid);
+                    model.labs = new SelectList(_repo.labs.GetModel(), "id", "name",model.labId);
+
+                    return View(model);
+                    
                 }
             }
             catch (Exception ex)

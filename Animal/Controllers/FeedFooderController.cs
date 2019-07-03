@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Animal.Controllers
 {
-    [Authorize]
+   // [Authorize]
     public class FeedFooderController : Controller
     {
        // private readonly IRepository<FeedFooder> _repo;
@@ -102,7 +102,7 @@ namespace Animal.Controllers
 
             FeedCalculator fooder1 = new FeedCalculator();
             fooder1.feeds = new SelectList(_repoU.FeedFooder.GetModel(), "id", "fooderNameEng");
-            fooder1.animalCategories = new SelectList(_repoU.Species.GetModel(), "speciesName", "speciesName");
+            fooder1.animalCategories = new SelectList(_repoU.Species.GetModel(), "id", "speciesName");
             fooder1.fatPercentage = 0;
             fooder1.category = "";
             fooder1.weight = 0;
@@ -131,9 +131,11 @@ namespace Animal.Controllers
         {
             List<FeedCalculator> feedResult = new List<FeedCalculator>();
             string fat = feeds[0].fatPercentage.ToString();
-            string type = feeds[0].type;
-            string volumn = feeds[0].milkvolumn;
+            string type = feeds[0].milk;
+            string preg = feeds[0].pregnancy;
+            string volumn = feeds[0].milkvolumn="0";
             string species = feeds[0].species;
+            string speciesName = _repoU.Species.GetById(int.Parse(species)).speciesName;
             GeneralNutration generalNutrition = new GeneralNutration();
             MIlkBaseNutrition MilkBase = new MIlkBaseNutrition();
             PregnancyBaseNutrition PregancyBase = new PregnancyBaseNutrition();
@@ -142,6 +144,7 @@ namespace Animal.Controllers
                 _repoU.GeneralNutrition.GetByWeight(feeds[0].animalWeight.ToString(),species) == null
                 )
             {
+               
                 ModelState.AddModelError(string.Empty, "Feed Fooder Record Not Found.");
                 feeds[0].feeds = new SelectList(_repoU.FeedFooder.GetModel(), "id", "fooderNameEng", feeds[0].feedId);
                 feeds[0].animalCategories = new SelectList(_repoU.Species.GetModel(), "speciesName", "speciesName", feeds[0].category);
@@ -163,11 +166,11 @@ namespace Animal.Controllers
 
             feedResult.Add(feed1);
 
-            if (type == "MilkBase")
+            if (type == "Yes")
             {
                 generalNutrition = _repoU.GeneralNutrition.GetByWeight(feeds[0].animalWeight.ToString(),species);
 
-                MilkBase = _repoU.MilkBase.GetByFat(fat,volumn,species);
+                MilkBase = _repoU.MilkBase.GetByFat(fat,volumn,int.Parse(species));
                 if (MilkBase == null)
                 {
                     ModelState.AddModelError(string.Empty, "Milk Base Record Not Found.");
@@ -190,31 +193,44 @@ namespace Animal.Controllers
 
 
             }
-            else
+            if (!string.IsNullOrEmpty(preg))
             {
-
-                generalNutrition = _repoU.GeneralNutrition.GetByWeight(feeds[0].animalWeight.ToString(),species);
-
-                PregancyBase = _repoU.PregnancyBaseNutrition.GetBySpecies(feeds[0].animalWeight.ToString());
-                if (PregancyBase == null)
+                if (preg != "No")
                 {
-                    ModelState.AddModelError(string.Empty, "Preganancy Base Record Not Found.");
-                    feeds[0].feeds = new SelectList(_repoU.FeedFooder.GetModel(), "id", "fooderNameEng", feeds[0].feedId);
-                    feeds[0].animalCategories = new SelectList(_repoU.Species.GetModel(), "speciesName", "speciesName", feeds[0].category);
-                    return View(feeds);
+                    generalNutrition = _repoU.GeneralNutrition.GetByWeight(feeds[0].animalWeight.ToString(),species);
+
+                    PregancyBase = _repoU.PregnancyBaseNutrition.GetBySpecies(feeds[0].animalWeight.ToString());
+                    if (PregancyBase == null)
+                    {
+                        ModelState.AddModelError(string.Empty, "Preganancy Base Record Not Found.");
+                        feeds[0].feeds = new SelectList(_repoU.FeedFooder.GetModel(), "id", "fooderNameEng", feeds[0].feedId);
+                        feeds[0].animalCategories = new SelectList(_repoU.Species.GetModel(), "speciesName", "speciesName", feeds[0].category);
+                        return View(feeds);
+                    }
+
+                    FeedCalculator feed = new FeedCalculator();
+                    feed.dm = (Convert.ToDecimal(generalNutrition.dm) + Convert.ToDecimal(PregancyBase.dm)).ToString();
+                    feed.tdn = (Convert.ToDecimal(generalNutrition.tdn) + Convert.ToDecimal(PregancyBase.tdn)).ToString();
+                    feed.p = (Convert.ToDecimal(generalNutrition.p) + Convert.ToDecimal(PregancyBase.p)).ToString();
+                    feed.c = (Convert.ToDecimal(generalNutrition.c) + Convert.ToDecimal(PregancyBase.c)).ToString();
+
+                    feed.fatPercentage = feeds[0].fatPercentage;
+                    feed.animalCategories = feeds[0].animalCategories;
+                    feed.remarks = "Required";
+
+                    if (feedResult.Count == 0)
+                    {
+                        feedResult.Add(feed);
+                    }
+                    else
+                    {
+                        feedResult[1].dm = (Convert.ToDecimal(feedResult[1].dm) + Convert.ToDecimal(feed.dm)- Convert.ToDecimal(generalNutrition.dm)).ToString();
+                        feedResult[1].tdn = (Convert.ToDecimal(feedResult[1].tdn) + Convert.ToDecimal(feed.tdn)- Convert.ToDecimal(generalNutrition.tdn)).ToString();
+                        feedResult[1].p = (Convert.ToDecimal(feedResult[1].p) + Convert.ToDecimal(feed.p)- Convert.ToDecimal(generalNutrition.p)).ToString();
+                        feedResult[1].c = (Convert.ToDecimal(feedResult[1].c) + Convert.ToDecimal(feed.c)- Convert.ToDecimal(generalNutrition.c)).ToString();
+
+                    }
                 }
-
-                FeedCalculator feed = new FeedCalculator();
-                feed.dm = (Convert.ToDecimal(generalNutrition.dm) + Convert.ToDecimal(PregancyBase.dm)).ToString();
-                feed.tdn = (Convert.ToDecimal(generalNutrition.tdn) + Convert.ToDecimal(PregancyBase.tdn)).ToString();
-                feed.p = (Convert.ToDecimal(generalNutrition.p) + Convert.ToDecimal(PregancyBase.p)).ToString();
-                feed.c = (Convert.ToDecimal(generalNutrition.c) + Convert.ToDecimal(PregancyBase.c)).ToString();
-
-                feed.fatPercentage = feeds[0].fatPercentage;
-                feed.animalCategories = feeds[0].animalCategories;
-                feed.remarks = "Required";
-                feedResult.Add(feed);
-
             }
 
             FeedCalculator feed2 = new FeedCalculator();

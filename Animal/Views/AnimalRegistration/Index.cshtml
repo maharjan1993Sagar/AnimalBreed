@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Animal.Models.AnimalRegistration>
+﻿@model Animal.Models.ViewModel.AnimalIndexVM
 
 @{
     ViewData["Title"] = "Index";
@@ -11,17 +11,43 @@
         <p>
             <a asp-action="AddEditAnimal" class="btn btn-primary">Create New</a>
         </p>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label></label>
+                    @Html.DropDownList("breed", Model.breed, "Select Breed", new { @class = "form-control", id = "ddlBreed" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label></label>
+                    @Html.DropDownList("species", Model.species, "Select Species", new { @class = "form-control", id = "ddlSpecies" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label></label>
+                    @Html.DropDownList("owner", Model.owner, "Select Owner", new { @class = "form-control", id = "ddlOwner" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label></label>
+                    @Html.DropDownList("farm", Model.farm, "Select Farm", new { @class = "form-control", id = "ddlFarm" })
+                </div>
+            </div>
+        </div>
         <div style="padding-top:10px;">
             <table class="table table-bordered" id="myTable">
                 <thead>
                     <tr>
-                       
+
                         <th>
                             Ear Tag No
                         </th>
-                        <th>
-                          Weight
-                        </th>
+                        @*<th>
+                              Weight
+                            </th>*@
                         <th>
                             Species Name
                         </th>
@@ -32,67 +58,67 @@
                             Age
                         </th>
                         <th>
-                           DOB
+                            DOB
                         </th>
                         @*<th>
-                            @Html.DisplayNameFor(model => model.sireId)
+                                Breed
+                            </th>
+                            <th>
+                                Species
+                            </th>*@
+                        <th>
+                            Owner
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.damId)
-                        </th>*@
-                        @*<th>
-                            @Html.DisplayNameFor(model => model.noOfCalving)
+                            Farm
                         </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.lastCalvingDate)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.pregnencyStatus)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.pregnencyDuration)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.milkingStatus)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.createdAt)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.updatedBy)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ownerId)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.keeperId)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.farmId)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.gender)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.declaredBy)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.declaredDate)
-                        </th>*@
+                        @* <th>
+                                @Html.DisplayNameFor(model => model.pregnencyStatus)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.pregnencyDuration)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.milkingStatus)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.createdAt)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.updatedBy)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ownerId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.keeperId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.farmId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.gender)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.declaredBy)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.declaredDate)
+                            </th>*@
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.animals)
                     {
                         <tr>
-                          
+
                             <td>
                                 @Html.DisplayFor(modelItem => item.earTagNo)
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.weight)
-                            </td>
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.weight)
+                                </td>*@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Species.speciesName)
                             </td>
@@ -106,50 +132,57 @@
                                 @Html.DisplayFor(modelItem => item.dob)
                             </td>
                             @*<td>
-                                @Html.DisplayFor(modelItem => item.sireId)
-                            </td>
+                                    @Html.DisplayFor(modelItem => item.Breed.breedNameShort)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Species.speciesName)
+                                </td>*@
                             <td>
-                                @Html.DisplayFor(modelItem => item.damId)
-                            </td>*@
-                            @*<td>
-                                @Html.DisplayFor(modelItem => item.noOfCalving)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.lastCalvingDate)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.pregnencyStatus)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.pregnencyDuration)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.milkingStatus)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.createdAt)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.updatedBy)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ownerId)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.keeperId)
+                                @if (item.AnimalOwners != null)
+                                {
+                                foreach (AnimalOwner owner in item.AnimalOwners)
+                                {
+                                    @(owner.Owner.fullName + "  ")
+                                }
+                                }
+                                @*@Html.DisplayFor(modelItem => item.ownerId)*@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.farmId)
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.gender)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.declaredBy)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.declaredDate)
-                            </td>*@
+                            @* <td>
+                                    @Html.DisplayFor(modelItem => item.pregnencyStatus)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.pregnencyDuration)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.milkingStatus)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.createdAt)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.updatedBy)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ownerId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.keeperId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.farmId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.gender)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.declaredBy)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.declaredDate)
+                                </td>*@
                             <td>
                                 @Html.ActionLink("Edit", "AddEditAnimal", new { id = item.id }, new { @class = "btn btn-primary" }) |
                                 @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info" }) |
@@ -163,16 +196,69 @@
     </div>
     @section Scripts {
         <script type="text/javascript">
-        $(document).ready(function () {
-            $("body div.myTable input");
-            var dataSrc = [];
-            var table = $("#myTable").DataTable({
-                "columnDefs": [
-                    { "orderable": false, "targets": 3 }
-                ],
-                "pageLength": 50,
+            $(document).ready(function () {
+                $("body div.myTable input");
+                var dataSrc = [];
+                var table = $("#myTable").DataTable({
+                    "columnDefs": [
+                        { "orderable": false, "targets": 3 }
+                    ],
+                    "pageLength": 50,
+                });
+
+                $("#ddlBreed").change(function () {
+                    searchData(2, $(this).val());
+                })
+
+                $("#ddlSpecies").change(function () {
+                    searchData(1, $(this).val());
+                })
+
+                $("#ddlFarm").change(function () {
+                    searchData(6, $(this).val());
+                })
+
+                $("#ddlOwner").change(function () {
+                    searchData(5, $(this).val());
+                })
+
+
+                //var table1 = $("#myTable").DataTable();
+                //buildSelect(table1);
+                //table.on('draw', function () {
+                //    buildSelect(table1);
+                //});
             });
-        });
-            
+
+            function searchData(col, value) {
+                var table = $("#myTable").DataTable();
+                table.column(col).search(value).draw();
+            }
+                    //function buildSelect(table) {
+                    //    table.columns().every(function () {
+                    //        var column = table.column(this, { search: 'applied' });
+                    //        var select = $('<select><option value=""></option></select>')
+                    //            .appendTo($(column.footer()).empty())
+                    //            .on('change', function () {
+                    //                var val = $.fn.dataTable.util.escapeRegex($(this).val());
+
+                    //                column.search(val ? '^' + val + '$' : '', true, false).draw();
+                    //            });
+
+                    //        column.data().unique().sort().each(function (d, j) {
+                    //            select.append('<option value="' + d + '">' + d + '</option>');
+                    //        });
+
+                    //        // The rebuild will clear the exisiting select, so it needs to be repopulated
+                    //        var currSearch = column.search();
+                    //        if (currSearch) {
+                    //            select.val(currSearch.substring(1, currSearch.length - 1));
+                    //        }
+                    //    });
+                    //}
+
+
+
+
         </script>
     }

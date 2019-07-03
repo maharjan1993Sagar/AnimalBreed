@@ -23,5 +23,9 @@ namespace Animal.Repository
         {
             return db.Breeds.Include(M => M.species).ToList();
         }
+        public IEnumerable<Breed> GetBySpecies(int species)
+        {
+            return db.Breeds.Include(M => M.species).Where(m=>m.speciesId==species).ToList();
+        }
     }
 }

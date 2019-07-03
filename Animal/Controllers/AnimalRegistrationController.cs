@@ -22,10 +22,14 @@ namespace Animal.Controllers
         }
         public IActionResult Index()
         {
-            dynamic model = new ExpandoObject();
-            model.animals= _repo.AnimalRegistration.GetModel();
-            
-            return View(model.animals);
+            AnimalIndexVM indexvm = new AnimalIndexVM();
+           
+            indexvm.animals= _repo.AnimalRegistration.GetModel();
+            indexvm.species = new SelectList(_repo.Species.GetModel(), "speciesName", "speciesName");
+            indexvm.owner = new SelectList(_repo.OwnerKeeper.GetModel(), "fullName", "fullName");
+            indexvm.farm = new SelectList(_repo.Farm.GetModel(), "organizationName", "organizationName");
+            indexvm.breed = new SelectList(_repo.Breed.GetModel(), "breedNameShort", "breedNameShort");
+            return View(indexvm);
         }
 
         public IActionResult Details(int id)
@@ -61,6 +65,11 @@ namespace Animal.Controllers
             }
             model.speciess = new SelectList(_repo.Species.GetModel(), "id", "speciesName");
             model.breeds = new SelectList(_repo.Breed.GetModel(), "id", "breedNameShort");
+            model.owners = new SelectList(_repo.OwnerKeeper.GetModel(), "id", "fullName");
+            model.farms = new SelectList(_repo.Farm.GetModel(), "id", "orgtanizationName");
+            model.dams = new SelectList(_repo.AnimalRegistration.GetModel().Where(m=>m.gender=="Male"), "id", "earTagNo");
+            model.sires = new SelectList(_repo.AnimalRegistration.GetModel().Where(m => m.gender == "Female"), "id", "earTagNo");
+            model.declaredDate = DateTime.Now.Date;
             return View(model);
         }
         [HttpPost]
@@ -73,10 +82,10 @@ namespace Animal.Controllers
                     bool isNew = !id.HasValue;
                     if (isNew)
                     {
-                       
+
                         var config = new MapperConfiguration(cfg =>
                         {
-                            cfg.CreateMap<AnimalVM,AnimalRegistration>();
+                            cfg.CreateMap<AnimalVM, AnimalRegistration>();
                         });
 
                         IMapper iMapper = config.CreateMapper();
@@ -86,6 +95,12 @@ namespace Animal.Controllers
                         animal.earTagId = animal.EarTag.id;
                         _repo.AnimalRegistration.Insert(animal);
                         _repo.Save();
+
+
+                        
+
+                        
+
                     }
                     else
                     {
@@ -104,6 +119,17 @@ namespace Animal.Controllers
 
                         _repo.AnimalRegistration.Update(animal);
                     }
+                }
+                else
+                {
+                    model.speciess = new SelectList(_repo.Species.GetModel(), "id", "speciesName",model.speciesId);
+                    model.breeds = new SelectList(_repo.Breed.GetModel(), "id", "breedNameShort",model.breedId);
+                    model.owners = new SelectList(_repo.OwnerKeeper.GetModel(), "id", "fullName",model.ownerId);
+                    model.farms = new SelectList(_repo.Farm.GetModel(), "id", "orgtanizationName",model.farmId);
+                    model.dams = new SelectList(_repo.AnimalRegistration.GetModel().Where(m => m.gender == "Male"), "id", "earTagNo",model.damId);
+                    model.sires = new SelectList(_repo.AnimalRegistration.GetModel().Where(m => m.gender == "Female"), "id", "earTagNo",model.sireId);
+                    model.declaredDate = DateTime.Now.Date;
+                    return View(model);
                 }
             }
             catch (Exception ex)

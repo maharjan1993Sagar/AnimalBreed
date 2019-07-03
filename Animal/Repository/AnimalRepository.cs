@@ -42,16 +42,17 @@ namespace Animal.Repository
 
         public void Insert(AnimalRegistration animal)
         {
+            AnimalOwner animalowner = new AnimalOwner();
+            animalowner.Owner = db.OwnerKeeper.Find(Convert.ToInt32(animal.ownerId));
+            animalowner.OwnerId = Convert.ToInt32(animal.ownerId);
+            animal.AnimalOwners.Add(animalowner);
+
             db.animalRegistration.Add(animal);
+
             db.SaveChanges();
             animal = db.animalRegistration.LastOrDefault();
 
-            //AnimalOwner animalowner = new AnimalOwner();
-            //animalowner.AnimalRegistration = animal;
-            //animalowner.AnimalId = animal.id;
-            //animalowner.Owner = db.OwnerKeeper.Find(Convert.ToInt32(animal.ownerId));
-            //animalowner.OwnerId = Convert.ToInt32(animal.ownerId);
-            //db.AnimalOwners.Add(animalowner);
+            
 
         }
     }

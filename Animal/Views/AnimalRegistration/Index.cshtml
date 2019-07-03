@@ -138,9 +138,12 @@
                                     @Html.DisplayFor(modelItem => item.Species.speciesName)
                                 </td>*@
                             <td>
-                                @foreach (AnimalOwner owner in item.AnimalOwners)
+                                @if (item.AnimalOwners != null)
                                 {
-                                    @(owner.Owner.fullName+ "  ")
+                                foreach (AnimalOwner owner in item.AnimalOwners)
+                                {
+                                    @(owner.Owner.fullName + "  ")
+                                }
                                 }
                                 @*@Html.DisplayFor(modelItem => item.ownerId)*@
                             </td>

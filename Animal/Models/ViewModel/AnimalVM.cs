@@ -22,9 +22,9 @@ namespace Animal.Models.ViewModel
 
         public string dob { get; set; }
 
-        public int sireId { get; set; }
+        public int? sireId { get; set; }
 
-        public int damId { get; set; }
+        public int? damId { get; set; }
 
         public string noOfCalving { get; set; }
 

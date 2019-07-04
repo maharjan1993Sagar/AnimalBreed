@@ -16,6 +16,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace Animal
 {
@@ -46,7 +48,7 @@ namespace Animal
             services.AddDbContext<AnimalContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));            
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -69,6 +71,13 @@ namespace Animal
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseStaticFiles();
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(
+            //Path.Combine(Directory.GetCurrentDirectory(), "MyStaticFiles")),
+            //    RequestPath = "/StaticFiles"
+            //});
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -84,7 +93,7 @@ namespace Animal
             app.UseCookiePolicy();
 
             app.UseAuthentication();
-           // app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()); 
+            // app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()); 
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

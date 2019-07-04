@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -18,6 +19,8 @@ namespace Animal.Models
        
 
         public int? breedId { get; set; }
+        public string latitude { get; set; }
+        public string longitude { get; set; }
 
         public string age { get; set; }
 
@@ -53,13 +56,19 @@ namespace Animal.Models
         public string gender { get; set; }
 
         public string declaredBy { get; set; }
+        [NotMappedAttribute]
+        public IFormFile Image { get; set; }
 
-        
+        public string ImageName { get; set; }
+
         public DateTime declaredDate { get; set; }
 
         public virtual Breed Breed { get; set; }
       
         public virtual Species Species { get; set; }
+        public virtual Farm Farm { get; set; }
+
+     
 
 
         public virtual ICollection<GrowthMonitoring> GrowtthMonitorings { get; set; }

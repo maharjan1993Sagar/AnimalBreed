@@ -4,17 +4,19 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-<div class="card mb-4 col-md-8" >
+<style>
+    
+</style>
+<div class="card mb-4 col-md-8 col-lg-offset-5" >
     <div class="card-header py-3">
         <h3 class="m-1 font-weight-bold center text-primary">Animal Registration</h3>
     </div>
-    
+    <center> @*<img src='@ViewBag.Image' asp-append-version="true" />*@   <img src="@ViewBag.Image" onerror="this.onload = null; this.src='../../images/cow.png';" width="170" height="150" /></center>
         <div style="padding-top:10px;">
             <table class="table table-bordered" id="myTable">
                 <tr>
                     <td>
-                        @Html.DisplayNameFor(model => model.id)
+                      Id
                     </td>
                     <th>
                         @Html.DisplayFor(model => model.id)
@@ -22,7 +24,7 @@
                 </tr>
                 <tr>
                     <td>
-                     Ear Tag No
+                        Ear Tag No
                     </td>
                     <th>
                         @Html.DisplayFor(model => model.earTagNo)
@@ -38,7 +40,7 @@
                 </tr>
                 <tr>
                     <td>
-                      Species Name
+                        Species Name
                     </td>
                     <th>
                         @Html.DisplayFor(model => model.Species.speciesName)
@@ -46,7 +48,7 @@
                 </tr>
                 <tr>
                     <td>
-                       Breed
+                        Breed
                     </td>
                     <th>
                         @Html.DisplayFor(model => model.Breed.breedNameShort)
@@ -54,14 +56,30 @@
                 </tr>
                 <tr>
                     <td>
-                       Age
+                        Age
                     </td>
                     <th>
                         @Html.DisplayFor(model => model.age)
                     </th>
                 <tr>
+                <tr>
                     <td>
-                       DOB
+                        Latitude
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => model.latitude)
+                    </th>
+                <tr>
+                <tr>
+                    <td>
+                        Longitude
+                    </td>
+                    <th>
+                        @Html.DisplayFor(model => model.longitude)
+                    </th>
+                <tr>
+                    <td>
+                        DOB
                     </td>
                     <th>
                         @Html.DisplayFor(model => model.dob)
@@ -70,7 +88,7 @@
 
                 <tr>
                     <td>
-                       Sire Id
+                        Sire Id
                     </td>
                     <th>
                         @Html.DisplayFor(model => model.sireId)
@@ -78,7 +96,7 @@
                 </tr>
                 <tr>
                     <td>
-                       Dam Id
+                        Dam Id
                     </td>
                     <th>
                         @Html.DisplayFor(model => model.damId)
@@ -86,7 +104,7 @@
                 </tr>
                 <tr>
                     <td>
-                       No of Calving
+                        No of Calving
                     </td>
                     <th>
                         @Html.DisplayFor(model => model.noOfCalving)
@@ -94,7 +112,7 @@
                 </tr>
                 <tr>
                     <td>
-                       Last Calving Date
+                        Last Calving Date
                     </td>
                     <th>
                         @Html.DisplayFor(model => model.lastCalvingDate)
@@ -102,7 +120,7 @@
                 </tr>
                 <tr>
                     <td>
-                       Pregnancy status
+                        Pregnancy status
                     </td>
                     <th>
                         @Html.DisplayFor(model => model.pregnencyStatus)
@@ -110,7 +128,7 @@
                 </tr>
                 <tr>
                     <td>
-                       Pregnancy Duration
+                        Pregnancy Duration
                     </td>
                     <th>
                         @Html.DisplayFor(model => model.pregnencyDuration)
@@ -119,7 +137,7 @@
                 </tr>
                 <tr>
                     <td>
-                       Milking Status
+                        Milking Status
                     </td>
                     <th>
                         @Html.DisplayFor(model => model.milkingStatus)
@@ -127,7 +145,7 @@
                 </tr>
                 <tr>
                     <td>
-                       Created At
+                        Created At
                     </td>
                     <th>
                         @Html.DisplayFor(model => model.createdAt)
@@ -143,7 +161,7 @@
                 </tr>
                 <tr>
                     <td>
-                       Owner
+                        Owner
                     </td>
                     <th>
                         @Html.DisplayFor(model => model.ownerId)
@@ -151,7 +169,7 @@
                 </tr>
                 <tr>
                     <td>
-                       Keeper
+                        Keeper
                     </td>
                     <th>
                         @Html.DisplayFor(model => model.keeperId)
@@ -167,7 +185,7 @@
                 </tr>
                 <tr>
                     <td>
-                      Gender
+                        Gender
                     </td>
                     <th>
                         @Html.DisplayFor(model => model.gender)

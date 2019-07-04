@@ -3,45 +3,60 @@
 @{
     ViewData["Title"] = "AddEditLab";
 }
-
-<h2>AddEditLab</h2>
-
-<h4>lab</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <input asp-for="id" class="form-control" type="hidden"/>
+<div class="card">
+    <div class="card-header py-3">
+        <h3 class="m-1 font-
+            -bold center text-primary">
+            Lab
+        </h3>
+    </div>
+    <div class="card-body">
+        <input asp-for="id" class="form-control" type="hidden" />
         <form asp-action="AddEditLab">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
-            <div class="form-group">
-                <label asp-for="name" class="control-label"></label>
-                <input asp-for="name" class="form-control" />
-                <span asp-validation-for="name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="address" class="control-label"></label>
-                <input asp-for="address" class="form-control" />
-                <span asp-validation-for="address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="email" class="control-label"></label>
-                <input asp-for="email" class="form-control" />
-                <span asp-validation-for="email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="proprietor" class="control-label"></label>
-                <input asp-for="proprietor" class="form-control" />
-                <span asp-validation-for="proprietor" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="name" class="control-label"></label>
+                        <input asp-for="name" class="form-control" />
+                        <span asp-validation-for="name" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="address" class="control-label"></label>
+                        <input asp-for="address" class="form-control" />
+                        <span asp-validation-for="address" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="email" class="control-label"></label>
+                        <input asp-for="email" class="form-control" />
+                        <span asp-validation-for="email" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="proprietor" class="control-label"></label>
+                        <input asp-for="proprietor" class="form-control" />
+                        <span asp-validation-for="proprietor" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-12" style="text-align:center; padding-top:15px;">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
             </div>
         </form>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
+    <div>
+        <a asp-action="Index" class="btn btn-danger">Back to List</a>
+    </div>
+</div>

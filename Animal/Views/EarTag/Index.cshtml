@@ -17,10 +17,6 @@
             <thead>
                 <tr>
                     <th>Serial No</th>
-                   
-                    <th>
-                       Id
-                    </th>
                     <th>
                        Ear Tag No
                     </th>
@@ -29,14 +25,12 @@
                 </tr>
             </thead>
             <tbody>
-                @{int i = 1;}
+                @{int i =1;}
                 @foreach (var item in Model)
                 {
                 <tr>
                     <td>@i</td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.id)
-                    </td>
+                   
 
                     <td>
                         @Html.DisplayFor(modelItem => item.earTagNo)

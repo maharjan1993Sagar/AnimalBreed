@@ -40,6 +40,22 @@ namespace Animal.Controllers
             
         }
 
+
+        [HttpPost]
+        public JsonResult CheckEarTagUsed(string earTag)
+        {
+            AnimalRegistration ear = _repo.AnimalRegistration.GetByEartag(earTag);
+            if (ear != null)
+            {
+                return Json("NOTNULL");
+            }
+            else
+            {
+                return Json("NULL");
+            }
+
+        }
+
         public JsonResult CascadeBreed(string speciesId)
         {
             IEnumerable<Breed> breeds = _repo.Breed.GetBySpecies(int.Parse(speciesId));

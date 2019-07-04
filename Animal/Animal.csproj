@@ -9,9 +9,13 @@
 
   <ItemGroup>
     <Compile Remove="DatabaseFirst\**" />
+    <Compile Remove="Views\Owner\**" />
     <Content Remove="DatabaseFirst\**" />
+    <Content Remove="Views\Owner\**" />
     <EmbeddedResource Remove="DatabaseFirst\**" />
+    <EmbeddedResource Remove="Views\Owner\**" />
     <None Remove="DatabaseFirst\**" />
+    <None Remove="Views\Owner\**" />
   </ItemGroup>
 
   <ItemGroup>

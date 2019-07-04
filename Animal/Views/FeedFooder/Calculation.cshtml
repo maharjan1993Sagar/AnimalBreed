@@ -10,7 +10,7 @@
 {
 
     <form asp-action="Calculation">
-        <h2 class="text-center">Feed Calculator</h2>
+        <h2 class="text-center">Nutrition Balance</h2>
         <div class="row">
             <div class="col-md-12">
                 @Html.ValidationSummary(false, "", new { @class = "text-danger" })
@@ -18,48 +18,46 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label>Milking Status</label><br />
-                    <input type="radio" name="[0].milk" value="Yes" />Yes<br />
-                    <input type="radio" name="[0].milk" value="No" />No<br />
+                    <input type="radio" name="[0].milk" value="Yes" />Yes &nbsp;&nbsp;
+                    <input type="radio" name="[0].milk" value="No" />No
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label>Pregnancy Status</label><br />
-                    <input type="radio" name="[0].pregnancy" value="Early" />Early<br />
-                    <input type="radio" name="[0].pregnancy" value="Mid" />Mid<br />
-                    <input type="radio" name="[0].pregnancy" value="Late" />Late<br />
-                    <input type="radio" name="[0].pregnancy" value="No" />No<br />
+                    <input type="radio" name="[0].pregnancy" value="Early" />Early &nbsp;&nbsp;
+                    <input type="radio" name="[0].pregnancy" value="Mid" />Mid&nbsp;&nbsp;<br />
+                    <input type="radio" name="[0].pregnancy" value="Late" />Late&nbsp;&nbsp;
+                    <input type="radio" name="[0].pregnancy" value="No" />No
                 </div>
             </div>
-            @*<div class="col-md-3">
-                <div class="form-group">
-                    <label>Feed Type</label>
-                    @Html.DropDownList("[0].type", new List<SelectListItem>{
-                                new SelectListItem{ Text="MilkBase", Value = "MilkBase" },
-                                new SelectListItem{ Text="PregnancyBase", Value = "PregnancyBase" }
-                            },"Select",new {@class="form-control" })
-                </div>
-            </div>*@
             <div class="col-md-2">
                 <div class="form-group">
                     <label>Fat Percentage </label>
                     <input name="[0].fatPercentage" class="form-control" value="@Model[0].fatPercentage" />
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="form-group">
                     <label>Animal Weight </label>
                     <input name="[0].animalWeight" class="form-control" value="@Model[0].animalWeight" />
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="form-group">
-                    <label>Category  </label>
+                    <label>Milk Volumn </label>
+                    <input name="[0].milkVolumn" class="form-control" value="@Model[0].milkvolumn" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Species</label>
                     @Html.DropDownList("[0].species", Model[0].animalCategories, "Select", new { @class = "form-control" })
                 </div>
             </div>
             <div class="col-md-12">
-                <h2>Feed</h2>
+                <h2>Resources</h2>
+                <h4>Green Feed</h4>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
@@ -73,27 +71,39 @@
                     <input asp-for="@Model[0].weight" class="form-control" value="@Model[0].weight" />
                 </div>
             </div>
-            @*<div class="col-md-12">
-            <label>Feed2</label>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label>Feed Category</label>
-                    @Html.DropDownList("[1].feedCategory", Model[0].feedCategories, new { @class = "form-control" })
-                </div>
+
+            <div class="col-md-12">
+                <h4>Dry Feed</h4>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Select Feed</label>
-                    @Html.DropDownList("[1].feedId", Model[0].feeds, new { @class = "form-control" })
+                    @Html.DropDownList("[1].feedId", Model[1].feeds, "Select", new { @class = "form-control" })
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Feed Weight</label>
-                    <input asp-for="@Model[1].weight" class="form-control" />
+                    <input asp-for="@Model[1].weight" class="form-control" value="@Model[1].weight" />
                 </div>
             </div>
-        </div>*@
+
+
+            <div class="col-md-12">
+                <h4>Minerals</h4>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Select Feed</label>
+                    @Html.DropDownList("[2].feedId", Model[2].feeds, "Select", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Feed Weight</label>
+                    <input asp-for="@Model[2].weight" class="form-control" value="@Model[2].weight" />
+                </div>
+            </div>
             <div class="col-md-12">
                 <input type="submit" value="Calculation" class="btn btn-default" />
             </div>

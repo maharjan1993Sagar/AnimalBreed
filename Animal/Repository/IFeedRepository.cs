@@ -8,5 +8,6 @@ namespace Animal.Repository
 {
     public interface IFeedRepository:IRepository<FeedFooder>
     {
+        IEnumerable<FeedFooder> GetByCategory(string category);
     }
 }

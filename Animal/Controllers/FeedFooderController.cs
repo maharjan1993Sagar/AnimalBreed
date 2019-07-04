@@ -11,21 +11,21 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Animal.Controllers
 {
-   // [Authorize]
+    // [Authorize]
     public class FeedFooderController : Controller
     {
-       // private readonly IRepository<FeedFooder> _repo;
+        // private readonly IRepository<FeedFooder> _repo;
         private readonly IUnitOfWork _repoU;
 
-        public FeedFooderController( IUnitOfWork repoU)
+        public FeedFooderController(IUnitOfWork repoU)
         {
-         //   _repo = repo;
+            //   _repo = repo;
             _repoU = repoU;
         }
 
 
         public IActionResult Index()
-    {
+        {
             IEnumerable<FeedFooder> all = _repoU.FeedFooder.GetModel();
             //IEnumerable<FeedFooder> all = _repo.GetModel();
             return View(all);
@@ -41,7 +41,7 @@ namespace Animal.Controllers
         public IActionResult AddEditFeed(int? id)
         {
             FeedFooder model = new FeedFooder();
-            
+
             if (id.HasValue)
             {
                 FeedFooder feed = _repoU.FeedFooder.GetById(id.Value);
@@ -61,7 +61,7 @@ namespace Animal.Controllers
                 {
                     bool isNew = !id.HasValue;
                     //FeedFooder feed = isNew ? new FeedFooder { } : _repo.GetById(id.Value);
-                   // feed = model;
+                    // feed = model;
                     if (isNew)
                     {
                         _repoU.FeedFooder.Insert(model);
@@ -69,8 +69,8 @@ namespace Animal.Controllers
                     }
                     else
                     {
-                         //To Avoid tracking error
-                       // DbContextInMemory.Entry(entity).State = EntityState.Detached;
+                        //To Avoid tracking error
+                        // DbContextInMemory.Entry(entity).State = EntityState.Detached;
                         _repoU.FeedFooder.Update(model);
                     }
                 }
@@ -99,31 +99,62 @@ namespace Animal.Controllers
         {
             List<FeedCalculator> fooders = new List<FeedCalculator>();
 
+            for (int i = 0; i < 3; i++)
+            {
+                FeedCalculator fooder1 = new FeedCalculator();
+                if (i == 0)
+                {
+                    fooder1.feeds = new SelectList(_repoU.FeedFooder.GetByCategory("Green"), "id", "fooderNameEng");
+                }
+                else if (i == 1)
+                {
+                    fooder1.feeds = new SelectList(_repoU.FeedFooder.GetByCategory("Dry"), "id", "fooderNameEng");
+                }
+                else if (i == 2)
+                {
+                    fooder1.feeds = new SelectList(_repoU.FeedFooder.GetByCategory("Mineral"), "id", "fooderNameEng");
+                }
+                fooder1.animalCategories = new SelectList(_repoU.Species.GetModel(), "id", "speciesName");
+                fooder1.fatPercentage = 0;
+                fooder1.category = "";
+                fooder1.weight = 0;
+                fooder1.animalWeight = 0;
+                fooder1.milkvolumn = "0";
 
-            FeedCalculator fooder1 = new FeedCalculator();
-            fooder1.feeds = new SelectList(_repoU.FeedFooder.GetModel(), "id", "fooderNameEng");
-            fooder1.animalCategories = new SelectList(_repoU.Species.GetModel(), "id", "speciesName");
-            fooder1.fatPercentage = 0;
-            fooder1.category = "";
-            fooder1.weight = 0;
-            fooder1.animalWeight = 0;
+                fooders.Add(fooder1);
+            }
+            //FeedCalculator fooder1 = new FeedCalculator();
+            //fooder1.feeds = new SelectList(_repoU.FeedFooder.GetByCategory("Green"), "id", "fooderNameEng");
+            //fooder1.animalCategories = new SelectList(_repoU.Species.GetModel(), "id", "speciesName");
+            //fooder1.fatPercentage = 0;
+            //fooder1.category = "";
+            //fooder1.weight = 0;
+            //fooder1.animalWeight = 0;
+            //fooder1.milkvolumn = "0";
 
-            new List<SelectListItem>{
-                                new SelectListItem{ Text="MilkBase", Value = "MilkBase" },
-                                new SelectListItem{ Text="PregnancyBase", Value = "PregnancyBase" }
-                            };
-
-
-            fooders.Add(fooder1);
+            //fooders.Add(fooder1);
 
             //FeedCalculator fooder2 = new FeedCalculator();
-            //fooder2.feeds = new SelectList(_repoU.FeedFooder.GetModel(), "id", "feedFooderName");
-            //fooder2.animalWeight = 0;
+            //fooder2.feeds = new SelectList(_repoU.FeedFooder.GetByCategory("Dry"), "id", "fooderNameEng");
+            //fooder2.animalCategories = new SelectList(_repoU.Species.GetModel(), "id", "speciesName");
+            //fooder2.fatPercentage = 0;
             //fooder2.category = "";
             //fooder2.weight = 0;
-
+            //fooder2.animalWeight = 0;
 
             //fooders.Add(fooder2);
+
+            //FeedCalculator fooder3 = new FeedCalculator();
+            //fooder3.feeds = new SelectList(_repoU.FeedFooder.GetByCategory("Minerals"), "id", "fooderNameEng");
+            //fooder3.animalCategories = new SelectList(_repoU.Species.GetModel(), "id", "speciesName");
+            //fooder3.fatPercentage = 0;
+            //fooder3.category = "";
+            //fooder3.weight = 0;
+            //fooder3.animalWeight = 0;
+
+            //fooders.Add(fooder3);
+
+
             return View(fooders);
         }
         [HttpPost]
@@ -133,44 +164,64 @@ namespace Animal.Controllers
             string fat = feeds[0].fatPercentage.ToString();
             string type = feeds[0].milk;
             string preg = feeds[0].pregnancy;
-            string volumn = feeds[0].milkvolumn="0";
+            string volumn = feeds[0].milkvolumn;
             string species = feeds[0].species;
             string speciesName = _repoU.Species.GetById(int.Parse(species)).speciesName;
+
             GeneralNutration generalNutrition = new GeneralNutration();
             MIlkBaseNutrition MilkBase = new MIlkBaseNutrition();
             PregnancyBaseNutrition PregancyBase = new PregnancyBaseNutrition();
 
             if (_repoU.FeedFooder.GetById(feeds[0].feedId) == null ||
-                _repoU.GeneralNutrition.GetByWeight(feeds[0].animalWeight.ToString(),species) == null
+                _repoU.GeneralNutrition.GetByWeight(feeds[0].animalWeight.ToString(), species) == null
                 )
             {
-               
+
                 ModelState.AddModelError(string.Empty, "Feed Fooder Record Not Found.");
                 feeds[0].feeds = new SelectList(_repoU.FeedFooder.GetModel(), "id", "fooderNameEng", feeds[0].feedId);
                 feeds[0].animalCategories = new SelectList(_repoU.Species.GetModel(), "speciesName", "speciesName", feeds[0].category);
                 return View(feeds);
             }
+          
+            for (int i = 0; i < feeds.Count; i++)
+            {
+                if (feedResult.Count == 0 && (feeds[i].feedId.ToString() != "" && feeds[i].feedId != 0))
+                {
+                    FeedFooder fooder = _repoU.FeedFooder.GetById(feeds[i].feedId);
+                    FeedCalculator feed1 = new FeedCalculator();
+                    feed1.dm = (Convert.ToDecimal(feeds[i].weight) * Convert.ToDecimal(fooder.dm) * Convert.ToDecimal(0.01)).ToString("0.00");
+                    feed1.c = (Convert.ToDecimal(feeds[i].weight) * Convert.ToDecimal(fooder.c) * Convert.ToDecimal(0.01)).ToString("0.00");
+                    feed1.p = (Convert.ToDecimal(feeds[i].weight) * Convert.ToDecimal(fooder.p) * Convert.ToDecimal(0.01)).ToString("0.00");
+                    feed1.tdn = (Convert.ToDecimal(feeds[i].weight) * Convert.ToDecimal(fooder.tdn) * Convert.ToDecimal(0.01)).ToString("0.00");
+                    feed1.dcp = (Convert.ToDecimal(feeds[i].weight) * Convert.ToDecimal(fooder.dm) * Convert.ToDecimal(0.01)).ToString("0.00");
+                    feed1.me = (Convert.ToDecimal(feeds[i].weight) * Convert.ToDecimal(fooder.dm) * Convert.ToDecimal(0.01)).ToString("0.00");
+                    feed1.fatPercentage = feeds[0].fatPercentage;
+                    feed1.animalWeight = feeds[0].animalWeight;
+                    feed1.animalCategories = feeds[0].animalCategories;
+                    feed1.remarks = "Feed Fooder";
 
-            FeedFooder fooder = _repoU.FeedFooder.GetById(feeds[0].feedId);
-            FeedCalculator feed1 = new FeedCalculator();
-            feed1.dm = (Convert.ToDecimal(feeds[0].weight) * Convert.ToDecimal(fooder.dm) * Convert.ToDecimal(0.01)).ToString("0.00");
-            feed1.c = (Convert.ToDecimal(feeds[0].weight) * Convert.ToDecimal(fooder.c) * Convert.ToDecimal(0.01)).ToString("0.00");
-            feed1.p = (Convert.ToDecimal(feeds[0].weight) * Convert.ToDecimal(fooder.p) * Convert.ToDecimal(0.01)).ToString("0.00");
-            feed1.tdn = (Convert.ToDecimal(feeds[0].weight) * Convert.ToDecimal(fooder.tdn) * Convert.ToDecimal(0.01)).ToString("0.00");
-            feed1.dcp = (Convert.ToDecimal(feeds[0].weight) * Convert.ToDecimal(fooder.dm) * Convert.ToDecimal(0.01)).ToString("0.00");
-            feed1.me = (Convert.ToDecimal(feeds[0].weight) * Convert.ToDecimal(fooder.dm) * Convert.ToDecimal(0.01)).ToString("0.00");
-            feed1.fatPercentage = feeds[0].fatPercentage;
-            feed1.animalWeight = feeds[0].animalWeight;
-            feed1.animalCategories = feeds[0].animalCategories;
-            feed1.remarks = "Feed Fooder";
+                    feedResult.Add(feed1);
+                }
+                else if (feedResult.Count == 1 && feeds[i].feedId.ToString() != "" && feeds[i].feedId != 0)
+                {
+                    FeedFooder fooder = _repoU.FeedFooder.GetById(feeds[i].feedId);
+                    feedResult[0].dm = (Convert.ToDecimal(feedResult[0].dm) + Convert.ToDecimal(feeds[i].weight) * Convert.ToDecimal(fooder.dm) * Convert.ToDecimal(0.01)).ToString("0.00");
+                    feedResult[0].c = (Convert.ToDecimal(feedResult[0].c) + Convert.ToDecimal(feeds[i].weight) * Convert.ToDecimal(fooder.c) * Convert.ToDecimal(0.01)).ToString("0.00");
+                    feedResult[0].p = (Convert.ToDecimal(feedResult[0].p) + Convert.ToDecimal(feeds[i].weight) * Convert.ToDecimal(fooder.p) * Convert.ToDecimal(0.01)).ToString("0.00");
+                    feedResult[0].tdn = (Convert.ToDecimal(feedResult[0].tdn) + Convert.ToDecimal(feeds[i].weight) * Convert.ToDecimal(fooder.tdn) * Convert.ToDecimal(0.01)).ToString("0.00");
+                    feedResult[0].dcp = (Convert.ToDecimal(feedResult[0].dcp) + Convert.ToDecimal(feeds[i].weight) * Convert.ToDecimal(fooder.dm) * Convert.ToDecimal(0.01)).ToString("0.00");
+                    feedResult[0].me = (Convert.ToDecimal(feedResult[0].me) + Convert.ToDecimal(feeds[i].weight) * Convert.ToDecimal(fooder.dm) * Convert.ToDecimal(0.01)).ToString("0.00");
 
-            feedResult.Add(feed1);
+                }
+            }
+
+
 
             if (type == "Yes")
             {
-                generalNutrition = _repoU.GeneralNutrition.GetByWeight(feeds[0].animalWeight.ToString(),species);
+                generalNutrition = _repoU.GeneralNutrition.GetByWeight(feeds[0].animalWeight.ToString(), species);
 
-                MilkBase = _repoU.MilkBase.GetByFat(fat,volumn,int.Parse(species));
+                MilkBase = _repoU.MilkBase.GetByFat(fat, volumn, int.Parse(species));
                 if (MilkBase == null)
                 {
                     ModelState.AddModelError(string.Empty, "Milk Base Record Not Found.");
@@ -197,7 +248,7 @@ namespace Animal.Controllers
             {
                 if (preg != "No")
                 {
-                    generalNutrition = _repoU.GeneralNutrition.GetByWeight(feeds[0].animalWeight.ToString(),species);
+                    generalNutrition = _repoU.GeneralNutrition.GetByWeight(feeds[0].animalWeight.ToString(), species);
 
                     PregancyBase = _repoU.PregnancyBaseNutrition.GetBySpecies(feeds[0].animalWeight.ToString());
                     if (PregancyBase == null)
@@ -224,20 +275,29 @@ namespace Animal.Controllers
                     }
                     else
                     {
-                        feedResult[1].dm = (Convert.ToDecimal(feedResult[1].dm) + Convert.ToDecimal(feed.dm)- Convert.ToDecimal(generalNutrition.dm)).ToString();
-                        feedResult[1].tdn = (Convert.ToDecimal(feedResult[1].tdn) + Convert.ToDecimal(feed.tdn)- Convert.ToDecimal(generalNutrition.tdn)).ToString();
-                        feedResult[1].p = (Convert.ToDecimal(feedResult[1].p) + Convert.ToDecimal(feed.p)- Convert.ToDecimal(generalNutrition.p)).ToString();
-                        feedResult[1].c = (Convert.ToDecimal(feedResult[1].c) + Convert.ToDecimal(feed.c)- Convert.ToDecimal(generalNutrition.c)).ToString();
+                        feedResult[1].dm = (Convert.ToDecimal(feedResult[1].dm) + Convert.ToDecimal(feed.dm) - Convert.ToDecimal(generalNutrition.dm)).ToString();
+                        feedResult[1].tdn = (Convert.ToDecimal(feedResult[1].tdn) + Convert.ToDecimal(feed.tdn) - Convert.ToDecimal(generalNutrition.tdn)).ToString();
+                        feedResult[1].p = (Convert.ToDecimal(feedResult[1].p) + Convert.ToDecimal(feed.p) - Convert.ToDecimal(generalNutrition.p)).ToString();
+                        feedResult[1].c = (Convert.ToDecimal(feedResult[1].c) + Convert.ToDecimal(feed.c) - Convert.ToDecimal(generalNutrition.c)).ToString();
 
                     }
                 }
             }
 
+            if ((feeds[0].milkvolumn ?? "0") == "0")
+            {
+                feeds[0].milkvolumn = feeds[0].milkvolumn ?? "1";
+            }
+            feedResult[1].dm = (Convert.ToDecimal(feeds[0].milkvolumn) * Convert.ToDecimal(feedResult[1].dm)).ToString();
+            feedResult[1].tdn = (Convert.ToDecimal(feeds[0].milkvolumn) * Convert.ToDecimal(feedResult[1].tdn)).ToString();
+            feedResult[1].p = (Convert.ToDecimal(feeds[0].milkvolumn) * Convert.ToDecimal(feedResult[1].p)).ToString();
+            feedResult[1].c = (Convert.ToDecimal(feeds[0].milkvolumn) * Convert.ToDecimal(feedResult[1].c)).ToString();
+
             FeedCalculator feed2 = new FeedCalculator();
-            feed2.dm = (Convert.ToDecimal(feedResult[0].dm) - Convert.ToDecimal(feedResult[1].dm)).ToString("0.00");
-            feed2.c = (Convert.ToDecimal(feedResult[0].c) - Convert.ToDecimal(feedResult[1].c)).ToString("0.00");
-            feed2.p = (Convert.ToDecimal(feedResult[0].p) - Convert.ToDecimal(feedResult[1].p)).ToString("0.00");
-            feed2.tdn = (Convert.ToDecimal(feedResult[0].tdn) - Convert.ToDecimal(feedResult[1].tdn)).ToString("0.00");
+            feed2.dm = (Convert.ToDecimal(feedResult[0].dm) - Convert.ToDecimal(feedResult[0].milkvolumn) * Convert.ToDecimal(feedResult[1].dm)).ToString("0.00");
+            feed2.c = (Convert.ToDecimal(feedResult[0].c) - Convert.ToDecimal(feedResult[0].milkvolumn) * Convert.ToDecimal(feedResult[1].c)).ToString("0.00");
+            feed2.p = (Convert.ToDecimal(feedResult[0].p) - Convert.ToDecimal(feedResult[0].milkvolumn) * Convert.ToDecimal(feedResult[1].p)).ToString("0.00");
+            feed2.tdn = (Convert.ToDecimal(feedResult[0].tdn) - Convert.ToDecimal(feedResult[0].milkvolumn) * Convert.ToDecimal(feedResult[1].tdn)).ToString("0.00");
             feed2.fatPercentage = feeds[0].fatPercentage;
             feed2.category = feeds[0].category;
             feed2.remarks = "Result";

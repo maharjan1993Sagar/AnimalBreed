@@ -20,7 +20,7 @@ namespace Animal.Repository
         }
         public IEnumerable<AnimalRegistration> GetModel()
         {
-            return db.animalRegistration.Include(M => M.Species).Include(m => m.Breed).ToList();
+            return db.animalRegistration.Include(M => M.Species).Include(m => m.Breed).Include(m=>m.Farm).Include(m=>m.AnimalOwners).ToList();
 
         }
 

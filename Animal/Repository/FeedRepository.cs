@@ -18,5 +18,10 @@ namespace Animal.Repository
 
         }
 
+        public IEnumerable<FeedFooder> GetByCategory(string category)
+        {
+            return db.FeedFooder.Where(m => m.category == category).ToList();
+        }
+
     }
 }

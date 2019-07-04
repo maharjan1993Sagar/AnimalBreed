@@ -64,7 +64,6 @@ namespace Animal.Controllers
                 }
             }
             model.speciess = new SelectList(_repo.Species.GetModel(), "id", "speciesName");
-            
             model.breeds = new SelectList(_repo.Breed.GetModel(), "id", "breedNameShort");
             model.owners = new SelectList(_repo.OwnerKeeper.GetModel(), "id", "fullName");
             model.farms = new SelectList(_repo.Farm.GetModel(), "id", "orgtanizationName");

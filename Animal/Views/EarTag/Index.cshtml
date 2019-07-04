@@ -16,6 +16,7 @@
         <table class="table table-bordered col-md-12" id="myTable">
             <thead>
                 <tr>
+                    <th>Serial No</th>
                     <th>
                        Id
                     </th>
@@ -27,19 +28,20 @@
                 </tr>
             </thead>
             <tbody>
+                @{int i = 1;}
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.id)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.earTagNo)
-                        </td>
+                <tr>
+                    <td>@i</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.id)
+                    </td>
 
-
-
-                    </tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.earTagNo)
+                    </td>
+                </tr>
+                    i++;
                 }
             </tbody>
         </table>

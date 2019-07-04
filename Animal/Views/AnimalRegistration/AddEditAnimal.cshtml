@@ -240,6 +240,30 @@
             return status;
         }
 
+        function CheckEarTagUsed() {
+            var status = true;
+            var ear = $("#txtEarTag").val();
+            if (ear != null) {
+                $.ajax({
+                    async: false,
+                    type: "POST",
+                    dataType: "json",
+                    //data: "{'earTag':'" + ear + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    url: RootUrl + 'Request/CheckEarTagUsed?earTag=' + ear,
+                    success: function (response) {
+                        if (response.toString() == "NULL") {
+                            status = false;
+
+                        }
+                    }
+                })
+            }
+
+
+            return status;
+        }
+
         $(document).ready(function () {
 
             $("#txtEarTag").change(function () {
@@ -251,6 +275,11 @@
             $("#txtSubmit").click(function (e) {
                 if (!CheckEarTag()) {
                     alert("Ear Tag doesnot generated yet or invalid.");
+                    e.preventDefault();
+                }
+
+                if (CheckEarTagUsed() && $("input[name='id']").val()==0) {
+                    alert("Ear Tag No already used");
                     e.preventDefault();
                 }
             })

@@ -38,28 +38,27 @@ namespace Animal.Repository
         public AnimalRegistration GetByEartag(string eartag)
         {
             return db.animalRegistration.FirstOrDefault(m => m.earTagNo == eartag);
-
         }
 
         public void Insert(AnimalRegistration animal)
         {
+          
+                db.animalRegistration.Add(animal);
 
+                db.SaveChanges();
+                keeper keeper = db.keeper.FirstOrDefault(m => m.id == animal.keeperId);
+                animal.keeper = keeper;
+                animal = db.animalRegistration.LastOrDefault();
 
-            db.animalRegistration.Add(animal);
+                AnimalOwner animalowner = new AnimalOwner();
+                animalowner.Owner = db.OwnerKeeper.Find(Convert.ToInt32(animal.ownerId));
+                animalowner.OwnerId = Convert.ToInt32(animal.ownerId);
+                animalowner.AnimalId = animal.id;
+                animalowner.AnimalRegistration = animal;
 
-            db.SaveChanges();
-            keeper keeper = db.keeper.FirstOrDefault(m => m.id == animal.keeperId);
-            animal.keeper = keeper;
-            animal = db.animalRegistration.LastOrDefault();
-
-            AnimalOwner animalowner = new AnimalOwner();
-            animalowner.Owner = db.OwnerKeeper.Find(Convert.ToInt32(animal.ownerId));
-            animalowner.OwnerId = Convert.ToInt32(animal.ownerId);
-            animalowner.AnimalId = animal.id;
-            animalowner.AnimalRegistration = animal;
-
-            db.AnimalOwners.Add(animalowner);
-            db.SaveChanges();
+                db.AnimalOwners.Add(animalowner);
+                db.SaveChanges();
+          
 
         }
 

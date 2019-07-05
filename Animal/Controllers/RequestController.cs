@@ -135,8 +135,8 @@ namespace Animal.Controllers
                 required.dm = (Convert.ToDecimal(required.dm) * Convert.ToDecimal(milkVolumn)).ToString();
                 required.snf = (Convert.ToDecimal(required.snf) * Convert.ToDecimal(milkVolumn)).ToString();
                 required.tdn = (Convert.ToDecimal(required.tdn) * Convert.ToDecimal(milkVolumn)).ToString();
-                required.c = (Convert.ToDecimal(required.c) * Convert.ToDecimal(milkVolumn)).ToString();
-                required.p = (Convert.ToDecimal(required.p) * Convert.ToDecimal(milkVolumn)).ToString();
+                required.c = (Convert.ToDecimal(required.c) * Convert.ToDecimal(milkVolumn) * Convert.ToDecimal(1000)).ToString();
+                required.p = (Convert.ToDecimal(required.p) * Convert.ToDecimal(milkVolumn) * Convert.ToDecimal(1000)).ToString();
 
             }
             return Json(required);

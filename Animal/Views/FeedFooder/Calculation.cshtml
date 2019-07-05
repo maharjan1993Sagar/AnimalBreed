@@ -63,17 +63,15 @@
             </div>
             <div class="col-md-12">
                 <table id="tblRequired" class="table table-bordered text-primary">
-                    <tr><th colspan="4" class="text-primary">Required Nutrients(kg)</th></tr>
+                    <tr><th colspan="4" class="text-primary">Required Nutrients</th></tr>
                     <tr>
                         
-                        <th>DM</th>
-                        <th>TDN</th>
-                        <th>SNF</th>
-                        <th>C</th>
-                        <th>P</th>
+                        <th>DM(kg)</th>
+                        <th>TDN(kg)</th>
+                        <th>C(g)</th>
+                        <th>P(g)</th>
                     </tr>
                     <tr id="trVal">
-                        <td>0</td>
                         <td>0</td>
                         <td>0</td>
                         <td>0</td>
@@ -149,18 +147,17 @@
         <table class="table table-bordered">
             <tr>
                 <th>Discription</th>
-                <th>DM</th>
+                <th>DM(kg)</th>
 
-                <th>TDN</th>
-                <th>C</th>
-                <th>P</th>
+                <th>TDN(kg)</th>
+                <th>C(g)</th>
+                <th>P(g)</th>
             </tr>
             @for (int i = 0; i < Model.Count(); i++)
             {
                 <tr>
                     <td>@Model[i].remarks</td>
                     <td>@Model[i].dm</td>
-
                     <td>@Model[i].tdn</td>
                     <td>@Model[i].c</td>
                     <td>@Model[i].p</td>
@@ -202,9 +199,8 @@
                 var tr = $('table#tblRequired tbody tr#trVal');
                 tr.find('td:eq(0)').html(data.dm);
                 tr.find('td:eq(1)').html(data.tdn);
-                tr.find('td:eq(2)').html(data.snf);
-                tr.find('td:eq(3)').html(data.c);
-                tr.find('td:eq(4)').html(data.p);
+                tr.find('td:eq(2)').html(data.c);
+                tr.find('td:eq(3)').html(data.p);
                 table.show();
 
             })

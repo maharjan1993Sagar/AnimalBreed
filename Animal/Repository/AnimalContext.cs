@@ -13,9 +13,11 @@ namespace Animal.Repository
         public AnimalContext(DbContextOptions<AnimalContext> options)
         : base(options)
         {
+
         }
         public DbSet<AnimalRegistration> animalRegistration { get; set; }
         public DbSet<Breed> Breeds { get; set; }
+        
         public DbSet<Diseases> Diseases{ get; set; }
         public DbSet<Farm> Farms { get; set; }
         public DbSet<FeedFooder> FeedFooder { get; set; }
@@ -46,8 +48,10 @@ namespace Animal.Repository
         public DbSet<GeneralNutration> GeneralNutrations { get; set; }
         public DbSet<EarTag> EarTags { get; set; }
         public DbSet<Login> login { get; set; }
+        public DbSet<keeper> Keeper { get; set; }
         public DbSet<User>  Users { get; set; }
-        //public DbSet<AnimalOwner> AnimalOwners { get; set; }
+        public DbSet<AnimalOwner> AnimalOwners { get; set; }
+        public DbSet<keeper> keeper { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

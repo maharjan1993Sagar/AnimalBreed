@@ -277,8 +277,8 @@ namespace Animal.Controllers
                     {
                         feedResult[1].dm = (Convert.ToDecimal(feedResult[1].dm) + Convert.ToDecimal(feed.dm) - Convert.ToDecimal(generalNutrition.dm)).ToString();
                         feedResult[1].tdn = (Convert.ToDecimal(feedResult[1].tdn) + Convert.ToDecimal(feed.tdn) - Convert.ToDecimal(generalNutrition.tdn)).ToString();
-                        feedResult[1].p = (Convert.ToDecimal(feedResult[1].p) + Convert.ToDecimal(feed.p) - Convert.ToDecimal(generalNutrition.p)).ToString();
-                        feedResult[1].c = (Convert.ToDecimal(feedResult[1].c) + Convert.ToDecimal(feed.c) - Convert.ToDecimal(generalNutrition.c)).ToString();
+                        feedResult[1].p = (Convert.ToDecimal(feedResult[1].p) + Convert.ToDecimal(feed.p) -  Convert.ToDecimal(generalNutrition.p)).ToString();
+                        feedResult[1].c = (Convert.ToDecimal(feedResult[1].c) + Convert.ToDecimal(feed.c) -  Convert.ToDecimal(generalNutrition.c)).ToString();
 
                     }
                 }
@@ -286,7 +286,7 @@ namespace Animal.Controllers
 
             if ((feeds[0].milkvolumn ?? "0") == "0")
             {
-                feeds[0].milkvolumn = feeds[0].milkvolumn ?? "1";
+                feeds[0].milkvolumn = "1";
             }
             feedResult[1].dm = (Convert.ToDecimal(feeds[0].milkvolumn) * Convert.ToDecimal(feedResult[1].dm)).ToString();
             feedResult[1].tdn = (Convert.ToDecimal(feeds[0].milkvolumn) * Convert.ToDecimal(feedResult[1].tdn)).ToString();
@@ -294,10 +294,10 @@ namespace Animal.Controllers
             feedResult[1].c = (Convert.ToDecimal(feeds[0].milkvolumn) * Convert.ToDecimal(feedResult[1].c)).ToString();
 
             FeedCalculator feed2 = new FeedCalculator();
-            feed2.dm = (Convert.ToDecimal(feedResult[0].dm) - Convert.ToDecimal(feedResult[0].milkvolumn) * Convert.ToDecimal(feedResult[1].dm)).ToString("0.00");
-            feed2.c = (Convert.ToDecimal(feedResult[0].c) - Convert.ToDecimal(feedResult[0].milkvolumn) * Convert.ToDecimal(feedResult[1].c)).ToString("0.00");
-            feed2.p = (Convert.ToDecimal(feedResult[0].p) - Convert.ToDecimal(feedResult[0].milkvolumn) * Convert.ToDecimal(feedResult[1].p)).ToString("0.00");
-            feed2.tdn = (Convert.ToDecimal(feedResult[0].tdn) - Convert.ToDecimal(feedResult[0].milkvolumn) * Convert.ToDecimal(feedResult[1].tdn)).ToString("0.00");
+            feed2.dm = (Convert.ToDecimal(feedResult[0].dm) - Convert.ToDecimal(feedResult[1].dm)).ToString("0.00");
+            feed2.c = (Convert.ToDecimal(feedResult[0].c) - Convert.ToDecimal(feedResult[1].c)).ToString("0.00");
+            feed2.p = (Convert.ToDecimal(feedResult[0].p) - Convert.ToDecimal(feedResult[1].p)).ToString("0.00");
+            feed2.tdn = (Convert.ToDecimal(feedResult[0].tdn) -  Convert.ToDecimal(feedResult[1].tdn)).ToString("0.00");
             feed2.fatPercentage = feeds[0].fatPercentage;
             feed2.category = feeds[0].category;
             feed2.remarks = "Result";

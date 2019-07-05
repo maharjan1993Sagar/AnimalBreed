@@ -3,7 +3,9 @@
 @{
     ViewData["Title"] = "AddEditMilk";
 }
-
+@section styles{
+    <link href="~/css/select2.min.css" rel="stylesheet" />
+}
 <div class="card">
     <div class="card-header py-3">
         <h3 class="m-1 font-weight-bold center text-primary">Milk Record</h3>
@@ -19,8 +21,8 @@
                     <div class="form-group">
                         <label class="control-label">Ear tag Number</label>
 
-                        @Html.DropDownList("animalRegistrationid", Model.animals, "Select", new { @class = "form-control" })
-                        <span asp-validation-for="animalRegistrationid" class="text-danger"></span>
+                        @Html.DropDownList("animalRegistrationid", Model.animals, "Select", new { @class = "form-control", id="ddlAnimal" })
+                       
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -28,8 +30,8 @@
                         <label>
                             milking Status
                         </label><br />
-                        <input type="radio" name="milkingStatus" onclick="clickEventGender(this);" value="Yes" />Yes<br />
-                        <input type="radio" name="gender" onclick="clickEventGender(this);" value="No" />No<br />
+                        <input type="radio" name="milkingStatus" onclick="clickEventGender(this);" value="Yes" />Yes&nbsp;&nbsp;
+                        <input type="radio" name="gender" onclick="clickEventGender(this);" value="No" />No
 
                     </div>
                 </div>
@@ -157,7 +159,11 @@
     </div>
 </div>
 
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@section Scripts{
+    <script src="~/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#ddlAnimal").select2();
+        })
+    </script>
 }

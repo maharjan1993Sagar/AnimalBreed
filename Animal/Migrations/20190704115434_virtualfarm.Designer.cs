@@ -4,14 +4,16 @@ using Animal.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Animal.Migrations
 {
     [DbContext(typeof(AnimalContext))]
-    partial class AnimalContextModelSnapshot : ModelSnapshot
+    [Migration("20190704115434_virtualfarm")]
+    partial class virtualfarm
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -607,7 +609,7 @@ namespace Animal.Migrations
 
                     b.Property<string>("genericProblem");
 
-                    b.Property<int?>("labId");
+                    b.Property<int>("labId");
 
                     b.Property<string>("milkSampleBoxNo");
 
@@ -1176,7 +1178,8 @@ namespace Animal.Migrations
 
                     b.HasOne("Animal.Models.lab", "lab")
                         .WithMany()
-                        .HasForeignKey("labId");
+                        .HasForeignKey("labId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Animal.Models.OwnerKeeper", b =>

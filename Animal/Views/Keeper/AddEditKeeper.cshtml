@@ -1,27 +1,23 @@
 ﻿@model Animal.Models.ViewModel.OwnerKeeperVM
 
+
 @{
-    ViewData["Title"] = "AddEditOwnerKeeper";
+    ViewData["Title"] = "AddEditKeeper";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 <div class="card">
     <div class="card-header py-3">
-        <h3 class="m-1 font-weight-bold center text-primary">Owner Keeper</h3>
+        <h3 class="m-1 font-weight-bold center text-primary">Keeper</h3>
     </div>
     <div class="card-body">
         @Html.HiddenFor(m => m.id)
 
-        <form asp-action="AddEditOwnerKeeper">
+        <form asp-action="AddEditKeeper">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-group">
-                    <label asp-for="id" class="control-label"></label>
-                    <input asp-for="id" class="form-control" />
-                    <span asp-validation-for="id" class="text-danger"></span>
-                </div>*@
             <div class="row">
                 @*<div class="col-md-4">
                     <div class="form-group">
                         <label asp-for="category" class="control-label"></label>
-                       
                         <input asp-for="category" class="form-control" />
                         <span asp-validation-for="category" class="text-danger"></span>
                     </div>
@@ -29,7 +25,7 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                       <label>Full Name</label>
+                        <label asp-for="fullName" class="control-label"></label>
                         <input asp-for="fullName" class="form-control" />
                         <span asp-validation-for="fullName" class="text-danger"></span>
                     </div>
@@ -43,6 +39,7 @@
                     </div>
                 </div>
 
+
                 <div class="col-md-4">
                     <div class="form-group">
                         <label asp-for="address" class="control-label"></label>
@@ -50,6 +47,7 @@
                         <span asp-validation-for="address" class="text-danger"></span>
                     </div>
                 </div>
+
 
                 <div class="col-md-4">
                     <div class="form-group">
@@ -59,13 +57,15 @@
                     </div>
                 </div>
 
+
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label>Ward no</label>
+                        <label asp-for="wardNo" class="control-label"></label>
                         <input asp-for="wardNo" class="form-control" />
                         <span asp-validation-for="wardNo" class="text-danger"></span>
                     </div>
                 </div>
+
 
                 <div class="col-md-4">
                     <div class="form-group">
@@ -74,6 +74,8 @@
                         <span asp-validation-for="state" class="text-danger"></span>
                     </div>
                 </div>
+
+
                 <div class="col-md-4">
                     <div class="form-group">
                         <label asp-for="latitude" class="control-label"></label>
@@ -82,14 +84,15 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
 
+                <div class="col-md-4">
                     <div class="form-group">
                         <label asp-for="logitude" class="control-label"></label>
                         <input asp-for="logitude" class="form-control" />
                         <span asp-validation-for="logitude" class="text-danger"></span>
                     </div>
                 </div>
+
 
                 <div class="col-md-4">
                     <div class="form-group">
@@ -99,37 +102,42 @@
                     </div>
                 </div>
 
+
                 <div class="col-md-4">
                     <div class="form-group">
-                      <label>Academic Qualification</label>
+                        <label asp-for="academicQualification" class="control-label"></label>
                         <input asp-for="academicQualification" class="form-control" />
                         <span asp-validation-for="academicQualification" class="text-danger"></span>
                     </div>
                 </div>
 
+
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label>Finantance Status</label>
+                        <label asp-for="finantanceStatus" class="control-label"></label>
                         <input asp-for="finantanceStatus" class="form-control" />
                         <span asp-validation-for="finantanceStatus" class="text-danger"></span>
                     </div>
                 </div>
 
+
                 <div class="col-md-4">
                     <div class="form-group">
-                      <label>Mobile Number</label>
+                        <label asp-for="mobileNumber" class="control-label"></label>
                         <input asp-for="mobileNumber" class="form-control" />
                         <span asp-validation-for="mobileNumber" class="text-danger"></span>
                     </div>
                 </div>
 
+
                 <div class="col-md-4">
                     <div class="form-group">
-                       <label>Other Number</label>
+                        <label asp-for="otherNumber" class="control-label"></label>
                         <input asp-for="otherNumber" class="form-control" />
                         <span asp-validation-for="otherNumber" class="text-danger"></span>
                     </div>
                 </div>
+
 
                 <div class="col-md-4">
                     <div class="form-group">
@@ -139,6 +147,7 @@
                     </div>
                 </div>
 
+
                 <div class="col-md-4">
                     <div class="form-group">
                         <label asp-for="url" class="control-label"></label>
@@ -147,29 +156,35 @@
                     </div>
                 </div>
 
+
+
                 <div class="col-md-4">
                     <div class="form-group">
-                       <label>Farm</label>
+                        <label>Farm</label>
                         @*<input asp-for="farmid" class="form-control" />*@
                         @Html.DropDownList("farmid", Model.farms, "Choose Farm", htmlAttributes: new { @class = "form-control" })
 
                         <span asp-validation-for="farmid" class="text-danger"></span>
                     </div>
+
+
                 </div>
+
             </div>
+
 
             <div class="col-md-12" style="text-align:center; padding-top:15px;">
                 <input type="submit" value="Submit" class="btn btn-primary" />
             </div>
         </form>
-    </div>
+        </div>
+  
 
     <div>
         <a asp-action="Index" class="btn btn-danger">Back to List</a>
     </div>
 </div>
 
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

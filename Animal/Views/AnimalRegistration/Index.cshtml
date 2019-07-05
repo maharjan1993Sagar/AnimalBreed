@@ -37,6 +37,8 @@
                 </div>
             </div>
         </div>
+        <label>@ViewData["fileLocation"]</label>
+
         <div style="padding-top:10px;">
             <table class="table table-bordered" id="myTable">
                 <thead>
@@ -57,9 +59,9 @@
                         <th>
                             Age
                         </th>
-                        <th>
+                        @*<th>
                             DOB
-                        </th>
+                        </th>*@
                         @*<th>
                                 Breed
                             </th>
@@ -72,6 +74,7 @@
                         <th>
                             Farm
                         </th>
+                     
                         @* <th>
                                 @Html.DisplayNameFor(model => model.pregnencyStatus)
                             </th>
@@ -128,9 +131,9 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.age)
                             </td>
-                            <td>
+                            @*<td>
                                 @Html.DisplayFor(modelItem => item.dob)
-                            </td>
+                            </td>*@
                             @*<td>
                                     @Html.DisplayFor(modelItem => item.Breed.breedNameShort)
                                 </td>
@@ -148,7 +151,7 @@
                                 @*@Html.DisplayFor(modelItem => item.ownerId)*@
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.farmId)
+                                @Html.DisplayFor(modelItem => item.Farm.orgtanizationName)
                             </td>
                             @* <td>
                                     @Html.DisplayFor(modelItem => item.pregnencyStatus)
@@ -183,6 +186,7 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.declaredDate)
                                 </td>*@
+                        
                             <td>
                                 @Html.ActionLink("Edit", "AddEditAnimal", new { id = item.id }, new { @class = "btn btn-primary" }) |
                                 @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info" }) |

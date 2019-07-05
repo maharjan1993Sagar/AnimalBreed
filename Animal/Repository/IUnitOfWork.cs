@@ -11,6 +11,7 @@ namespace Animal.Repository
          IAnimalRepository AnimalRegistration { get; }
          IBreedRepository Breed { get; }
          IOwnerRepository OwnerKeeper { get; }
+       
          IFarmReository Farm { get; }
          IFeedRepository FeedFooder { get; }
         IMilkBaseNutritionRepository MilkBase { get; }

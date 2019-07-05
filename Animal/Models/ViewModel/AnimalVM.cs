@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,10 +23,17 @@ namespace Animal.Models.ViewModel
         public string age { get; set; }
 
         public string dob { get; set; }
+        public string latitude { get; set; }
+        public string longitude { get; set; }
 
-        public int sireId { get; set; }
+        public int? sireId { get; set; }
 
-        public int damId { get; set; }
+        public int? damId { get; set; }
+
+        [NotMappedAttribute]
+        public IFormFile Image { get; set; }
+
+        public string ImageName { get; set; }
 
         public string noOfCalving { get; set; }
 

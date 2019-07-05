@@ -1,0 +1,165 @@
+﻿@model Animal.Models.keeper
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="card mb-4 col-md-8">
+    <div class="card-header py-3">
+        <h3 class="m-1 font-weight-bold center text-primary">Keeper</h3>
+    </div>
+
+    <div style="padding-top:10px;">
+        <table class="table table-bordered" id="myTable">
+            <tr>
+
+                <td>
+                    @Html.DisplayNameFor(model => model.id)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.id)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.category)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.category)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.fullName)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.fullName)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.occupation)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.occupation)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.address)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.address)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.municipililty)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.municipililty)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.wardNo)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.wardNo)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.state)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.state)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.latitude)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.latitude)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.logitude)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.logitude)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.dob)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.dob)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.academicQualification)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.academicQualification)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.finantanceStatus)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.finantanceStatus)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.mobileNumber)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.mobileNumber)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.otherNumber)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.otherNumber)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.email)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.email)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.url)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.url)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.farmid)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => model.farm.orgtanizationName)
+                </th>
+            </tr>
+        </table>
+    </div>
+    <div>
+
+        <a asp-action="Index" class="btn btn-danger">Back to List</a>
+    </div>
+</div>

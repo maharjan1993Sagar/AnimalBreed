@@ -25,5 +25,11 @@ namespace Animal.Repository
             return db.OwnerKeeper.Include(M => M.farm).ToList();
         }
 
+        public OwnerKeeper GetById(int id)
+        {
+            return db.OwnerKeeper.Include(m => m.farm).Include(m => m.farm).FirstOrDefault(m => m.id == id);
+
+        }
+
     }
 }

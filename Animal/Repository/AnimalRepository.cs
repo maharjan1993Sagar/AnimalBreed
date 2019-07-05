@@ -10,7 +10,7 @@ namespace Animal.Repository
     {
         public AnimalRepository(AnimalContext Context)
             : base(Context)
-        {   
+        {
         }
 
         public AnimalContext AnimalContext
@@ -18,14 +18,15 @@ namespace Animal.Repository
             get { return db as AnimalContext; }
 
         }
-        public IEnumerable<AnimalRegistration> GetModel() {
-            return db.animalRegistration.Include(M => M.Species).Include(m=>m.Breed).ToList();
-            
+        public IEnumerable<AnimalRegistration> GetModel()
+        {
+            return db.animalRegistration.Include(M => M.Species).Include(m => m.Breed).Include(m=>m.Farm).Include(m=>m.AnimalOwners).ToList();
+
         }
 
         public AnimalRegistration GetById(int id)
         {
-            return db.animalRegistration.Include(m => m.Species).Include(m=>m.Breed).FirstOrDefault(m=>m.id==id);
+            return db.animalRegistration.Include(m => m.Species).Include(m => m.Breed).FirstOrDefault(m => m.id == id);
 
         }
 
@@ -42,18 +43,66 @@ namespace Animal.Repository
 
         public void Insert(AnimalRegistration animal)
         {
-            AnimalOwner animalowner = new AnimalOwner();
-            animalowner.Owner = db.OwnerKeeper.Find(Convert.ToInt32(animal.ownerId));
-            animalowner.OwnerId = Convert.ToInt32(animal.ownerId);
-            animal.AnimalOwners.Add(animalowner);
+
 
             db.animalRegistration.Add(animal);
 
             db.SaveChanges();
+            keeper keeper = db.keeper.FirstOrDefault(m => m.id == animal.keeperId);
+            animal.keeper = keeper;
             animal = db.animalRegistration.LastOrDefault();
+            if (db.OwnerKeeper.Any(m => m.id == animal.ownerId))
+            {
+                AnimalOwner animalowner = new AnimalOwner();
+                animalowner.Owner = db.OwnerKeeper.Find(Convert.ToInt32(animal.ownerId));
+                animalowner.OwnerId = Convert.ToInt32(animal.ownerId);
+                animalowner.AnimalId = animal.id;
+                animalowner.AnimalRegistration = animal;
 
+                db.AnimalOwners.Add(animalowner);
+                db.SaveChanges();
+            }
+
+        }
+
+        public void Update(AnimalRegistration animal)
+        {
+            db.Entry(animal).State = EntityState.Modified;
+            db.SaveChanges();
+
+            AnimalOwner animalOwner = db.AnimalOwners.FirstOrDefault(m => m.AnimalId == animal.id && m.OwnerId == animal.ownerId);
+            if (animalOwner != null)
+            {
+                db.AnimalOwners.Remove(animalOwner);
+                db.SaveChanges();
+            }
+
+
+            if (animal.ownerId!=null)
+            {
+                    AnimalOwner aniOwner = new AnimalOwner();
+                    aniOwner.Owner = db.OwnerKeeper.Find(Convert.ToInt32(animal.ownerId));
+                    aniOwner.OwnerId = Convert.ToInt32(animal.ownerId);
+                    aniOwner.AnimalId = animal.id;
+                    aniOwner.AnimalRegistration = animal;
+                    db.AnimalOwners.Add(aniOwner);
+            }
             
+            db.SaveChanges();
 
+        }
+
+        public void Delete(int id)
+        {
+            var animal = db.animalRegistration.Find(id);
+            AnimalOwner animalOwner = db.AnimalOwners.FirstOrDefault(m => m.AnimalId == animal.id && m.OwnerId == animal.ownerId);
+            if (animalOwner != null)
+            {
+                db.AnimalOwners.Remove(animalOwner);
+                db.SaveChanges();
+            }
+            db.animalRegistration.Remove(animal);
+            db.SaveChanges();
         }
     }
 }

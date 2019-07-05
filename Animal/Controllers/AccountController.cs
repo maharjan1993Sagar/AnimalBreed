@@ -101,8 +101,41 @@ namespace Animal.Controllers
 
 
             // return StatusCode(201);
-            ViewBag.Message = "User Created Successfully.";
+            ViewBag.message = "User Created Successfully.";
             return View("Login");
+        }
+
+        [HttpGet]
+        public IActionResult RegisterAdmin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult RegisterAdmin(User user, string password)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            //validate request
+            user.UserName = user.UserName.ToLower();
+            user.Role =user.Role;
+            user.permission = user.permission;
+            if (_user.UserExists(user.UserName))
+            {
+                ModelState.AddModelError(string.Empty, "Username already exist");
+                return View();
+            }
+
+            //    var userToCreate = new User {
+            //        UserName =user.UserName
+            //};
+
+            var createdUser = _user.Register(user, password);
+
+
+            // return StatusCode(201);
+            ViewBag.message = "User Created Successfully.";
+            return View();
         }
         [HttpGet]
         public IActionResult Logout()

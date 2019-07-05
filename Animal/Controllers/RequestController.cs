@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using Animal.Models;
 using Animal.Models.ViewModel;
@@ -8,6 +10,7 @@ using Animal.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Configuration;
 
 namespace Animal.Controllers
 {
@@ -16,10 +19,13 @@ namespace Animal.Controllers
     {
         private readonly IUnitOfWork _repo;
         private readonly IUserRepository _user;
-        public RequestController(IUnitOfWork repo, IUserRepository user)
+        private readonly IConfiguration _config;
+
+        public RequestController(IUnitOfWork repo, IUserRepository user, IConfiguration config)
         {
             _repo = repo;
             _user = user;
+            _config = config;
         }
         public IActionResult Index()
         {
@@ -78,6 +84,35 @@ namespace Animal.Controllers
                 user.permission = !user.permission;
 
                 _user.Update(user);
+
+                string token = Guid.NewGuid().ToString();
+                user.ResetPasswordCode = token;
+                _user.Update(user);
+
+                var resetLink = Url.Action("Login", "Account", new { }, protocol: HttpContext.Request.Scheme);
+
+                // code to email the above link
+
+                if (user.permission)
+                {
+                    System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
+                    mail.IsBodyHtml = true;
+                    mail.To.Add(user.Email);
+                    mail.From = new MailAddress(_config.GetSection("Email:UserId").Value);
+                    mail.Subject = "<h2>LIMS:Account Activated Successfully.</h2>";
+                    mail.Body = "<p>Dear " + user.Name + ",you can login from here." + resetLink + "<br>Thank you.</p>";
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.Host = _config.GetSection("Email:Host").Value;
+                    smtp.Port = Convert.ToInt16(_config.GetSection("Email:SMTPPort").Value);
+                    smtp.Credentials = new NetworkCredential(_config.GetSection("Email:UserId").Value, _config.GetSection("Email:Password").Value);
+                    smtp.EnableSsl = true;
+                    smtp.Send(mail);
+                }
+
+
+
+
+
                 return Json("Access Permission Changed Successfully.");
             }
             catch
@@ -87,14 +122,14 @@ namespace Animal.Controllers
 
         }
         [HttpGet]
-        public JsonResult GetNutrition(string pregnancyStatus, string milkStatus, string speciesId, string milkVolumn, string fat,string animalWeight)
+        public JsonResult GetNutrition(string pregnancyStatus, string milkStatus, string speciesId, string milkVolumn, string fat, string animalWeight)
         {
             GeneralNutration gn = _repo.GeneralNutrition.GetByWeight(animalWeight, speciesId);
             MIlkBaseNutrition mn = _repo.MilkBase.GetByFat(fat, milkVolumn, int.Parse(speciesId));
-            PregnancyBaseNutrition pn = _repo.PregnancyBaseNutrition.GetModel().FirstOrDefault(m => m.weight == animalWeight && m.speciesId == int.Parse(speciesId)&&m.PregrenencyType==pregnancyStatus);
+            PregnancyBaseNutrition pn = _repo.PregnancyBaseNutrition.GetModel().FirstOrDefault(m => m.weight == animalWeight && m.speciesId == int.Parse(speciesId) && m.PregrenencyType == pregnancyStatus);
             requiredNutrients required = new requiredNutrients();
 
-            required.dm = (gn.dm??"0");
+            required.dm = (gn.dm ?? "0");
             required.snf = (gn.snf ?? "0");
             required.tdn = (gn.tdn ?? "0");
             required.c = (gn.c ?? "0");
@@ -107,7 +142,7 @@ namespace Animal.Controllers
                 required.c = gn.c;
                 required.p = gn.p;
             }
-            
+
             if (mn != null)
             {
                 required.dm = (Convert.ToDecimal(required.dm) + Convert.ToDecimal(mn.dm)).ToString();
@@ -127,11 +162,11 @@ namespace Animal.Controllers
                 required.p = (Convert.ToDecimal(required.p) + Convert.ToDecimal(pn.p)).ToString();
 
             }
-            if ((milkVolumn ?? "0")=="0")
+            if ((milkVolumn ?? "0") == "0")
             {
                 milkVolumn = "1";
             }
-           {
+            {
                 required.dm = (Convert.ToDecimal(required.dm) * Convert.ToDecimal(milkVolumn)).ToString();
                 required.snf = (Convert.ToDecimal(required.snf) * Convert.ToDecimal(milkVolumn)).ToString();
                 required.tdn = (Convert.ToDecimal(required.tdn) * Convert.ToDecimal(milkVolumn)).ToString();

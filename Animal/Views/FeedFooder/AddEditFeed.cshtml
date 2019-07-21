@@ -14,7 +14,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Fooder Name Nepali</label>
-                       
+
                         <input asp-for="fooderNameNep" class="form-control" />
                         <span asp-validation-for="fooderNameNep" class="text-danger"></span>
                     </div>
@@ -31,7 +31,14 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label asp-for="category" class="control-label"></label>
-                        @Html.DropDownList("category", new List<SelectListItem>() { new SelectListItem() { Text = "--select category--", Value = "" }, new SelectListItem() { Text = "Green", Value = "Green" }, new SelectListItem() { Text = "Dry", Value = "Dry" }, new SelectListItem() { Text = "Mineral", Value = "Mineral" } }, new { @class = "form-control" })
+                        @Html.DropDownList("category", new List<SelectListItem>() { new SelectListItem() { Text = "--select category--", Value = "" },
+                       new SelectListItem() { Text = "Green", Value = "Green" },
+                       new SelectListItem() { Text = "Dry", Value = "Dry" },
+                       new SelectListItem() { Text = "Grains/Seeds", Value = "Grains/Seeds" },
+                       new SelectListItem() { Text = "Cakes/Meals", Value = "Cakes/Meals" },
+                       new SelectListItem() { Text = "Straws", Value = "Straws" },
+                       new SelectListItem() { Text = "Brans/fodder", Value = "Brans/fooder" },
+                       new SelectListItem() { Text = "Mineral", Value = "Mineral" } }, new { @class = "form-control" })
                         <span asp-validation-for="category" class="text-danger"></span>
                     </div>
                 </div>

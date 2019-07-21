@@ -29,5 +29,6 @@ namespace Animal.Models.ViewModel
         public string milkvolumn { get; set; }
         public string milk { get; set; }
         public string pregnancy { get; set; }
+        public string feedCategory { get; set; }
     }
 }

@@ -23,5 +23,13 @@ namespace Animal.Repository
             return db.FeedFooder.Where(m => m.category == category).ToList();
         }
 
+
+        public IEnumerable<FeedFooder> GetCategories()
+        {
+            return db.FeedFooder.GroupBy(m => m.category)
+                  .Select(grp => grp.First())
+                  .ToList();
+        }
+
     }
 }

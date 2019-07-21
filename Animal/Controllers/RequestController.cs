@@ -125,7 +125,7 @@ namespace Animal.Controllers
         public JsonResult GetNutrition(string pregnancyStatus, string milkStatus, string speciesId, string milkVolumn, string fat, string animalWeight)
         {
             GeneralNutration gn = _repo.GeneralNutrition.GetByWeight(animalWeight, speciesId);
-            MIlkBaseNutrition mn = _repo.MilkBase.GetByFat(fat, milkVolumn, int.Parse(speciesId));
+            MIlkBaseNutrition mn = _repo.MilkBase.GetByFat(fat, int.Parse(speciesId));
             PregnancyBaseNutrition pn = _repo.PregnancyBaseNutrition.GetModel().FirstOrDefault(m => m.weight == animalWeight && m.speciesId == int.Parse(speciesId) && m.PregrenencyType == pregnancyStatus);
             requiredNutrients required = new requiredNutrients();
 
@@ -177,6 +177,102 @@ namespace Animal.Controllers
             return Json(required);
 
 
+        }
+        [HttpGet]
+        public JsonResult GetMilkBaseNutrient(string pregnancyStatus, string milkStatus, string speciesId, string milkVolumn, string fat, string animalWeight)
+        {
+            //GeneralNutration gn = _repo.GeneralNutrition.GetByWeight(animalWeight, speciesId);
+            MIlkBaseNutrition mn = _repo.MilkBase.GetByFat(fat, int.Parse(speciesId));
+            //PregnancyBaseNutrition pn = _repo.PregnancyBaseNutrition.GetModel().FirstOrDefault(m => m.weight == animalWeight && m.speciesId == int.Parse(speciesId) && m.PregrenencyType == pregnancyStatus);
+            requiredNutrients required = new requiredNutrients();
+
+            //required.dm = (gn.dm ?? "0");
+            //required.snf = (gn.snf ?? "0");
+            //required.tdn = (gn.tdn ?? "0");
+            //required.c = (gn.c ?? "0");
+            //required.p = (gn.p ?? "0");
+            //if (gn != null)
+            //{
+            //    required.dm = gn.dm;
+            //    required.snf = gn.snf;
+            //    required.tdn = gn.tdn;
+            //    required.c = gn.c;
+            //    required.p = gn.p;
+            //}
+
+            if (mn != null)
+            {
+                string[] res = CalculateDm(animalWeight, pregnancyStatus, milkVolumn);
+                required.dm = res[0];
+                required.snf = ( Convert.ToDecimal(mn.snf)).ToString();
+                required.tdn = ( Convert.ToDecimal(mn.tdn)).ToString();
+                required.c = (Convert.ToDecimal(mn.c)).ToString();
+                required.p = (Convert.ToDecimal(mn.p)).ToString();
+                required.message = res[1];
+
+            }
+
+            
+            //if ((milkVolumn ?? "0") == "0")
+            //{
+            //    milkVolumn = "10";
+            //}
+            //{
+            //    required.dm = (Convert.ToDecimal(required.dm)).ToString();
+            //    required.snf = (Convert.ToDecimal(required.snf)).ToString();
+            //    required.tdn = (Convert.ToDecimal(required.tdn) ).ToString();
+            //    required.c = (Convert.ToDecimal(required.c)).ToString();
+            //    required.p = (Convert.ToDecimal(required.p)).ToString();
+
+            //}
+            return Json(required);
+
+
+        }
+
+        public string[] CalculateDm(string weight,string pregnancy,string milkVolumn)
+        {
+            decimal wt = Convert.ToDecimal(weight);
+            decimal vol = Convert.ToDecimal(milkVolumn);
+            string[] result = new string[2];
+            string dm = "0";
+
+            if (vol <= 5)
+            {
+                dm = (Convert.ToDecimal(0.03) * wt).ToString("0.00");//2-4 of body wt
+                result[0] = dm;
+                result[1] = "Dry Concentrate should be less or equal to 40% of DM";
+            }
+            else if (vol > 5 && vol <= 10)
+            {
+                dm = (Convert.ToDecimal(0.03) * wt ).ToString("0.00");//2-4 of body wt
+                result[0] = dm;
+                result[1] = "Dry Concentrate should be less or equal to 50% of DM";
+            }
+            else if (vol > 10 && vol <= 15)
+            {
+                dm = (Convert.ToDecimal(0.03) * wt ).ToString("0.00");//2-4 of body wt
+                result[0] = dm;
+                result[1] = "Dry Concentrate should be less or equal to 60% of DM";
+
+            }
+            else if (vol > 15 && vol <= 50)
+            {
+                dm = (Convert.ToDecimal(0.03) * wt ).ToString("0.00");//2-4 of body wt
+                result[0] = dm;
+                result[1] = "Dry Concentrate should be less or equal to 70% of DM";
+            }
+            else if(vol>50)
+            {
+                dm = (Convert.ToDecimal(0.03) * wt ).ToString("0.00");//2-4 of body wt
+                result[0] = dm;
+                result[1] = "Dry Concentrate should be less or equal to 70% of DM";
+            }
+
+
+
+
+            return result;
         }
 
 

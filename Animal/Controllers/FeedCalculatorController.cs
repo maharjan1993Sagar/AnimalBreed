@@ -94,7 +94,7 @@ namespace Animal.Controllers
             {
                 generalNutrition = _repo.GeneralNutrition.GetByWeight(feeds[0].animalWeight.ToString(),species);
                 
-                MilkBase = _repo.MilkBase.GetByFat(fat,volumn,int.Parse(species));
+                MilkBase = _repo.MilkBase.GetByFat(fat,int.Parse(species));
                 if (MilkBase == null)
                 {
                     ModelState.AddModelError(string.Empty, "Milk Base Record Not Found.");

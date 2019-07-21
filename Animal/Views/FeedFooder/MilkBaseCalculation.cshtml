@@ -1,0 +1,204 @@
+﻿@model List<Animal.Models.ViewModel.FeedCalculator>
+
+@{
+    ViewData["Title"] = "Feed Calculate";
+}
+
+
+
+@if (Context.Request.Method.ToString() == "GET")
+{
+
+    <form asp-action="milkbasecalculation">
+        <h2 class="text-center">Nutrition Balance</h2>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Milking Status</label><br />
+                    <input type="radio" name="[0].milk" value="Yes" id="radMilk" />Yes &nbsp;&nbsp;
+                    <input type="radio" name="[0].milk" value="No" id="radMilk" />No
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Pregnancy Status</label><br />
+                    <select name="[0].pregnancy" class="form-control" id="ddlPregnancy">
+                        <option disabled selected>Select</option>
+                        <option value="Early">Early Pregrenency</option>
+                        <option value="Mid">Mid Pregrenency</option>
+                        <option value="Late">Late Pregrenency</option>
+                    </select>
+                    @*<input type="radio" name="[0].pregnancy" value="Early" />Early &nbsp;&nbsp;
+                <input type="radio" name="[0].pregnancy" value="Mid" />Mid&nbsp;&nbsp;<br />
+                <input type="radio" name="[0].pregnancy" value="Late" />Late&nbsp;&nbsp;
+                <input type="radio" name="[0].pregnancy" value="No" />No*@
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Fat Percentage </label>
+                    <input name="[0].fatPercentage" class="form-control" value="@Model[0].fatPercentage" id="txtFat" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Animal Weight </label>
+                    <input name="[0].animalWeight" class="form-control" value="@Model[0].animalWeight" id="txtAnimalWeight" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Milk Volumn </label>
+                    <input name="[0].milkvolumn" class="form-control" value="@Model[0].milkvolumn" id="txtMilkVolumn" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Species</label>
+                    @Html.DropDownList("[0].species", Model[0].animalCategories, "Select", new { @class = "form-control", id = "ddlSpecies" })
+                </div>
+            </div>
+            <div class="col-md-12">
+                <table id="tblRequired" class="table table-bordered text-primary">
+                    <tr><th colspan="4" class="text-primary">Required Nutrients</th></tr>
+                    <tr>
+
+                        <th>DM(kg)</th>
+                        <th>TDN(kg)</th>
+                        <th>C(g)</th>
+                        <th>P(g)</th>
+                    </tr>
+                    <tr id="trVal">
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    
+                </table>
+                <div class="divMessage text-primary">Message:</div>
+                <h4>Calculate nutrient requirement as per the available resources</h4>
+            </div>
+            
+
+
+            @for(int i=0;i<Model.Count;i++)
+                {
+                <div class="col-md-12">
+                    <label><strong>@Model[i].feedCategory</strong></label>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Select Feed</label>
+                        @Html.DropDownList("["+i+"].feedId", Model[i].feeds, "Select", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Feed Weight</label>
+                        <input asp-for="@Model[i].weight" class="form-control" value="@Model[i].weight" />
+                    </div>
+                </div>
+
+            }
+
+
+            <div class="col-md-12">
+                <input type="submit" value="Calculation" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+
+
+}
+@if (Context.Request.Method.ToString() == "POST")
+{<div class="row">
+
+        <h2>Feed Calculator</h2>
+
+        <div>
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+        </div>
+        <table class="table table-bordered">
+            <tr>
+                <th>Discription</th>
+                <th>DM(kg)</th>
+
+                <th>TDN(kg)</th>
+                <th>C(g)</th>
+                <th>P(g)</th>
+            </tr>
+            @for (int i = 0; i < Model.Count(); i++)
+            {
+                <tr>
+                    <td>@Model[i].remarks</td>
+                    <td>@Model[i].dm</td>
+                    <td>@Model[i].tdn</td>
+                    <td>@Model[i].c</td>
+                    <td>@Model[i].p</td>
+                </tr>
+                
+            }
+        </table>
+
+        <div>
+            <a asp-action="milkbasecalculation" class="btn btn-primary">Calculate Feed</a>
+        </div>
+    </div>
+}
+@section Scripts{
+    <script>
+
+        $(document).ready(function () {
+            var table = $("table#tblRequired");
+            table.hide();
+
+            var divMessage = $("div.divMessage");
+            divMessage.hide();
+
+            $("#ddlSpecies").change(function () {
+                GetNutrients();
+            })
+
+
+          
+        })
+        function GetNutrients() {
+            var table = $("table#tblRequired");
+            var url = RootUrl + "Request/GetMilkBaseNutrient";
+        var ddlsource = "#ddlSpecies";
+        var val = $(ddlsource).val();
+        if (val) {
+            $.getJSON(url, {
+                milkStatus: $("input[id='radMilk']:checked").val(), pregnancyStatus: $("#ddlPregnancy").val(),
+                speciesId: $(ddlsource).val(), milkVolumn: $("#txtMilkVolumn").val(), fat: $("#txtFat").val(),
+                animalWeight: $("#txtAnimalWeight").val()
+            }, function (data) {
+
+                var tr = $('table#tblRequired tbody tr#trVal');
+                tr.find('td:eq(0)').html(data.dm);
+                tr.find('td:eq(1)').html(data.tdn);
+                tr.find('td:eq(2)').html(data.c);
+                tr.find('td:eq(3)').html(data.p);
+                table.show();
+
+
+                var div = $("div.divMessage");
+                div.empty().append(data.message);
+
+
+                div.show();
+
+
+            })
+        }
+            }
+
+
+    </script>
+}
+

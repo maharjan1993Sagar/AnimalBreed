@@ -12,5 +12,6 @@ namespace Animal.Models.ViewModel
         public string snf { get; set; }
         public string c { get; set; }
         public string p { get; set; }
+        public string message { get; set; }
     }
 }

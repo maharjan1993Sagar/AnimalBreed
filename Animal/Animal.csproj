@@ -1999,6 +1999,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Views\FeedFooder\MilkBaseCalculation.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\FeedFooder\Index.cshtml">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <Pack>$(IncludeRazorContentInPack)</Pack>
